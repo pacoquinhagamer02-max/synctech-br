@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SyncTech">
+<title>SyncTech BR</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050810;--bg2:#0a0f1e;--bg3:#0f1628;
+  --card:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
+  --cyan:#00d4ff;--purple:#a855f7;--orange:#f97316;
+  --green:#22c55e;--red:#ef4444;--yellow:#eab308;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --nav-h:68px;--safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px)
+}
+html{height:100%;height:-webkit-fill-available}
+body{height:100%;min-height:100vh;min-height:-webkit-fill-available;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;-webkit-font-smoothing:antialiased}
+#app{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;overflow:hidden}
+#hdr{padding:calc(var(--safe-top) + 10px) 16px 10px;background:linear-gradient(180deg,rgba(0,212,255,0.06) 0%,transparent 100%);border-bottom:1px solid var(--border);flex-shrink:0}
+#content{flex:1;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;min-height:0}
+#nav{flex-shrink:0;height:calc(var(--nav-h) + var(--safe-bot));background:rgba(5,8,16,0.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-bot)}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:none;background:none;color:var(--text3);font-size:8px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;padding:5px 1px;-webkit-tap-highlight-color:transparent;transition:color .2s}
+.nb .ic{font-size:21px;transition:transform .2s}
+.nb.on{color:var(--cyan)}.nb.on .ic{transform:scale(1.15)}
+.hdr-row{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{width:34px;height:34px;background:linear-gradient(135deg,var(--cyan),var(--purple));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.brand-name{font-size:17px;font-weight:800;letter-spacing:-.03em}
+.brand-name span{color:var(--cyan)}
+.live{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hdr-sub{font-size:11px;color:var(--text3);margin-top:3px}
+.hdr-date{font-size:11px;color:var(--text2)}
+#fab{position:fixed;right:18px;bottom:calc(var(--nav-h) + var(--safe-bot) + 14px);width:54px;height:54px;background:linear-gradient(135deg,var(--cyan),var(--purple));border-radius:27px;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(0,212,255,.4);z-index:99;border:none;-webkit-tap-highlight-color:transparent;transition:transform .15s,box-shadow .15s}
+#fab:active{transform:scale(.91);box-shadow:0 2px 10px rgba(0,212,255,.25)}
+.sec{padding:14px 14px 0}
+.sec-t{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:14px;margin-bottom:10px}
+.card-tap{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.card-tap:active{background:rgba(255,255,255,.07)}
+.kpi-g{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:13px;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi.c1::after{background:var(--cyan)}.kpi.c2::after{background:var(--purple)}
+.kpi.c3::after{background:var(--green)}.kpi.c4::after{background:var(--orange)}
+.kpi-l{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.kpi-v{font-size:21px;font-weight:800;margin:3px 0 1px;letter-spacing:-.02em}
+.kpi-s{font-size:11px;color:var(--text3)}
+.gc{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:14px;margin-bottom:9px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gc:active{background:rgba(255,255,255,.06)}
+.gc-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.gc-t{font-weight:700;font-size:14px;display:flex;align-items:center;gap:7px}
+.badge{font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.bc{background:rgba(0,212,255,.12);color:var(--cyan)}.bp{background:rgba(168,85,247,.12);color:var(--purple)}
+.bo{background:rgba(249,115,22,.12);color:var(--orange)}.bg{background:rgba(34,197,94,.12);color:var(--green)}
+.br{background:rgba(239,68,68,.12);color:var(--red)}
+.pbar{height:7px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden;margin-bottom:7px}
+.pfill{height:100%;border-radius:4px;transition:width .5s ease;position:relative;overflow:hidden}
+.pfill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shim 1.6s infinite;background-size:200% 100%}
+@keyframes shim{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.fcyan{background:linear-gradient(90deg,var(--cyan),#00ff9d)}
+.fpurple{background:linear-gradient(90deg,var(--purple),#ec4899)}
+.forange{background:linear-gradient(90deg,var(--orange),var(--yellow))}
+.gc-st{display:flex;justify-content:space-between;font-size:11px;color:var(--text2)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:14px}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s}
+.pc:active{transform:scale(.97)}
+.pc-img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--bg3)}
+.pc-ph{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:38px}
+.pc-info{padding:9px}
+.pc-n{font-size:11.5px;font-weight:600;line-height:1.3;margin-bottom:5px}
+.pc-p{font-size:13px;font-weight:700;color:var(--cyan)}
+.pc-profit{font-size:11px;color:var(--green)}
+.pc-sold{font-size:10.5px;color:var(--text3);margin-top:3px}
+.pc-btn{margin:7px 9px 9px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.18);border-radius:9px;padding:7px;font-size:11.5px;font-weight:600;color:var(--cyan);text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pc-btn:active{background:rgba(0,212,255,.18)}
+.si{display:flex;align-items:center;gap:11px;padding:11px 14px;border-bottom:1px solid var(--border);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.si:active{background:rgba(255,255,255,.03)}
+.si:last-child{border-bottom:none}
+.si-em{font-size:26px;width:40px;text-align:center}
+.si-inf{flex:1;min-width:0}
+.si-n{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.si-t{font-size:10.5px;color:var(--text3);margin-top:2px}
+.si-r{text-align:right}
+.si-profit{font-weight:700;color:var(--green);font-size:13px}
+.si-qty{font-size:10.5px;color:var(--text3)}
+.cw{position:relative;height:150px;margin:6px 0}
+.cwt{height:200px}
+.tcw{padding-bottom:80px}
+#mo,#do{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:200;align-items:flex-end}
+#mo.open,#do.open{display:flex}
+#modal,#dsheet{background:var(--bg2);border-radius:22px 22px 0 0;padding:0 0 calc(14px + var(--safe-bot));width:100%;max-height:90vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+#mo.open #modal,#do.open #dsheet{transform:translateY(0)}
+.mhd{width:34px;height:4px;background:var(--border);border-radius:2px;margin:11px auto 18px}
+.mtit{font-size:17px;font-weight:700;padding:0 18px 14px;border-bottom:1px solid var(--border)}
+.mbody{padding:18px}
+.fg{margin-bottom:14px}
+.fl{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:5px;display:block;text-transform:uppercase;letter-spacing:.05em}
+.fsel,.fin{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:11px;padding:11px 13px;color:var(--text);font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fsel:focus,.fin:focus{border-color:var(--cyan)}
+.qc{display:flex;align-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.qb{width:46px;height:46px;background:none;border:none;color:var(--cyan);font-size:22px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qb:active{background:rgba(0,212,255,.1)}
+#qv{flex:1;text-align:center;font-size:19px;font-weight:700}
+.btn1{width:100%;background:linear-gradient(135deg,var(--cyan),var(--purple));border:none;border-radius:13px;padding:15px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .15s}
+.btn1:active{opacity:.84}
+.btn2{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:13px;padding:13px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent;margin-top:9px}
+.pp{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.12);border-radius:12px;padding:12px;margin-bottom:14px}
+.pp-r{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.pp-r:last-child{margin-bottom:0}
+.divider{height:1px;background:var(--border)}
+.ss{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--border)}
+.ss:last-child{border-bottom:none}
+.snum{width:26px;height:26px;background:linear-gradient(135deg,var(--cyan),var(--purple));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.sct{font-weight:600;margin-bottom:3px;font-size:13.5px}
+.scd{font-size:11.5px;color:var(--text2);line-height:1.5}
+.cblk{background:rgba(0,0,0,.45);border:1px solid var(--border);border-radius:9px;padding:11px;font-family:'Courier New',monospace;font-size:10.5px;color:var(--cyan);margin-top:7px;overflow-x:auto;white-space:pre;cursor:pointer}
+.cblk:active{background:rgba(0,212,255,.05)}
+.mi{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.mi:last-child{border-bottom:none}
+.mdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.mdot.done{background:var(--green)}.mdot.now{background:var(--cyan);animation:pulse 2s infinite}.mdot.fut{background:var(--text3)}
+.mi-t{flex:1;font-size:12.5px}.mi-t.done{color:var(--text2)}
+.mi-d{font-size:10.5px;color:var(--text3)}
+.plan-week{margin-bottom:14px}
+.pwh{display:flex;align-items:center;gap:10px;padding:12px 13px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px 12px 0 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pwh:active{background:rgba(255,255,255,.06)}
+.pwhn{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.pwh-info{flex:1}
+.pwh-title{font-weight:700;font-size:13.5px}
+.pwh-dates{font-size:10.5px;color:var(--text3);margin-top:1px}
+.pwh-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px}
+.plan-items{border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;overflow:hidden}
+.pi{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pi:last-child{border-bottom:none}
+.pi:active{background:rgba(255,255,255,.03)}
+.pi-cb{width:20px;height:20px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .2s;font-size:13px;color:#fff}
+.pi-cb.chk{background:var(--green);border-color:var(--green)}
+.pi-text{flex:1;font-size:12.5px;line-height:1.4}
+.pi-text.dt{text-decoration:line-through;color:var(--text3)}
+.pi-tag{font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:6px;margin-top:3px;display:inline-block}
+.tip{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.tip:last-child{border-bottom:none}
+.tip-i{font-size:20px;width:28px;text-align:center;flex-shrink:0}
+.tip-t{font-size:12.5px;color:var(--text2);line-height:1.45}
+.alg-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.alg-item:last-child{border-bottom:none}
+.alg-name{flex:1;font-size:12.5px}
+.alg-pct{font-weight:700;color:var(--cyan);font-size:13px;width:34px;text-align:right}
+.alg-bw{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.alg-bf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--purple))}
+.ms-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.ms{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:9px;text-align:center}
+.ms-l{font-size:9.5px;color:var(--text3);font-weight:700;text-transform:uppercase;margin-bottom:3px}
+.ms-v{font-size:14px;font-weight:700}
+#toast{position:fixed;top:calc(var(--safe-top) + 76px);left:50%;transform:translateX(-50%) translateY(-16px);background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:10px 18px;font-weight:600;font-size:13.5px;opacity:0;transition:all .28s;z-index:999;white-space:nowrap;pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.fb{display:flex;align-items:center}.fbw{display:flex;align-items:center;justify-content:space-between}
+.fw7{font-weight:700}.fw8{font-weight:800}
+.tc{color:var(--cyan)}.tp{color:var(--purple)}.tg{color:var(--green)}.to{color:var(--orange)}.tr{color:var(--red)}.t3{color:var(--text3)}.t2{color:var(--text2)}
+.fs11{font-size:11px}.fs12{font-size:12px}.fs13{font-size:13px}
+.mt6{margin-top:6px}.mt8{margin-top:8px}.mt10{margin-top:10px}.mt12{margin-top:12px}.mb8{margin-bottom:8px}.mb10{margin-bottom:10px}
+.empty{text-align:center;padding:40px 20px;color:var(--text3)}
+.empty .ei{font-size:44px;margin-bottom:10px}
+.empty h3{font-size:14px;color:var(--text2);margin-bottom:5px}
+.empty p{font-size:12px;line-height:1.5}
+.chip{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:18px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.chip.on{background:rgba(0,212,255,.12);border-color:var(--cyan);color:var(--cyan)}
+.irow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.irow:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<div id="update-bar" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#00d4ff,#a855f7);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);font-size:13px;font-weight:600;color:#fff;box-shadow:0 4px 20px rgba(0,212,255,.3)">
+  <span>🚀 Nova versão disponível!</span>
+  <button id="upd-btn" style="background:rgba(255,255,255,.22);border:none;border-radius:8px;padding:6px 14px;color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent">Atualizar</button>
+</div>
+<div id="app">
+<div id="hdr">
+  <div class="hdr-row">
+    <div class="brand">
+      <div class="brand-logo">⚡</div>
+      <div>
+        <div class="brand-name">Sync<span>Tech</span> BR</div>
+        <div class="hdr-sub" id="hdr-sub">Shopee · Dropshipping</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px">
+      <div class="live"></div>
+      <div class="hdr-date" id="hdr-date"></div>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+
+<!-- HOME -->
+<div id="t-home" class="tcw">
+  <div class="sec"><div class="kpi-g" id="kpis"></div></div>
+  <div class="sec"><div class="sec-t">🎯 Metas</div><div id="dash-goals"></div></div>
+  <div class="sec">
+    <div class="sec-t">📈 Últimos 7 dias</div>
+    <div class="card" style="padding:10px"><div class="cw"><canvas id="cw7"></canvas></div></div>
+  </div>
+  <div class="sec" style="padding-bottom:14px">
+    <div class="fbw mb8">
+      <div class="sec-t" style="margin:0">Vendas Recentes</div>
+      <div class="chip on" onclick="nav('vendas')">Ver todas →</div>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden" id="recent-list"></div>
+  </div>
+</div>
+
+<!-- PRODUTOS -->
+<div id="t-produtos" class="tcw" style="display:none">
+  <div style="padding:14px 14px 0"><div class="sec-t">📦 10 Produtos · Goboox</div></div>
+  <div class="pgrid" id="pgrid"></div>
+</div>
+
+<!-- VENDAS -->
+<div id="t-vendas" class="tcw" style="display:none">
+  <div class="sec">
+    <div class="fbw mb8">
+      <div class="sec-t" style="margin:0">📋 Histórico</div>
+      <div style="display:flex;gap:6px">
+        <div class="chip" onclick="exportCSV()">CSV</div>
+        <div class="chip" onclick="exportJSON()">JSON</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch" id="vfilters"></div>
+    <div class="card" style="padding:0;overflow:hidden" id="vlist"></div>
+  </div>
+</div>
+
+<!-- GRAFICOS -->
+<div id="t-graficos" class="tcw" style="display:none">
+  <div class="sec">
+    <div class="sec-t">📊 Lucro por Mês</div>
+    <div class="card" style="padding:10px"><div class="cw cwt"><canvas id="cmonth"></canvas></div></div>
+  </div>
+  <div class="sec">
+    <div class="sec-t">🏆 Ranking Produtos</div>
+    <div class="card" style="padding:10px"><div class="cw cwt"><canvas id="crank"></canvas></div></div>
+  </div>
+  <div class="sec">
+    <div class="sec-t">📅 Por Dia da Semana</div>
+    <div class="card" style="padding:10px"><div class="cw"><canvas id="cdow"></canvas></div></div>
+  </div>
+  <div class="sec"><div class="sec-t">💹 Projeções</div><div id="proj"></div></div>
+</div>
+
+<!-- PLANO -->
+<div id="t-plano" class="tcw" style="display:none">
+  <div class="sec">
+    <div class="card" style="background:rgba(238,77,45,.07);border-color:rgba(238,77,45,.2);margin-bottom:12px">
+      <div class="fbw">
+        <div class="fb" style="gap:10px">
+          <div style="font-size:22px">🛍️</div>
+          <div><div class="fw7">SyncTech BR · Shopee</div><div class="fs11 mt6" style="color:#ee4d2d">Plano de ação · 30 dias</div></div>
+        </div>
+        <div id="plan-pct" class="fs13 fw7 tc">0%</div>
+      </div>
+    </div>
+    <div class="pbar mb10"><div class="pfill fcyan" id="plan-bar" style="width:0%"></div></div>
+
+    <div class="plan-week">
+      <div class="pwh" onclick="toggleWeek(1)">
+        <div class="pwhn" style="background:rgba(0,212,255,.15);color:var(--cyan)">1</div>
+        <div class="pwh-info"><div class="pwh-title">Semana 1 — Lançamento</div><div class="pwh-dates">08/05 – 15/05/2026</div></div>
+        <div class="pwh-badge bc" id="pw1-b">0/6</div>
+        <div id="pw1-a" style="color:var(--text3);font-size:16px;margin-left:4px">▾</div>
+      </div>
+      <div class="plan-items" id="pw1-i">
+        <div class="pi" onclick="tItem('1-1')"><div class="pi-cb" id="cb-1-1"></div><div class="pi-text" id="pt-1-1">Publicar os 10 produtos na Shopee<br><span class="pi-tag" style="background:rgba(239,68,68,.12);color:var(--red)">🔥 Urgente</span></div></div>
+        <div class="pi" onclick="tItem('1-2')"><div class="pi-cb" id="cb-1-2"></div><div class="pi-text" id="pt-1-2">Adicionar foto de capa com fundo branco em cada produto</div></div>
+        <div class="pi" onclick="tItem('1-3')"><div class="pi-cb" id="cb-1-3"></div><div class="pi-text" id="pt-1-3">Configurar frete grátis nos primeiros pedidos<br><span class="pi-tag" style="background:rgba(34,197,94,.1);color:var(--green)">💡 +40% conversão</span></div></div>
+        <div class="pi" onclick="tItem('1-4')"><div class="pi-cb" id="cb-1-4"></div><div class="pi-text" id="pt-1-4">Responder todas as perguntas em menos de 2h</div></div>
+        <div class="pi" onclick="tItem('1-5')"><div class="pi-cb" id="cb-1-5"></div><div class="pi-text" id="pt-1-5">Compartilhar loja no WhatsApp e redes sociais</div></div>
+        <div class="pi" onclick="tItem('1-6')"><div class="pi-cb" id="cb-1-6"></div><div class="pi-text" id="pt-1-6">Registrar primeira venda no app ✅<br><span class="pi-tag" style="background:rgba(0,212,255,.1);color:var(--cyan)">🎯 Meta principal da semana</span></div></div>
+      </div>
+    </div>
+
+    <div class="plan-week">
+      <div class="pwh" onclick="toggleWeek(2)">
+        <div class="pwhn" style="background:rgba(168,85,247,.15);color:var(--purple)">2</div>
+        <div class="pwh-info"><div class="pwh-title">Semana 2 — Tráfego</div><div class="pwh-dates">15/05 – 22/05/2026</div></div>
+        <div class="pwh-badge bp" id="pw2-b">0/6</div>
+        <div id="pw2-a" style="color:var(--text3);font-size:16px;margin-left:4px">▾</div>
+      </div>
+      <div class="plan-items" id="pw2-i" style="display:none">
+        <div class="pi" onclick="tItem('2-1')"><div class="pi-cb" id="cb-2-1"></div><div class="pi-text" id="pt-2-1">Ativar Anúncios Patrocinados (R$ 5/dia no produto top)</div></div>
+        <div class="pi" onclick="tItem('2-2')"><div class="pi-cb" id="cb-2-2"></div><div class="pi-text" id="pt-2-2">Otimizar título com keywords do produto mais clicado<br><span class="pi-tag" style="background:rgba(0,212,255,.1);color:var(--cyan)">ex: "Isqueiro Elétrico USB Recarregável Sem Gás"</span></div></div>
+        <div class="pi" onclick="tItem('2-3')"><div class="pi-cb" id="cb-2-3"></div><div class="pi-text" id="pt-2-3">Adicionar vídeo curto (5-15s) no produto mais vendido</div></div>
+        <div class="pi" onclick="tItem('2-4')"><div class="pi-cb" id="cb-2-4"></div><div class="pi-text" id="pt-2-4">Participar de Flash Sale da Shopee (gratuito!)</div></div>
+        <div class="pi" onclick="tItem('2-5')"><div class="pi-cb" id="cb-2-5"></div><div class="pi-text" id="pt-2-5">Pedir avaliação positiva para os primeiros compradores</div></div>
+        <div class="pi" onclick="tItem('2-6')"><div class="pi-cb" id="cb-2-6"></div><div class="pi-text" id="pt-2-6">Analisar concorrência: ver preços dos top 5 vendedores</div></div>
+      </div>
+    </div>
+
+    <div class="plan-week">
+      <div class="pwh" onclick="toggleWeek(3)">
+        <div class="pwhn" style="background:rgba(249,115,22,.15);color:var(--orange)">3</div>
+        <div class="pwh-info"><div class="pwh-title">Semana 3 — Escala</div><div class="pwh-dates">22/05 – 29/05/2026</div></div>
+        <div class="pwh-badge bo" id="pw3-b">0/5</div>
+        <div id="pw3-a" style="color:var(--text3);font-size:16px;margin-left:4px">▾</div>
+      </div>
+      <div class="plan-items" id="pw3-i" style="display:none">
+        <div class="pi" onclick="tItem('3-1')"><div class="pi-cb" id="cb-3-1"></div><div class="pi-text" id="pt-3-1">Dobrar orçamento de anúncios do produto mais vendido</div></div>
+        <div class="pi" onclick="tItem('3-2')"><div class="pi-cb" id="cb-3-2"></div><div class="pi-text" id="pt-3-2">Adicionar mais fotos nos 3 produtos com menos cliques</div></div>
+        <div class="pi" onclick="tItem('3-3')"><div class="pi-cb" id="cb-3-3"></div><div class="pi-text" id="pt-3-3">Configurar resposta automática da Shopee para fora do horário</div></div>
+        <div class="pi" onclick="tItem('3-4')"><div class="pi-cb" id="cb-3-4"></div><div class="pi-text" id="pt-3-4">Criar combo/kit com produtos complementares<br><span class="pi-tag" style="background:rgba(34,197,94,.1);color:var(--green)">ex: Cabo P2 + Isqueiro = kit presente</span></div></div>
+        <div class="pi" onclick="tItem('3-5')"><div class="pi-cb" id="cb-3-5"></div><div class="pi-text" id="pt-3-5">Meta desta semana: 5 vendas → R$ 60+ lucro</div></div>
+      </div>
+    </div>
+
+    <div class="plan-week">
+      <div class="pwh" onclick="toggleWeek(4)">
+        <div class="pwhn" style="background:rgba(34,197,94,.15);color:var(--green)">4</div>
+        <div class="pwh-info"><div class="pwh-title">Semana 4 — Revisão</div><div class="pwh-dates">29/05 – 05/06/2026</div></div>
+        <div class="pwh-badge bg" id="pw4-b">0/5</div>
+        <div id="pw4-a" style="color:var(--text3);font-size:16px;margin-left:4px">▾</div>
+      </div>
+      <div class="plan-items" id="pw4-i" style="display:none">
+        <div class="pi" onclick="tItem('4-1')"><div class="pi-cb" id="cb-4-1"></div><div class="pi-text" id="pt-4-1">Revisar: quais produtos venderam vs quais não venderam</div></div>
+        <div class="pi" onclick="tItem('4-2')"><div class="pi-cb" id="cb-4-2"></div><div class="pi-text" id="pt-4-2">Pausar anúncios de produtos sem vendas em 30 dias</div></div>
+        <div class="pi" onclick="tItem('4-3')"><div class="pi-cb" id="cb-4-3"></div><div class="pi-text" id="pt-4-3">Pesquisar 3 novos produtos para adicionar na Goboox</div></div>
+        <div class="pi" onclick="tItem('4-4')"><div class="pi-cb" id="cb-4-4"></div><div class="pi-text" id="pt-4-4">Calcular ROI: lucro total ÷ custo anúncios</div></div>
+        <div class="pi" onclick="tItem('4-5')"><div class="pi-cb" id="cb-4-5"></div><div class="pi-text" id="pt-4-5">Planejamento Mês 2: meta de 20 vendas/semana</div></div>
+      </div>
+    </div>
+
+    <div class="sec-t mt12">⭐ Regras de Ouro</div>
+    <div class="card" style="padding:10px 14px">
+      <div class="tip"><div class="tip-i">⚡</div><div class="tip-t"><b>Resposta rápida</b> — Responda em menos de 2h. Taxa acima de 90% melhora posição no algoritmo.</div></div>
+      <div class="tip"><div class="tip-i">📦</div><div class="tip-t"><b>Compre só após pagamento</b> — Nunca compre na Goboox antes do status mudar para "Aguardando Envio".</div></div>
+      <div class="tip"><div class="tip-i">🖼️</div><div class="tip-t"><b>Foto principal</b> — Fundo branco, produto ocupa 80% da imagem. Fator mais importante de clique.</div></div>
+      <div class="tip"><div class="tip-i">🔍</div><div class="tip-t"><b>Título SEO</b> — Padrão: Categoria + Característica + Benefício. Ex: "Mouse Gamer RGB USB 6400 DPI Silencioso".</div></div>
+      <div class="tip"><div class="tip-i">🎁</div><div class="tip-t"><b>Frete grátis vende mais</b> — Inclua o frete no preço se necessário. Sem frete grátis perde 40% das vendas.</div></div>
+      <div class="tip"><div class="tip-i">📊</div><div class="tip-t"><b>5 min/dia no app</b> — Acompanhe diariamente. Não deixe pedido sem envio por mais de 24h.</div></div>
+    </div>
+
+    <div class="sec-t mt10">🤖 Algoritmo Shopee</div>
+    <div class="card" style="padding:10px 14px">
+      <div class="alg-item"><div class="alg-name">📸 Foto / Título SEO</div><div class="alg-bw"><div class="alg-bf" style="width:30%"></div></div><div class="alg-pct">30%</div></div>
+      <div class="alg-item"><div class="alg-name">🛒 Histórico de Vendas</div><div class="alg-bw"><div class="alg-bf" style="width:25%"></div></div><div class="alg-pct">25%</div></div>
+      <div class="alg-item"><div class="alg-name">⭐ Avaliações</div><div class="alg-bw"><div class="alg-bf" style="width:20%"></div></div><div class="alg-pct">20%</div></div>
+      <div class="alg-item"><div class="alg-name">📹 Vídeo do Produto</div><div class="alg-bw"><div class="alg-bf" style="width:10%"></div></div><div class="alg-pct">10%</div></div>
+      <div class="alg-item"><div class="alg-name">💬 Taxa de Resposta</div><div class="alg-bw"><div class="alg-bf" style="width:10%"></div></div><div class="alg-pct">10%</div></div>
+      <div class="alg-item"><div class="alg-name">🚀 Anúncios Pagos</div><div class="alg-bw"><div class="alg-bf" style="width:5%"></div></div><div class="alg-pct">5%</div></div>
+    </div>
+
+    <div class="sec-t mt10">🔄 Sync Shopee</div>
+    <div class="card" style="padding:0 14px">
+      <div class="ss">
+        <div class="snum">1</div>
+        <div><div class="sct">Abra Shopee → Minhas Vendas</div><div class="scd">Acesse Seller Center → "Pedidos" → "Todos os pedidos"</div></div>
+      </div>
+      <div class="ss">
+        <div class="snum">2</div>
+        <div>
+          <div class="sct">Abra DevTools (F12) e cole o script</div>
+          <div class="cblk" onclick="copySync()">(function(){var orders=[];var rows=document.querySelectorAll('[class*="order-item"]');rows.forEach(function(r){...}); copy(JSON.stringify({source:"shopee",orders:orders},null,2));})();</div>
+          <button class="btn1 mt8" style="padding:9px;font-size:12.5px" onclick="copySync()">📋 Copiar Script</button>
+        </div>
+      </div>
+      <div class="ss">
+        <div class="snum">3</div>
+        <div>
+          <div class="sct">Importe o resultado aqui</div>
+          <textarea id="imp-data" class="fin mt8" rows="3" placeholder="Cole o JSON aqui..." style="resize:none;font-family:monospace;font-size:11px"></textarea>
+          <button class="btn1 mt8" style="padding:10px;font-size:13px" onclick="importShopee()">🔄 Importar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-t mt10">✏️ Pedido Manual</div>
+    <div class="card">
+      <div class="fg"><label class="fl">Nº Pedido Shopee</label><input class="fin" id="man-ord" placeholder="ex: 250508XXXXXX"></div>
+      <div class="fg"><label class="fl">Produto</label><select class="fsel" id="man-prod"></select></div>
+      <div class="fg"><label class="fl">Quantidade</label><input class="fin" id="man-qty" type="number" value="1" min="1"></div>
+      <button class="btn1" onclick="addManual()">✅ Confirmar Pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- METAS -->
+<div id="t-metas" class="tcw" style="display:none">
+  <div class="sec" id="metas-body"></div>
+</div>
+
+<!-- PEDIDOS -->
+<div id="t-pedidos" class="tcw" style="display:none">
+  <div class="sec" id="ped-body" style="padding-bottom:14px"></div>
+</div>
+
+</div>
+
+<nav id="nav">
+  <button class="nb on" onclick="nav('home')" data-tab="home"><span class="ic">🏠</span>Início</button>
+  <button class="nb" onclick="nav('produtos')" data-tab="produtos"><span class="ic">📦</span>Produtos</button>
+  <button class="nb" onclick="nav('vendas')" data-tab="vendas"><span class="ic">🧾</span>Vendas</button>
+  <button class="nb" onclick="nav('graficos')" data-tab="graficos"><span class="ic">📊</span>Gráficos</button>
+  <button class="nb" onclick="nav('plano')" data-tab="plano"><span class="ic">📋</span>Plano</button>
+  <button class="nb" onclick="nav('metas')" data-tab="metas"><span class="ic">🎯</span>Metas</button>
+  <button class="nb" onclick="nav('pedidos')" data-tab="pedidos"><span class="ic">📭</span>Pedidos</button>
+</nav>
+</div>
+
+<button id="fab" onclick="fabClick()">＋</button>
+
+<div id="mo" onclick="closeModalOvl(event)">
+  <div id="modal">
+    <div class="mhd"></div>
+    <div class="mtit" id="mo-title">🛒 Registrar Venda</div>
+    <div class="mbody">
+      <div class="fg"><label class="fl">Produto</label><select class="fsel" id="sel-prod" onchange="updPP()"></select></div>
+      <div class="fg" id="mo-ordno-fg" style="display:none"><label class="fl">Nº Pedido Shopee</label><input class="fin" id="mo-ordno" placeholder="ex: 250508XXXXXX"></div>
+      <div id="pp" class="pp" style="display:none">
+        <div class="pp-r"><span class="fs12 t3">Custo Goboox</span><span class="fw7" id="pp-c"></span></div>
+        <div class="pp-r"><span class="fs12 t3">Preço Shopee</span><span class="fw7 tc" id="pp-v"></span></div>
+        <div class="pp-r"><span class="fs12 t3">Taxa Shopee 14%</span><span class="fw7 tr" id="pp-f"></span></div>
+        <div class="divider" style="margin:7px 0"></div>
+        <div class="pp-r"><span class="fs12 fw7">Lucro líquido</span><span class="fw8 tg" id="pp-l"></span></div>
+      </div>
+      <div class="fg"><label class="fl">Quantidade</label>
+        <div class="qc"><button class="qb" onclick="dq(-1)">−</button><div id="qv">1</div><button class="qb" onclick="dq(1)">+</button></div>
+      </div>
+      <div class="fg"><label class="fl">Data/Hora</label><input class="fin" type="datetime-local" id="sale-dt"></div>
+      <button class="btn1" id="mo-confirm" onclick="regSale()">✅ Confirmar Venda</button>
+      <button class="btn2" onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div id="do" onclick="closeDOvl(event)">
+  <div id="dsheet">
+    <div class="mhd"></div>
+    <div id="dshc" style="padding:0 18px 18px"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+var P=[
+  {id:1,n:"Isqueiro Maçarico USB",c:9.90,v:24.90,e:"🔥",img:"https://i.ibb.co/gMbHJwqM/b336dd2405aa.jpg"},
+  {id:2,n:"Bateria BL-5C Nokia",c:7.90,v:16.90,e:"🔋",img:"https://i.ibb.co/Zz5WGz85/8166e056a8a6.jpg"},
+  {id:3,n:"Sapateira 12 Pares",c:13.00,v:29.90,e:"👟",img:"https://i.ibb.co/mZ7kh5b/1d81a2faedb3.webp"},
+  {id:4,n:"Teclado Numérico Knup",c:19.90,v:42.90,e:"⌨️",img:"https://i.ibb.co/YFyxBvH0/2003-2-6732106f1b831.jpg"},
+  {id:5,n:"Isqueiro Elétrico USB",c:11.90,v:26.90,e:"⚡",img:"https://i.ibb.co/676fqghN/a33f0a3b7534.jpg"},
+  {id:6,n:"Conversor HDMI-AV",c:16.90,v:35.90,e:"📺",img:"https://i.ibb.co/b5dYKSph/v115-67c1b2f6a2565.webp"},
+  {id:7,n:"Mouse Gamer RGB",c:15.90,v:32.90,e:"🖱️",img:"https://i.ibb.co/chpTWmBw/img-ftr-rp-587201-1160x1160-6533cd2cac22b.jpg"},
+  {id:8,n:"Contador Digital",c:6.90,v:17.90,e:"🔢",img:"https://i.ibb.co/Ldm3ZzPb/addb20772de9.jpg"},
+  {id:9,n:"Difusor Elétrico Bivolt",c:14.80,v:34.90,e:"🌸",img:"https://i.ibb.co/RkRJDcZ0/af45d3cd126d.png"},
+  {id:10,n:"Cabo P2 3m Graseph",c:3.13,v:9.90,e:"🎵",img:"https://i.ibb.co/tPB4T596/cabo-p2-p2-1-5-metros-graseph-dp2-1-5m-1-653695b447f1f.jpg"},
+  {id:11,n:"Capa Silicone Slim Samsung/iPhone",c:8.00,v:24.90,e:"📱",qty:15},
+  {id:12,n:"Fone TWS Bluetooth i12 Pro",c:22.00,v:54.90,e:"🎧",qty:5},
+  {id:13,n:"Organizador Gaveta 6 Nichos",c:12.00,v:29.90,e:"🗂️",qty:6},
+  {id:14,n:"Massageador Facial Elétrico",c:16.00,v:39.90,e:"✨",qty:4},
+  {id:15,n:"Suporte Magnético Veicular",c:9.00,v:22.90,e:"🧲",qty:6},
+  {id:16,n:"Película Vidro 3D Full Cover",c:5.00,v:14.90,e:"🔲",qty:16}
+];
+var DL1=new Date('2026-05-16'),META2=1800,META3=18000;
+var GN2='PS4 Pro',GN3='Carro Próprio';
+var SK='stv',PK='stv_plan',GK='stv_goals';
+function applyGoals(){try{var g=JSON.parse(localStorage.getItem(GK)||'{}');if(g.dl1)DL1=new Date(g.dl1);if(g.m2)META2=parseFloat(g.m2);if(g.m3)META3=parseFloat(g.m3);if(g.n2)GN2=g.n2;if(g.n3)GN3=g.n3;}catch(e){}}
+function saveGoalsUI(){
+  var dl1=document.getElementById('gl-dl1').value||'2026-05-16';
+  var n2=document.getElementById('gl-n2').value.trim()||'PS4 Pro';
+  var m2=Math.max(1,parseFloat(document.getElementById('gl-m2').value)||1800);
+  var n3=document.getElementById('gl-n3').value.trim()||'Carro Próprio';
+  var m3=Math.max(1,parseFloat(document.getElementById('gl-m3').value)||18000);
+  localStorage.setItem(GK,JSON.stringify({dl1:dl1,n2:n2,m2:m2,n3:n3,m3:m3}));
+  DL1=new Date(dl1);META2=m2;META3=m3;GN2=n2;GN3=n3;
+  toast('✅ Metas salvas!');renderMetas();renderHome();
+}
+function gs(){try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch(e){return[];}}
+function ss(s){localStorage.setItem(SK,JSON.stringify(s));}
+function gp(){try{return JSON.parse(localStorage.getItem(PK)||'{}');}catch(e){return{};}}
+function sp(p){localStorage.setItem(PK,JSON.stringify(p));}
+var OK='stv_ords';
+function go(){try{return JSON.parse(localStorage.getItem(OK)||'[]');}catch(e){return[];}}
+function so(d){localStorage.setItem(OK,JSON.stringify(d));}
+function fp(id){return P.find(function(x){return x.id===id;});}
+function luc(p,q){return(p.v*q)-(p.c*q)-(p.v*q*0.14);}
+function fmt(n){return n.toFixed(2).replace('.',',');}
+function fmtK(n){return n>=1000?'R$ '+Math.round(n/100)/10+'k':'R$ '+fmt(n);}
+function totalLuc(){return gs().reduce(function(a,s){var p=fp(s.pid);return p?a+luc(p,s.qty):a;},0);}
+function totalQty(){return gs().reduce(function(a,s){return a+s.qty;},0);}
+function statsProd(){
+  var m={};
+  gs().forEach(function(s){if(!m[s.pid])m[s.pid]={qty:0,luc:0};var p=fp(s.pid);if(p){m[s.pid].qty+=s.qty;m[s.pid].luc+=luc(p,s.qty);}});
+  return m;
+}
+function avgDay(){
+  var s=gs();if(!s.length)return 0;
+  var first=new Date(s.slice().sort(function(a,b){return new Date(a.dt)-new Date(b.dt);})[0].dt);
+  return totalLuc()/Math.max(1,(new Date()-first)/864e5);
+}
+
+var cur='home';
+function nav(tab){
+  if(cur===tab){document.getElementById('content').scrollTop=0;return;}
+  document.querySelectorAll('.tcw').forEach(function(e){e.style.display='none';});
+  document.getElementById('t-'+tab).style.display='';
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab);});
+  cur=tab;renderTab(tab);document.getElementById('content').scrollTop=0;
+}
+function renderTab(t){
+  if(t==='home')renderHome();
+  else if(t==='produtos')renderProd();
+  else if(t==='vendas')renderVendas();
+  else if(t==='graficos')renderGraficos();
+  else if(t==='plano')renderPlano();
+  else if(t==='metas')renderMetas();
+  else if(t==='pedidos')renderPedidos();
+}
+
+function renderHdr(){
+  var l=totalLuc(),s=gs();
+  document.getElementById('hdr-sub').textContent='Shopee · '+s.length+' venda'+(s.length!==1?'s':'')+' · R$ '+fmt(l)+' lucro';
+  var n=new Date();
+  document.getElementById('hdr-date').textContent=n.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'});
+}
+
+function renderHome(){renderHdr();renderKPIs();renderDashGoals();renderWeek();renderRecent();}
+
+function renderKPIs(){
+  var s=gs(),l=totalLuc(),q=totalQty();
+  var hoje=new Date().toDateString();
+  var lh=s.filter(function(x){return new Date(x.dt).toDateString()===hoje;}).reduce(function(a,x){var p=fp(x.pid);return p?a+luc(p,x.qty):a;},0);
+  var at=q>0?l/q:0;
+  var sp=statsProd(),bk=Object.keys(sp).sort(function(a,b){return sp[b].luc-sp[a].luc;})[0];
+  var be=bk?fp(parseInt(bk)):null;
+  document.getElementById('kpis').innerHTML=
+    kpi('Total Lucro','R$ '+fmt(l),'Líquido após taxas','c1')+
+    kpi('Vendas',s.length+' pedidos',q+' unidades','c2')+
+    kpi('Hoje','R$ '+fmt(lh),'Lucro do dia','c3')+
+    kpi('Ticket Médio','R$ '+fmt(at),be?be.e+' produto líder':'Sem vendas','c4');
+}
+function kpi(l,v,s,c){
+  return '<div class="kpi '+c+'" onclick="nav(\'graficos\')"><div class="kpi-l">'+l+'</div><div class="kpi-v">'+v+'</div><div class="kpi-s">'+s+'</div></div>';
+}
+
+function renderDashGoals(){
+  var l=totalLuc(),s=gs(),f=s.length>0;
+  var now=new Date(),dl=Math.max(0,Math.ceil((DL1-now)/864e5));
+  var p2=Math.min(100,l/META2*100),p3=Math.min(100,l/META3*100);
+  var h='';
+  h+='<div class="gc" onclick="nav(\'produtos\')" style="border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.04);margin-bottom:9px">';
+  h+='<div class="gc-hd"><div class="gc-t">💼 Estoque Goboox</div><div class="badge bc">R$ 500 investido</div></div>';
+  h+='<div class="pbar"><div class="pfill fcyan" style="width:100%"></div></div>';
+  h+='<div class="gc-st"><span>52 produtos · Lucro potencial: R$ 733</span><span class="tc">ROI: 147%</span></div></div>';
+  if(!f){
+    h+='<div class="gc" onclick="nav(\'metas\')"><div class="gc-hd"><div class="gc-t">🛍️ 1ª Venda</div><div class="badge bc">'+dl+'d restam</div></div>';
+    h+='<div class="pbar"><div class="pfill fcyan" style="width:4%"></div></div>';
+    h+='<div class="gc-st"><span>Prazo 16/05/2026</span><span class="tc">Publique hoje!</span></div></div>';
+  } else {
+    h+='<div class="gc" onclick="nav(\'metas\')" style="border-color:rgba(34,197,94,.3)"><div class="gc-hd"><div class="gc-t">✅ 1ª Venda</div><div class="badge bg">BATIDA!</div></div>';
+    h+='<div class="pbar"><div class="pfill fcyan" style="width:100%"></div></div>';
+    h+='<div class="gc-st"><span>'+s.length+' venda(s)</span><span class="tg">Parabéns! 🎉</span></div></div>';
+  }
+  h+='<div class="gc" onclick="nav(\'metas\')"><div class="gc-hd"><div class="gc-t">🎮 '+GN2+'</div><div class="badge bp">'+p2.toFixed(1)+'%</div></div>';
+  h+='<div class="pbar"><div class="pfill fpurple" style="width:'+p2+'%"></div></div>';
+  h+='<div class="gc-st"><span>R$ '+fmt(l)+' / R$ '+fmt(META2)+'</span><span class="tp">Faltam R$ '+fmt(Math.max(0,META2-l))+'</span></div></div>';
+  h+='<div class="gc" onclick="nav(\'metas\')"><div class="gc-hd"><div class="gc-t">🚗 '+GN3+'</div><div class="badge bo">'+p3.toFixed(1)+'%</div></div>';
+  h+='<div class="pbar"><div class="pfill forange" style="width:'+p3+'%"></div></div>';
+  h+='<div class="gc-st"><span>R$ '+fmt(l)+' / R$ '+Math.round(META3).toLocaleString('pt-BR')+'</span><span class="to">Faltam R$ '+Math.max(0,Math.round(META3-l)).toLocaleString('pt-BR')+'</span></div></div>';
+  document.getElementById('dash-goals').innerHTML=h;
+}
+
+function renderRecent(){
+  var s=gs().slice().reverse().slice(0,5);
+  var el=document.getElementById('recent-list');
+  if(!s.length){el.innerHTML='<div class="empty"><div class="ei">🛒</div><h3>Nenhuma venda ainda</h3><p>Toque no + para registrar!</p></div>';return;}
+  el.innerHTML=s.map(function(s){
+    var p=fp(s.pid);if(!p)return'';
+    var l=luc(p,s.qty);var d=new Date(s.dt);
+    var ds=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    return '<div class="si" onclick="openSD('+s.id+')">'
+      +'<div class="si-em">'+p.e+'</div>'
+      +'<div class="si-inf"><div class="si-n">'+p.n+'</div><div class="si-t">'+ds+(s.order?' · #'+s.order:'')+'</div></div>'
+      +'<div class="si-r"><div class="si-profit">+R$ '+fmt(l)+'</div><div class="si-qty">×'+s.qty+'</div></div>'
+      +'</div>';
+  }).join('');
+}
+
+function renderProd(){
+  var sp=statsProd();
+  document.getElementById('pgrid').innerHTML=P.map(function(p){
+    var ps=sp[p.id]||{qty:0,luc:0},lu=luc(p,1);
+    return '<div class="pc" onclick="openPD('+p.id+')">'
+      +'<img class="pc-img" src="'+p.img+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      +'<div class="pc-ph" style="display:none">'+p.e+'</div>'
+      +'<div class="pc-info"><div class="pc-n">'+p.n+'</div>'
+      +'<div class="pc-p">R$ '+fmt(p.v)+'</div>'
+      +'<div class="pc-profit">+R$ '+fmt(lu)+'/venda</div>'
+      +'<div class="pc-sold">'+ps.qty+' vendas · R$ '+fmt(ps.luc)+'</div></div>'
+      +'<div class="pc-btn" onclick="event.stopPropagation();openModal('+p.id+')">+ Registrar Venda</div>'
+      +'</div>';
+  }).join('');
+}
+
+function openPD(id){
+  var p=fp(id);if(!p)return;
+  var sp=statsProd(),ps=sp[id]||{qty:0,luc:0};
+  var lu=luc(p,1),mg=lu/p.v*100;
+  var sales=gs().filter(function(s){return s.pid===id;}).reverse();
+  document.getElementById('dshc').innerHTML=
+    '<div style="text-align:center;padding:16px 0">'
+    +'<div style="font-size:50px">'+p.e+'</div>'
+    +'<div style="font-size:16px;font-weight:700;margin-top:8px">'+p.n+'</div>'
+    +'<div class="fs11 t3 mt6">Goboox · Dropshipping</div>'
+    +'</div>'
+    +'<div class="ms-grid">'
+    +msc('Custo','R$ '+fmt(p.c),'var(--text3)')+msc('Preço','R$ '+fmt(p.v),'var(--cyan)')
+    +msc('Lucro/un','R$ '+fmt(lu),'var(--green)')+msc('Margem',mg.toFixed(0)+'%','var(--purple)')
+    +msc('Vendas',ps.qty+' un.','var(--text)')+msc('Total Lucro','R$ '+fmt(ps.luc),'var(--orange)')
+    +'</div>'
+    +'<div class="card" style="padding:10px 14px;margin-bottom:12px">'
+    +'<div class="irow"><span class="fs12 t3">Comissão 12%</span><span class="fw7 tr">-R$ '+fmt(p.v*0.12)+'</span></div>'
+    +'<div class="irow"><span class="fs12 t3">Transação 2%</span><span class="fw7 tr">-R$ '+fmt(p.v*0.02)+'</span></div>'
+    +'<div class="irow"><span class="fs12 t2 fw7">Total taxas</span><span class="fw7 tr">-R$ '+fmt(p.v*0.14)+'</span></div>'
+    +'</div>'
+    +'<button class="btn1" onclick="closeDtl();openModal('+id+')">+ Registrar Venda</button>'
+    +(sales.length?'<div class="sec-t mt12">Histórico</div>'
+      +sales.slice(0,5).map(function(s){
+        var d=new Date(s.dt),ds=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+        return '<div class="irow"><div><div class="fs13">×'+s.qty+(s.order?' · #'+s.order:'')+'</div><div class="fs11 t3">'+ds+'</div></div><span class="fw7 tg">+R$ '+fmt(luc(p,s.qty))+'</span></div>';
+      }).join(''):'');
+  openDtl();
+}
+function msc(l,v,c){return '<div class="ms"><div class="ms-l">'+l+'</div><div class="ms-v" style="color:'+c+'">'+v+'</div></div>';}
+
+var vF=0;
+function renderVendas(){
+  var fe=document.getElementById('vfilters');
+  fe.innerHTML='<div class="chip '+(vF===0?'on':'')+'" onclick="setVF(0)">Todos</div>'
+    +P.map(function(p){return '<div class="chip '+(vF===p.id?'on':'')+'" onclick="setVF('+p.id+')">'+p.e+' '+p.n.split(' ')[0]+'</div>';}).join('');
+  var all=gs().slice().reverse(),filtered=vF?all.filter(function(s){return s.pid===vF;}):all;
+  var el=document.getElementById('vlist');
+  if(!filtered.length){el.innerHTML='<div class="empty"><div class="ei">📋</div><h3>Sem vendas</h3><p>Nenhuma venda encontrada.</p></div>';return;}
+  el.innerHTML=filtered.map(function(s){
+    var p=fp(s.pid);if(!p)return'';
+    var l=luc(p,s.qty),d=new Date(s.dt);
+    var ds=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'})+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    return '<div class="si" onclick="openSD('+s.id+')">'
+      +'<div class="si-em">'+p.e+'</div>'
+      +'<div class="si-inf"><div class="si-n">'+p.n+'</div><div class="si-t">'+ds+(s.order?' · #'+s.order:'')+(s.source==='shopee'?' 🛍️':'')+'</div></div>'
+      +'<div class="si-r"><div class="si-profit">+R$ '+fmt(l)+'</div><div class="si-qty">×'+s.qty+'</div></div>'
+      +'</div>';
+  }).join('');
+}
+function setVF(f){vF=f;renderVendas();}
+
+function openSD(id){
+  var s=gs().find(function(x){return x.id===id;});if(!s)return;
+  var p=fp(s.pid);if(!p)return;
+  var l=luc(p,s.qty),d=new Date(s.dt);
+  document.getElementById('dshc').innerHTML=
+    '<div style="text-align:center;padding:16px 0">'
+    +'<div style="font-size:44px">'+p.e+'</div>'
+    +'<div style="font-size:15px;font-weight:700;margin-top:7px">'+p.n+'</div>'
+    +'<div style="font-size:25px;font-weight:800;color:var(--green);margin-top:7px">+R$ '+fmt(l)+'</div>'
+    +'<div class="fs11 t3 mt6">Lucro líquido</div></div>'
+    +'<div class="ms-grid">'
+    +msc('Quantidade','×'+s.qty,'var(--text)')+msc('Data',d.toLocaleDateString('pt-BR'),'var(--text2)')
+    +msc('Custo','R$ '+fmt(p.c*s.qty),'var(--red)')+msc('Receita','R$ '+fmt(p.v*s.qty),'var(--cyan)')
+    +'</div>'
+    +(s.order?'<div class="card fbw" style="padding:11px 13px;margin-bottom:9px"><span class="fs13">Nº Pedido</span><span class="fw7 tc">#'+s.order+'</span></div>':'')
+    +'<div class="card fbw" style="padding:11px 13px;margin-bottom:14px"><span class="fs13">Fonte</span><span class="fw7">'+(s.source==='shopee'?'🛍️ Shopee':'✏️ Manual')+'</span></div>'
+    +'<button class="btn2" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="delSale('+s.id+');closeDtl()">🗑️ Excluir Venda</button>';
+  openDtl();
+}
+function delSale(id){ss(gs().filter(function(s){return s.id!==id;}));toast('🗑️ Venda removida');renderTab(cur);renderHdr();}
+
+function renderGraficos(){renderWeek();setTimeout(function(){renderMonth();renderRank();renderDOW();renderProj();},50);}
+
+function bar(cid,labels,data,color,retry){
+  var cv=document.getElementById(cid);if(!cv)return;
+  var par=cv.parentElement;
+  var W=par.offsetWidth||par.getBoundingClientRect().width;
+  var H=par.offsetHeight||par.getBoundingClientRect().height;
+  if(!W||!H){if(!retry){setTimeout(function(){bar(cid,labels,data,color,true);},120);}return;}
+  var ctx=cv.getContext('2d'),dpr=window.devicePixelRatio||1;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';
+  ctx.scale(dpr,dpr);ctx.clearRect(0,0,W,H);
+  var max=Math.max.apply(null,data.concat([0.01]));
+  var pL=6,pR=6,pT=22,pB=30,bw=(W-pL-pR)/labels.length,gap=bw*.22;
+  ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+  for(var i=0;i<4;i++){var y=pT+(H-pT-pB)*i/3;ctx.beginPath();ctx.moveTo(pL,y);ctx.lineTo(W-pR,y);ctx.stroke();}
+  data.forEach(function(v,i){
+    var x=pL+i*bw+gap/2,bh=(v/max)*(H-pT-pB),y=H-pB-bh;
+    if(bh>0){
+      var g=ctx.createLinearGradient(0,y,0,H-pB);g.addColorStop(0,color);g.addColorStop(1,'rgba(0,0,0,.05)');
+      ctx.fillStyle=g;var r=Math.min(5,bh/2);
+      ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+bw-gap-r,y);
+      ctx.arcTo(x+bw-gap,y,x+bw-gap,y+r,r);ctx.lineTo(x+bw-gap,H-pB);ctx.lineTo(x,H-pB);ctx.arcTo(x,y,x+r,y,r);
+      ctx.closePath();ctx.fill();
+    }
+    if(v>0){ctx.fillStyle='rgba(255,255,255,.82)';ctx.font='bold 9px -apple-system,sans-serif';ctx.textAlign='center';ctx.fillText(v>=10?Math.round(v)+'':v.toFixed(1),x+(bw-gap)/2,y-4);}
+    ctx.fillStyle='rgba(148,163,184,.7)';ctx.font='9px -apple-system,sans-serif';ctx.textAlign='center';ctx.fillText(labels[i],x+(bw-gap)/2,H-pB+13);
+  });
+}
+
+function renderWeek(){
+  var labels=[],data=[];
+  for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);labels.push(d.toLocaleDateString('pt-BR',{weekday:'short'}).slice(0,3));var ds=d.toDateString();data.push(gs().filter(function(s){return new Date(s.dt).toDateString()===ds;}).reduce(function(a,s){var p=fp(s.pid);return p?a+luc(p,s.qty):a;},0));}
+  setTimeout(function(){bar('cw7',labels,data,'rgba(0,212,255,.85)');},40);
+}
+function renderMonth(){
+  var M=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],yr=new Date().getFullYear();
+  bar('cmonth',M,M.map(function(_,m){return gs().filter(function(s){var d=new Date(s.dt);return d.getMonth()===m&&d.getFullYear()===yr;}).reduce(function(a,s){var p=fp(s.pid);return p?a+luc(p,s.qty):a;},0);}),'rgba(168,85,247,.85)');
+}
+function renderRank(){
+  var sp=statsProd();
+  var sorted=P.map(function(p){return{p:p,l:sp[p.id]?sp[p.id].luc:0};}).sort(function(a,b){return b.l-a.l;}).slice(0,8);
+  bar('crank',sorted.map(function(x){return x.p.e;}),sorted.map(function(x){return x.l;}),'rgba(249,115,22,.85)');
+}
+function renderDOW(){
+  var D=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  bar('cdow',D,D.map(function(_,d){return gs().filter(function(s){return new Date(s.dt).getDay()===d;}).reduce(function(a,s){var p=fp(s.pid);return p?a+luc(p,s.qty):a;},0);}),'rgba(34,197,94,.85)');
+}
+function renderProj(){
+  var l=totalLuc(),apd=avgDay();
+  document.getElementById('proj').innerHTML=
+    '<div class="card fbw mb8"><div><div class="fw7">Próximos 30 dias</div><div class="fs11 t3">ritmo atual</div></div><div class="fw8 tc" style="font-size:18px">'+fmtK(l+apd*30)+'</div></div>'
+    +'<div class="card fbw mb8"><div><div class="fw7">Próximos 90 dias</div><div class="fs11 t3">meta '+GN2+': R$ '+fmt(META2)+'</div></div><div class="fw8 tp" style="font-size:18px">'+fmtK(l+apd*90)+'</div></div>'
+    +'<div class="card fbw"><div><div class="fw7">Próximos 180 dias</div><div class="fs11 t3">meta '+GN3+': R$ '+Math.round(META3).toLocaleString('pt-BR')+'</div></div><div class="fw8 to" style="font-size:18px">'+fmtK(l+apd*180)+'</div></div>';
+}
+
+var WMAP={1:6,2:6,3:5,4:5};
+function renderPlano(){
+  var plan=gp(),total=0,done=0;
+  [1,2,3,4].forEach(function(w){
+    var wt=WMAP[w],wd=0;
+    for(var i=1;i<=wt;i++){if(plan[w+'-'+i])wd++;total++;if(plan[w+'-'+i])done++;}
+    var el=document.getElementById('pw'+w+'-b');if(el)el.textContent=wd+'/'+wt;
+    for(var j=1;j<=wt;j++){
+      var cb=document.getElementById('cb-'+w+'-'+j),pt=document.getElementById('pt-'+w+'-'+j);
+      if(cb){cb.innerHTML=plan[w+'-'+j]?'✓':'';cb.classList.toggle('chk',!!plan[w+'-'+j]);}
+      if(pt)pt.classList.toggle('dt',!!plan[w+'-'+j]);
+    }
+  });
+  var pct=total?Math.round(done/total*100):0;
+  var b=document.getElementById('plan-bar'),pe=document.getElementById('plan-pct');
+  if(b)b.style.width=pct+'%';if(pe)pe.textContent=pct+'%';
+  var sel=document.getElementById('man-prod');
+  if(sel&&!sel.children.length){P.forEach(function(p){var o=document.createElement('option');o.value=p.id;o.textContent=p.e+' '+p.n;sel.appendChild(o);});}
+}
+function tItem(key){var plan=gp();plan[key]=!plan[key];sp(plan);renderPlano();if(plan[key])toast('✅ Concluído!');}
+function toggleWeek(w){
+  var items=document.getElementById('pw'+w+'-i'),arr=document.getElementById('pw'+w+'-a');
+  if(items.style.display==='none'){items.style.display='';arr.textContent='▴';}else{items.style.display='none';arr.textContent='▾';}
+}
+
+var SYNC='(function(){\nvar orders=[];\nvar rows=document.querySelectorAll(\'[class*="order-item"],[class*="order_item"]\');\nrows.forEach(function(r){\n  var id=r.querySelector(\'[class*="order-id"]\');\n  var nm=r.querySelector(\'[class*="product-name"]\');\n  var qt=r.querySelector(\'[class*="quantity"]\');\n  if(id&&nm)orders.push({order:id.textContent.trim(),product:nm.textContent.trim(),qty:qt?parseInt(qt.textContent)||1:1,date:new Date().toISOString()});\n});\nvar result={source:"shopee",timestamp:new Date().toISOString(),orders:orders};\ncopy(JSON.stringify(result,null,2));\nconsole.log("SyncTech: "+orders.length+" pedidos copiados!");\n})();';
+
+function copySync(){
+  var done=function(){toast('📋 Script copiado! Cole no DevTools da Shopee');};
+  if(navigator.clipboard){navigator.clipboard.writeText(SYNC).then(done).catch(function(){fb(SYNC);done();});}
+  else{fb(SYNC);done();}
+}
+function fb(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}
+
+function importShopee(){
+  var raw=document.getElementById('imp-data').value.trim();if(!raw){toast('⚠️ Cole os dados acima');return;}
+  try{
+    var data=JSON.parse(raw);if(!data.orders||!data.orders.length){toast('⚠️ Nenhum pedido encontrado');return;}
+    var sales=gs(),added=0;
+    data.orders.forEach(function(o){
+      var p=P.find(function(x){return x.n.toLowerCase().split(' ').some(function(w){return w.length>3&&o.product.toLowerCase().includes(w);});});
+      if(p&&!sales.find(function(s){return s.order===o.order&&s.pid===p.id;})){sales.push({id:Date.now()+added,pid:p.id,qty:o.qty||1,dt:o.date||new Date().toISOString(),order:o.order,source:'shopee'});added++;}
+    });
+    ss(sales);document.getElementById('imp-data').value='';toast('✅ '+added+' pedido(s) importado(s)!');renderTab(cur);renderHdr();
+  }catch(e){toast('❌ JSON inválido');}
+}
+function addManual(){
+  var ord=document.getElementById('man-ord').value.trim(),pid=parseInt(document.getElementById('man-prod').value);
+  var qty=parseInt(document.getElementById('man-qty').value)||1,p=fp(pid);
+  if(!p){toast('⚠️ Selecione produto');return;}
+  var sales=gs();
+  if(ord&&sales.find(function(s){return s.order===ord&&s.pid===pid;})){toast('⚠️ Pedido já registrado');return;}
+  sales.push({id:Date.now(),pid:pid,qty:qty,dt:new Date().toISOString(),order:ord||null,source:'manual'});
+  ss(sales);document.getElementById('man-ord').value='';document.getElementById('man-qty').value='1';
+  toast('✅ Pedido adicionado!');checkFirst(sales);renderTab(cur);renderHdr();
+}
+
+function renderMetas(){
+  var l=totalLuc(),s=gs(),f=s.length>0;
+  var now=new Date(),dl=Math.max(0,Math.ceil((DL1-now)/864e5));
+  var p2=Math.min(100,l/META2*100),p3=Math.min(100,l/META3*100);
+  var apd=avgDay(),dt2=apd>0?Math.ceil((META2-l)/apd):999,dt3=apd>0?Math.ceil((META3-l)/apd):999;
+  var h='';
+  h+='<div class="sec-t">🛍️ Meta 1 — Primeira Venda</div>';
+  h+='<div class="gc" style="'+(f?'border-color:rgba(34,197,94,.3)':'')+'">';
+  h+='<div class="gc-hd"><div class="gc-t">🛍️ Primeira Venda</div><div class="badge '+(f?'bg':'bc')+'">'+(f?'BATIDA! 🎉':dl+'d restam')+'</div></div>';
+  h+='<div class="pbar"><div class="pfill fcyan" style="width:'+(f?100:4)+'%"></div></div>';
+  h+='<div class="gc-st"><span>Prazo 16/05/2026</span><span class="'+(f?'tg':'tc')+'">'+(f?'Parabéns, Rafael!':'Publique hoje!')+'</span></div></div>';
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:14px">';
+  h+='<div class="fs11 fw7 t3" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Checklist</div>';
+  h+=mi(true,'Conta Shopee criada','08/05')+mi(false,'Publicar 10 produtos','Hoje ←')+mi(false,'Ativar frete grátis','+1 dia')+mi(f,'Primeira venda! 🎉',f?'Feito':'Até 16/05');
+  h+='</div>';
+
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:10px;border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.04)">';
+  h+='<div class="fs11 fw7 t3" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">💼 Estoque Goboox — R$ 500</div>';
+  h+='<div class="irow"><span class="fs12 t3">Produtos em estoque</span><span class="fw7 tc">52 unidades</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Receita se tudo vender</span><span class="fw7 tc">R$ 1.362</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Lucro líquido estimado</span><span class="fw7 tg">R$ 733 (ROI 147%)</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Vendas/dia p/ bater Meta 2</span><span class="fw7 tp">~2 itens/dia</span></div></div>';
+  h+='<div class="sec-t mt10">🎮 Meta 2 — '+GN2+' (R$ '+fmt(META2)+')</div>';
+  h+='<div class="gc"><div class="gc-hd"><div class="gc-t">🎮 '+GN2+'</div><div class="badge bp">'+Math.round(p2)+'%</div></div>';
+  h+='<div class="pbar"><div class="pfill fpurple" style="width:'+p2+'%"></div></div>';
+  h+='<div class="gc-st"><span>R$ '+fmt(l)+' / R$ '+fmt(META2)+'</span><span class="tp">Faltam R$ '+fmt(Math.max(0,META2-l))+'</span></div></div>';
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:6px">';
+  h+='<div class="irow"><span class="fs12 t3">Meta diária</span><span class="fw7 tp">R$ '+fmt(META2/60)+'</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Ritmo atual/dia</span><span class="fw7">R$ '+fmt(apd)+'</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Estimativa com estoque</span><span class="fw7 tp">'+(apd>0&&dt2<9999?dt2+' dias':'60 dias')+'</span></div></div>';
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:14px"><div class="fs11 fw7 t3" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Milestones</div>';
+  h+=mi(l>=1,'Primeira venda','Mai 2026')+mi(l>=META2*0.1,'10% (R$ '+fmt(META2*0.1)+')','Jun 2026')+mi(l>=META2*0.5,'50% (R$ '+fmt(META2*0.5)+')','Jun/Jul 2026')+mi(l>=META2,GN2+'! 🎮','Jul 2026')+'</div>';
+
+  h+='<div class="sec-t mt10">🚗 Meta 3 — '+GN3+' (R$ '+Math.round(META3).toLocaleString('pt-BR')+')</div>';
+  h+='<div class="gc"><div class="gc-hd"><div class="gc-t">🚗 '+GN3+'</div><div class="badge bo">'+Math.round(p3)+'%</div></div>';
+  h+='<div class="pbar"><div class="pfill forange" style="width:'+p3+'%"></div></div>';
+  h+='<div class="gc-st"><span>R$ '+fmt(l)+' / R$ '+Math.round(META3).toLocaleString('pt-BR')+'</span><span class="to">Faltam R$ '+Math.max(0,Math.round(META3-l)).toLocaleString('pt-BR')+'</span></div></div>';
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:6px">';
+  h+='<div class="irow"><span class="fs12 t3">Meta diária</span><span class="fw7 to">R$ '+fmt(META3/180)+'</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Ritmo atual/dia</span><span class="fw7">R$ '+fmt(apd)+'</span></div>';
+  h+='<div class="irow"><span class="fs12 t3">Estimativa</span><span class="fw7 to">'+(apd>0&&dt3<9999?dt3+' dias':'08/11/2026')+'</span></div></div>';
+  h+='<div class="card" style="padding:10px 14px;margin-bottom:14px"><div class="fs11 fw7 t3" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Milestones</div>';
+  h+=mi(l>=1,'Primeira venda','Mai 2026')+mi(l>=META2,GN2+' conquistado! 🎮','Jul 2026')+mi(l>=META3*0.5,'50% (R$ '+Math.round(META3*0.5).toLocaleString('pt-BR')+')','Dez 2026')+mi(l>=META3,GN3+'! 🚗','Jun 2027')+'</div>';
+
+  h+='<div class="sec-t mt10">⚙️ Configurar Metas</div>';
+  h+='<div class="card">'
+    +'<div class="fg"><label class="fl">Prazo 1ª Venda</label><input class="fin" id="gl-dl1" type="date" value="'+DL1.toISOString().slice(0,10)+'"></div>'
+    +'<div class="fg"><label class="fl">Nome da Meta 2</label><input class="fin" id="gl-n2" placeholder="ex: PS4 Pro" value="'+GN2+'"></div>'
+    +'<div class="fg"><label class="fl">Valor da Meta 2 (R$)</label><input class="fin" id="gl-m2" type="number" value="'+META2+'"></div>'
+    +'<div class="fg"><label class="fl">Nome da Meta 3</label><input class="fin" id="gl-n3" placeholder="ex: Carro Próprio" value="'+GN3+'"></div>'
+    +'<div class="fg"><label class="fl">Valor da Meta 3 (R$)</label><input class="fin" id="gl-m3" type="number" value="'+META3+'"></div>'
+    +'<button class="btn1" onclick="saveGoalsUI()">💾 Salvar Metas</button>'
+    +'</div>';
+  document.getElementById('metas-body').innerHTML=h;
+}
+function mi(done,text,date){
+  return '<div class="mi"><div class="mdot '+(done?'done':'fut')+'"></div>'
+    +'<div class="mi-t'+(done?' done':'')+'">'+text+'</div><div class="mi-d">'+date+'</div></div>';
+}
+
+function openModal(pid){
+  var sel=document.getElementById('sel-prod');sel.innerHTML='';
+  P.forEach(function(p){var o=document.createElement('option');o.value=p.id;o.textContent=p.e+' '+p.n+' — R$ '+fmt(p.v);if(p.id===pid)o.selected=true;sel.appendChild(o);});
+  sel.onchange=updPP;document.getElementById('qv').textContent='1';
+  var n=new Date();n.setMinutes(n.getMinutes()-n.getTimezoneOffset());
+  document.getElementById('sale-dt').value=n.toISOString().slice(0,16);
+  document.getElementById('mo-title').textContent='🛒 Registrar Venda';
+  var btn=document.getElementById('mo-confirm');btn.textContent='✅ Confirmar Venda';btn.onclick=regSale;
+  document.getElementById('mo-ordno-fg').style.display='none';
+  document.getElementById('mo').classList.add('open');updPP();
+}
+function updPP(){
+  var pid=parseInt(document.getElementById('sel-prod').value),p=fp(pid);
+  var q=parseInt(document.getElementById('qv').textContent)||1;if(!p)return;
+  var l=luc(p,q);
+  document.getElementById('pp-c').textContent='R$ '+fmt(p.c*q);
+  document.getElementById('pp-v').textContent='R$ '+fmt(p.v*q);
+  document.getElementById('pp-f').textContent='-R$ '+fmt(p.v*q*0.14);
+  document.getElementById('pp-l').textContent='R$ '+fmt(l);
+  document.getElementById('pp').style.display='';
+}
+function dq(d){var el=document.getElementById('qv');el.textContent=Math.max(1,parseInt(el.textContent)+d);updPP();}
+function closeModal(){document.getElementById('mo').classList.remove('open');}
+function closeModalOvl(e){if(e.target===document.getElementById('mo'))closeModal();}
+function regSale(){
+  var pid=parseInt(document.getElementById('sel-prod').value),qty=parseInt(document.getElementById('qv').textContent)||1;
+  var dt=document.getElementById('sale-dt').value||new Date().toISOString(),p=fp(pid);if(!p)return;
+  var sales=gs();sales.push({id:Date.now(),pid:pid,qty:qty,dt:new Date(dt).toISOString(),source:'manual'});
+  ss(sales);closeModal();vibrate();toast('✅ +R$ '+fmt(luc(p,qty))+' '+p.e+' ×'+qty);checkFirst(sales);renderTab(cur);renderHdr();
+}
+function checkFirst(s){if(s.length===1){setTimeout(function(){toast('🎉 PRIMEIRA VENDA! Incrível, Rafael!');vibrate();},400);}}
+
+function openDtl(){document.getElementById('do').classList.add('open');}
+function closeDtl(){document.getElementById('do').classList.remove('open');}
+function closeDOvl(e){if(e.target===document.getElementById('do'))closeDtl();}
+
+function dlBlob(content,mime,name){
+  var blob=new Blob([content],{type:mime});
+  var url=URL.createObjectURL(blob);
+  var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  if(isIOS){window.open(url,'_blank');toast('📄 Aberto — segure para salvar');}
+  else{var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);toast('📄 Baixado!');}
+  setTimeout(function(){URL.revokeObjectURL(url);},3000);
+}
+function exportCSV(){
+  var r=['ID,Produto,Quantidade,Lucro,Data,Pedido,Fonte'];
+  gs().forEach(function(s){var p=fp(s.pid);if(!p)return;r.push([s.id,'"'+p.n+'"',s.qty,luc(p,s.qty).toFixed(2),s.dt,s.order||'',s.source||''].join(','));});
+  dlBlob(r.join('\n'),'text/csv','synctech_'+new Date().toISOString().slice(0,10)+'.csv');
+}
+function exportJSON(){
+  dlBlob(JSON.stringify({vendas:gs(),ts:new Date().toISOString()},null,2),'application/json','synctech_'+new Date().toISOString().slice(0,10)+'.json');
+}
+
+function toast(msg){var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove('show');},2800);}
+function vibrate(){if(navigator.vibrate)navigator.vibrate([25,12,50]);}
+
+function init(){
+  applyGoals();
+  renderHome();
+  renderBadge();
+  setTimeout(checkUpdate,3000);
+  setInterval(function(){renderHdr();if(cur==='home')renderHome();else if(cur==='graficos')renderGraficos();renderBadge();},30000);
+}
+// ── PEDIDOS ──────────────────────────────────────────────
+function fabClick(){if(cur==='pedidos')openOrderModal();else openModal(null);}
+
+function gobooxUrl(p){
+  return p.gurl||('https://www.goboox.com.br/?s='+encodeURIComponent(p.n.split(' ').slice(0,3).join(' ')));
+}
+
+function renderBadge(){
+  var n=go().filter(function(o){return o.status==='pending';}).length;
+  var btn=document.querySelector('[data-tab="pedidos"]');
+  if(!btn)return;
+  btn.querySelector('.ic').textContent=n>0?'📬':'📭';
+  btn.style.color=n>0?'var(--orange)':'';
+}
+
+var pedF='all';
+function renderPedidos(){
+  var all=go();
+  var shown=pedF==='all'?all:all.filter(function(o){return o.status===pedF;});
+  var pn=all.filter(function(o){return o.status==='pending';}).length;
+  var on=all.filter(function(o){return o.status==='ordered';}).length;
+  var sn=all.filter(function(o){return o.status==='shipped';}).length;
+  var dn=all.filter(function(o){return o.status==='done';}).length;
+  var h='';
+  h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px">'
+    +msc('Pendentes',pn,pn>0?'var(--red)':'var(--text3)')
+    +msc('Comprados',on,'var(--orange)')
+    +msc('A Enviar',sn,'var(--cyan)')
+    +msc('Prontos',dn,'var(--green)')
+    +'</div>';
+  h+='<div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch">'
+    +pchip('all','Todos',all.length)
+    +pchip('pending','🔴 Pendentes',pn)
+    +pchip('ordered','🟡 Comprados',on)
+    +pchip('shipped','🔵 A Enviar',sn)
+    +pchip('done','✅ Prontos',dn)
+    +'</div>';
+  if(!shown.length){
+    h+='<div class="empty"><div class="ei">📬</div>'
+      +'<h3>'+(pedF==='all'?'Nenhum pedido ainda':'Nenhum pedido aqui')+'</h3>'
+      +'<p>Toque em <b style="color:var(--cyan)">+</b> para registrar o pedido da Shopee</p></div>';
+  }else{
+    shown.slice().reverse().forEach(function(o){h+=orderCard(o);});
+  }
+  document.getElementById('ped-body').innerHTML=h;
+}
+function pchip(f,l,c){
+  return '<div class="chip '+(pedF===f?'on':'')+'" onclick="setPedF(\''+f+'\')" style="flex-shrink:0">'
+    +l+(c>0?' <b>'+c+'</b>':'')+'</div>';
+}
+function setPedF(f){pedF=f;renderPedidos();}
+
+function orderCard(o){
+  var p=fp(o.pid);if(!p)return'';
+  var l=luc(p,o.qty);
+  var d=new Date(o.dt),ds=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  var st=o.status||'pending';
+  var bmap={pending:'br',ordered:'bo',shipped:'bc',done:'bg'};
+  var lmap={pending:'🔴 Pendente',ordered:'🟡 Comprado',shipped:'🔵 A Enviar',done:'✅ Pronto'};
+  var btn='';
+  if(st==='pending'){
+    btn='<button onclick="buyOnGoboox('+o.id+')" style="display:block;width:100%;margin-top:12px;padding:16px;border-radius:13px;border:none;font-size:15px;font-weight:800;color:#fff;cursor:pointer;background:linear-gradient(135deg,#f97316,#eab308);-webkit-tap-highlight-color:transparent;box-shadow:0 4px 20px rgba(249,115,22,.4);letter-spacing:-.01em">🛒 Comprar na Goboox</button>';
+  }else if(st==='ordered'){
+    btn='<button class="btn1" style="margin-top:10px;font-size:13px;padding:12px" onclick="setOrdSt('+o.id+',\'shipped\')">📦 Marcar como Enviado</button>';
+  }else if(st==='shipped'){
+    btn='<button class="btn1" style="margin-top:10px;font-size:13px;padding:12px;background:linear-gradient(135deg,var(--green),#16a34a)" onclick="doneOrder('+o.id+')">✅ Confirmar Entrega</button>';
+  }
+  return '<div class="card" style="margin-bottom:10px">'
+    +'<div class="fbw mb8">'
+    +'<div class="fb" style="gap:10px;flex:1;min-width:0">'
+    +'<div style="font-size:30px;width:42px;text-align:center;flex-shrink:0">'+p.e+'</div>'
+    +'<div style="min-width:0">'
+    +'<div class="fw7 fs13" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+p.n+'</div>'
+    +'<div class="fs11 t3 mt6">'+ds+(o.shopeeOrder?' · #'+o.shopeeOrder:'')+'</div>'
+    +'</div></div>'
+    +'<div class="badge '+bmap[st]+'" style="flex-shrink:0;margin-left:7px">'+lmap[st]+'</div>'
+    +'</div>'
+    +'<div class="fbw">'
+    +'<div class="fs12"><span class="t3">×'+o.qty+'</span> · Lucro: <span class="tg fw7">+R$ '+fmt(l)+'</span></div>'
+    +'<div style="color:var(--red);cursor:pointer;padding:6px;margin:-6px;font-size:14px" onclick="delOrder('+o.id+')">🗑️</div>'
+    +'</div>'
+    +btn+'</div>';
+}
+
+function buyOnGoboox(id){
+  var ords=go(),o=ords.find(function(x){return x.id===id;});
+  if(!o)return;
+  var p=fp(o.pid);
+  var url=gobooxUrl(p);
+  o.status='ordered';so(ords);
+  renderPedidos();renderBadge();
+  toast('🛒 Goboox aberto! Finalize a compra lá.');
+  vibrate();
+  window.open(url,'_blank');
+}
+function setOrdSt(id,st){
+  var ords=go(),o=ords.find(function(x){return x.id===id;});
+  if(!o)return;
+  o.status=st;so(ords);
+  toast(st==='shipped'?'📦 Marcado como enviado!':'✅ Atualizado!');
+  vibrate();renderPedidos();renderBadge();
+}
+function doneOrder(id){
+  var ords=go(),o=ords.find(function(x){return x.id===id;});
+  if(!o)return;
+  o.status='done';so(ords);
+  var sales=gs();
+  if(!sales.find(function(s){return s.id===id;})){
+    sales.push({id:o.id,pid:o.pid,qty:o.qty,dt:o.dt,order:o.shopeeOrder||null,source:'shopee'});
+    ss(sales);
+  }
+  toast('🎉 Pronto! Venda registrada automaticamente.');
+  vibrate();checkFirst(sales);renderPedidos();renderHdr();renderBadge();
+}
+function delOrder(id){
+  so(go().filter(function(o){return o.id!==id;}));
+  toast('🗑️ Pedido removido');renderPedidos();renderBadge();
+}
+function openOrderModal(){
+  var sel=document.getElementById('sel-prod');sel.innerHTML='';
+  P.forEach(function(p){var o=document.createElement('option');o.value=p.id;o.textContent=p.e+' '+p.n+' — R$ '+fmt(p.v);sel.appendChild(o);});
+  sel.onchange=updPP;document.getElementById('qv').textContent='1';
+  var n=new Date();n.setMinutes(n.getMinutes()-n.getTimezoneOffset());
+  document.getElementById('sale-dt').value=n.toISOString().slice(0,16);
+  document.getElementById('mo-title').textContent='📬 Novo Pedido Shopee';
+  var btn=document.getElementById('mo-confirm');btn.textContent='📬 Registrar Pedido';btn.onclick=regOrder;
+  document.getElementById('mo-ordno-fg').style.display='';
+  document.getElementById('mo-ordno').value='';
+  document.getElementById('mo').classList.add('open');updPP();
+}
+function regOrder(){
+  var pid=parseInt(document.getElementById('sel-prod').value);
+  var qty=parseInt(document.getElementById('qv').textContent)||1;
+  var dt=document.getElementById('sale-dt').value||new Date().toISOString();
+  var ordno=document.getElementById('mo-ordno').value.trim()||null;
+  var p=fp(pid);if(!p)return;
+  go().concat([]);
+  var ords=go();
+  ords.push({id:Date.now(),pid:pid,qty:qty,dt:new Date(dt).toISOString(),shopeeOrder:ordno,status:'pending'});
+  so(ords);closeModal();vibrate();
+  toast('📬 Pedido registrado! Toque em "Comprar na Goboox".');
+  renderPedidos();renderBadge();
+  setTimeout(function(){nav('pedidos');},300);
+}
+// ─────────────────────────────────────────────────────────
+
+window.addEventListener('load',init);
+window.addEventListener('resize',function(){if(cur==='home')renderWeek();else if(cur==='graficos')renderGraficos();});
+
+// ── AUTO-UPDATE CHECK ─────────────────────────────────────
+function checkUpdate(){
+  fetch('https://ntfy.sh/synctech-br-version/json?poll=1&since=all',{cache:'no-store'})
+    .then(function(r){return r.text();})
+    .then(function(text){
+      var lines=text.trim().split('\n').filter(function(l){return l.trim();});
+      if(!lines.length)return;
+      try{
+        var msg=JSON.parse(lines[lines.length-1]);
+        var latest=(msg.message||'').trim();
+        if(!latest.startsWith('https://'))return;
+        var cur=window.location.href.split('?')[0];
+        if(latest!==cur){
+          var bar=document.getElementById('update-bar');
+          if(bar){
+            bar.querySelector('span').textContent='Nova versao disponivel!';
+            var btn=document.getElementById('upd-btn');
+            btn.textContent='Atualizar Agora';
+            btn.onclick=function(){window.location.href=latest;};
+            bar.style.transform='translateY(0)';
+          }
+        }
+      }catch(e){}
+    })
+    .catch(function(){});
+}
+
+// ── SERVICE WORKER ─────────────────────────────────────────
+if('serviceWorker' in navigator && location.protocol==='https:'){
+  navigator.serviceWorker.register('./sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var nw=reg.installing;
+      nw.addEventListener('statechange',function(){
+        if(nw.state==='installed'&&navigator.serviceWorker.controller){
+          var bar=document.getElementById('update-bar');
+          if(bar)bar.style.transform='translateY(0)';
+          document.getElementById('upd-btn').onclick=function(){
+            nw.postMessage('skipWaiting');
+            window.location.reload();
+          };
+        }
+      });
+    });
+  }).catch(function(){});
+  navigator.serviceWorker.addEventListener('controllerchange',function(){
+    window.location.reload();
+  });
+}
+</script>
+</body>
+</html>
