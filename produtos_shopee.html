@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -11,6 +11,8 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 .sub{text-align:center;color:#64748b;font-size:12px;margin-bottom:8px}
 .counter{text-align:center;margin-bottom:20px;color:#94a3b8;font-size:13px}
 .counter span{color:#00d4ff;font-weight:700}
+.badge-dropi{display:inline-flex;align-items:center;gap:6px;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:#a855f7;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:20px}
+.badge-wrap{text-align:center;margin-bottom:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;max-width:1200px;margin:0 auto}
 .card{background:#0a0f1e;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden}
 .prod-foto{width:100%;height:210px;object-fit:cover;display:block;border-radius:10px 10px 0 0;}
@@ -21,8 +23,10 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 .prod-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
 .tag{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600}
 .tag-price{background:rgba(34,197,94,.15);color:#22c55e}
+.tag-buy{background:rgba(251,146,60,.12);color:#fb923c}
+.tag-margin{background:rgba(168,85,247,.12);color:#a855f7}
 .tag-cat{background:rgba(0,212,255,.1);color:#00d4ff}
-.tag-stock{background:rgba(168,85,247,.12);color:#a855f7}
+.tag-stock{background:rgba(34,197,94,.12);color:#22c55e}
 .card-body{padding:14px 16px}
 .field{margin-bottom:12px}
 .field-label{font-size:10px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center}
@@ -31,551 +35,317 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 .copy-btn:hover{background:rgba(0,212,255,.2)}
 .copy-btn.ok{background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.3);color:#22c55e}
 .divider{height:1px;background:rgba(255,255,255,.05);margin:10px 0}
-.btn-zip{text-align:center;margin-bottom:20px;padding:16px;background:rgba(0,212,255,.05);border-radius:16px;border:1px solid rgba(0,212,255,.2);}
-.btn-zip a{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#00d4ff,#a855f7);color:#fff;font-weight:800;font-size:14px;padding:14px 32px;border-radius:32px;text-decoration:none;box-shadow:0 6px 24px rgba(0,212,255,.35);}
-.btn-zip p{color:#64748b;font-size:11px;margin-top:10px;margin-bottom:0;}
+.info-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.info-box{flex:1;min-width:80px;background:#0f1628;border-radius:8px;padding:8px 10px;text-align:center}
+.info-box .ib-label{font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:2px}
+.info-box .ib-value{font-size:13px;font-weight:800;color:#e2e8f0}
 </style>
 </head>
 <body>
-<h1>📦 Produtos para Shopee</h1>
-<p class="sub">SyncTech BR · 16 produtos · Clique em COPIAR em cada campo e cole na Shopee</p>
-<div class="counter">Total em estoque: <span>16 produtos</span> · Investimento: <span>R$ 500</span> · Potencial: <span>R$ 1.362</span></div>
-<div class="btn-zip">
-  <a href="fotos_produtos.zip" download>📥 BAIXAR TODAS AS FOTOS (ZIP)</a>
-  <p>16 fotos prontas · Use para cadastrar na Shopee · Substitua pelas fotos reais do Goboox quando disponíveis</p>
-</div>
+<h1>🛍️ Novo Estoque — SyncTech BR</h1>
+<p class="sub">Fornecedor: Dropi Nacional · 8 produtos · Alta rotatividade · Entrega 3–7 dias</p>
+<div class="badge-wrap"><span class="badge-dropi">⚡ Dropi Nacional · Eletrônicos · Giro Rápido</span></div>
+<div class="counter">Produtos: <span>8</span> · Investimento estimado: <span>R$ 264</span> · Potencial de receita: <span>R$ 636/venda</span></div>
 <div class="grid" id="grid"></div>
 <script>
 var produtos = [
 {
-  n:1, nome:"Isqueiro Maçarico USB", preco:"R$ 24,90", cat:"Casa e Decoração > Outros", estoque:"Sob encomenda",
-  titulo:"Isqueiro Maçarico USB Recarregável Sem Gás Chama Azul Resistente ao Vento",
-  descricao:`🔥 ISQUEIRO MAÇARICO USB — SEM GÁS, SEM PREOCUPAÇÃO!
+  n:1, nome:"Smartwatch Masculino/Feminino", emoji:"⌚",
+  preco:"R$ 89,90", compra:"~R$ 35–55", margem:"~65%",
+  cat:"Eletrônicos > Smartwatches e Acessórios", estoque:"Dropi Nacional",
+  titulo:"Smartwatch Masculino Redondo HW67 Pro Tela HD Chamada Bluetooth NFC Lançamento 2025",
+  descricao:`⌚ SMARTWATCH HW67 PRO — TECNOLOGIA NO SEU PULSO!
 
-✅ Recarregável via USB — nunca fica sem carga
-✅ Chama azul tipo maçarico — temperatura ultra-alta
-✅ Resistente ao vento — funciona em qualquer clima
-✅ Sem gás — mais seguro e econômico
-✅ Design compacto e moderno — cabe no bolso
+✅ Tela AMOLED Full HD — cores vivas e nítidas
+✅ Realiza e recebe chamadas pelo relógio via Bluetooth
+✅ NFC — pagamentos por aproximação
+✅ Monitor cardíaco, oxigenação SpO2 e pressão arterial
+✅ GPS integrado — rastreie seus treinos
+✅ 100+ modos esportivos
+✅ Resistência à água IP67
+✅ Bateria com duração de até 7 dias
+✅ Compatível com Android e iOS
 
-📦 ESPECIFICAÇÕES:
-• Tipo: Isqueiro maçarico USB
-• Recarga: Cabo USB (incluso)
-• Chama: Tipo tocha/maçarico
-• Resistência: Vento e chuva leve
-• Material: Metal + ABS
+📦 ACOMPANHA:
+• Smartwatch + Pulseira extra + Cabo de recarga + Manual
 
-💡 IDEAL PARA:
-Acender velas, churrascos, campings, lareira, fogos de artifício, e muito mais!
+🎁 PRESENTE PERFEITO para qualquer ocasião!
 
-⚠️ Proibido para menores de 18 anos.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"isqueiro maçarico usb recarregável sem gás chama azul resistente vento compacto moderno"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"smartwatch masculino hw67 bluetooth chamada nfc tela hd monitor cardiaco esportivo"
 },
 {
-  n:2, nome:"Bateria BL-5C Nokia", preco:"R$ 16,90", cat:"Celulares e Smartphones > Baterias", estoque:"Sob encomenda",
-  titulo:"Bateria BL-5C Nokia 1020mAh Recarregável Celular Antigo Compatível Original",
-  descricao:`🔋 BATERIA BL-5C NOKIA — DURABILIDADE E CONFIABILIDADE!
+  n:2, nome:"Fone Bluetooth TWS 5.3", emoji:"🎧",
+  preco:"R$ 49,90", compra:"~R$ 18–28", margem:"~65%",
+  cat:"Eletrônicos > Fones de Ouvido", estoque:"Dropi Nacional",
+  titulo:"Fone de Ouvido Bluetooth 5.3 TWS Sem Fio Esportivo LED Case Carregador Alta Qualidade",
+  descricao:`🎧 FONE TWS BLUETOOTH 5.3 — SOM PERFEITO, SEM FIOS!
 
-✅ Compatível com Nokia 1100, 1110, 2300, 3100, 3120, 6230 e muitos outros
-✅ Capacidade 1020mAh — longa duração
-✅ Células de alta qualidade — sem memória
-✅ Proteção contra sobrecarga e curto-circuito
-✅ Fácil de instalar — encaixe perfeito
-
-📦 ESPECIFICAÇÕES:
-• Modelo: BL-5C
-• Capacidade: 1020mAh
-• Voltagem: 3,7V
-• Tipo: Li-Ion
-• Cor: Preta
-
-📱 COMPATÍVEL COM:
-Nokia 1100, 1101, 1108, 1110, 1112, 1200, 1208, 1209, 1650, 2300, 2310, 2600, 2610, 2626, 3100, 3109c, 3110c, 3120, 3128, 3600, 6030, 6085, 6230, 6230i, 6267, 6270, 6600, 6620, 6630, 6670, 7600, E50, N70, N71, N72, N91 e mais.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"bateria bl-5c nokia recarregável 1020mah celular antigo compatível original li-ion"
-},
-{
-  n:3, nome:"Sapateira 12 Pares", preco:"R$ 29,90", cat:"Casa e Decoração > Organização e Armazenamento", estoque:"Sob encomenda",
-  titulo:"Sapateira Organizadora 12 Pares Empilhável Transparente Economia Espaço Armário",
-  descricao:`👟 SAPATEIRA ORGANIZADORA 12 PARES — ORGANIZE COM ESTILO!
-
-✅ Capacidade para 12 pares de sapatos
-✅ Tampa transparente — veja o conteúdo sem abrir
-✅ Empilhável — economize espaço no armário
-✅ Montagem fácil — sem ferramentas
-✅ Material resistente — suporta o peso dos calçados
-
-📦 ESPECIFICAÇÕES:
-• Capacidade: 12 pares
-• Material: Plástico ABS resistente
-• Fechamento: Tampa com encaixe
-• Visualização: Frontal transparente
-• Montagem: Encaixe (sem cola ou parafuso)
-
-💡 IDEAL PARA:
-Organizar tênis, sapatos, sandálias, botas e chinelos. Perfeito para armários, quartos, halls e closets.
-
-🏠 BENEFÍCIOS:
-• Protege os calçados do pó e umidade
-• Mantém o cheiro fresco
-• Fácil de limpar
-• Visual clean e organizado
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"sapateira organizadora 12 pares empilhável transparente armário closet organização calçados"
-},
-{
-  n:4, nome:"Teclado Numérico Knup", preco:"R$ 42,90", cat:"Informática > Teclados", estoque:"Sob encomenda",
-  titulo:"Teclado Numérico USB Knup Plug and Play Compacto Notebook Computador Escritório",
-  descricao:`⌨️ TECLADO NUMÉRICO USB KNUP — PRODUTIVIDADE NO ESCRITÓRIO!
-
-✅ Plug and Play — só conectar e usar, sem instalar drivers
-✅ Compatível com Windows, Linux e Mac
-✅ Teclas silenciosas de toque suave
-✅ Compacto e portátil — leve para qualquer lugar
-✅ Cabo USB resistente e durável
-
-📦 ESPECIFICAÇÕES:
-• Marca: Knup
-• Conexão: USB
-• Teclas: 19 teclas numéricas + funções
-• Compatibilidade: Windows XP/7/8/10/11, Mac, Linux
-• Cabo: Aprox. 1,2m
-• Cor: Preto
-
-💡 IDEAL PARA:
-Planilhas Excel, sistemas financeiros, caixas e PDVs, digitação de dados e qualquer atividade que exija o uso intenso de números.
-
-🖥️ COMPATÍVEL COM:
-Notebooks sem teclado numérico, desktops, netbooks e qualquer dispositivo com porta USB.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"teclado numérico usb knup plug and play compacto notebook escritório planilha"
-},
-{
-  n:5, nome:"Isqueiro Elétrico USB", preco:"R$ 26,90", cat:"Casa e Decoração > Outros", estoque:"Sob encomenda",
-  titulo:"Isqueiro Elétrico USB Plasma Recarregável Sem Gás Resistente Vento Modern",
-  descricao:`⚡ ISQUEIRO ELÉTRICO PLASMA USB — TECNOLOGIA DE PONTA!
-
-✅ Tecnologia plasma — sem chama, sem gás, sem risco
-✅ Recarregável via USB — ecológico e econômico
-✅ 100% resistente ao vento — funciona em qualquer clima
-✅ Indicador LED de carga integrado
-✅ Design sofisticado e moderno
-
-📦 ESPECIFICAÇÕES:
-• Tipo: Plasma duplo arco
-• Recarga: USB (cabo incluso)
-• Tempo de recarga: Aprox. 1-2 horas
-• Autonomia: Aprox. 100-200 ignições por carga
-• Material: Metal + ABS premium
-
-💡 COMO FUNCIONA:
-O arco plasma elétrico substitui a chama, gerando calor intenso sem necessidade de gás. Mais seguro, mais moderno e mais econômico.
-
-🎁 PRESENTE IDEAL para homens e mulheres que gostam de tecnologia e praticidade.
-
-⚠️ Proibido para menores de 18 anos.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"isqueiro elétrico plasma usb recarregável sem gás arco elétrico resistente vento moderno"
-},
-{
-  n:6, nome:"Conversor HDMI-AV", preco:"R$ 35,90", cat:"Eletrônicos > Cabos e Adaptadores", estoque:"Sob encomenda",
-  titulo:"Conversor Adaptador HDMI Para AV RCA TV Antiga Cabo Incluso Plug and Play Full HD",
-  descricao:`📺 CONVERSOR HDMI PARA AV — CONECTE O NOVO AO ANTIGO!
-
-✅ Converte sinal HDMI para AV/RCA — compatível com TVs antigas
-✅ Plug and Play — sem instalar drivers ou programas
-✅ Suporta resolução Full HD 1080p
-✅ Cabo AV incluso na embalagem
-✅ Alimentação USB (cabo incluso)
-
-📦 ESPECIFICAÇÕES:
-• Entrada: HDMI (fêmea)
-• Saída: AV/RCA (amarelo/branco/vermelho)
-• Resolução suportada: até 1080p
-• Alimentação: USB 5V
-• Compatibilidade: Windows, Mac, PS3, PS4, Xbox, Apple TV, Chromecast, Fire Stick
-
-💡 IDEAL PARA:
-Conectar notebooks, PCs, videogames, Chromecast e outros dispositivos HDMI em televisores antigos com entrada AV/RCA.
-
-🖥️ COMPATÍVEL COM:
-Qualquer dispositivo com saída HDMI e TVs com entrada AV/RCA (TV de tubo, antigas de LCD sem HDMI).
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"conversor hdmi av rca tv antiga adaptador plug play full hd cabo incluso"
-},
-{
-  n:7, nome:"Mouse Gamer RGB", preco:"R$ 32,90", cat:"Informática > Mouses", estoque:"Sob encomenda",
-  titulo:"Mouse Gamer RGB LED 7 Cores USB Silencioso 1200 DPI Ergonômico PC Notebook",
-  descricao:`🖱️ MOUSE GAMER RGB — PERFORMANCE E ESTILO!
-
-✅ Iluminação RGB com 7 cores — visual incrível no setup
-✅ 1200 DPI — precisão para games e trabalho
-✅ Ergonômico — confortável para uso prolongado
-✅ Botões silenciosos — não incomoda quem está ao redor
-✅ Plug and Play — conectou, funcionou
-
-📦 ESPECIFICAÇÕES:
-• Conexão: USB
-• DPI: 800 / 1200 (ajustável)
-• Botões: 3 (esquerdo, direito, scroll)
-• Iluminação: LED RGB 7 cores
-• Comprimento do cabo: Aprox. 1,2m
-• Compatibilidade: Windows, Mac, Linux
-
-🎮 IDEAL PARA:
-Games casuais, trabalho em escritório, design, planilhas. Perfeito para quem quer estilo e funcionalidade no mesmo produto.
-
-💡 DESTAQUE:
-Os botões silenciosos tornam este mouse ideal para escritórios, bibliotecas e ambientes que exigem silêncio.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"mouse gamer rgb usb silencioso 1200 dpi ergonômico pc notebook led 7 cores"
-},
-{
-  n:8, nome:"Contador Digital Manual", preco:"R$ 17,90", cat:"Escritório e Papelaria > Outros", estoque:"Sob encomenda",
-  titulo:"Contador Digital Manual Clicker Portátil Contagem Pessoas Inventário Estoque",
-  descricao:`🔢 CONTADOR DIGITAL MANUAL — PRATICIDADE NA PALMA DA MÃO!
-
-✅ Contagem digital precisa — nunca erre a contagem
-✅ Display LCD de fácil leitura
-✅ Botão de reset — zere quando quiser
-✅ Compacto e leve — cabe no bolso
-✅ Pilha inclusa — pronto para usar
-
-📦 ESPECIFICAÇÕES:
-• Display: LCD digital
-• Contagem máxima: 9999
-• Alimentação: Pilha CR2032 (inclusa)
-• Material: ABS resistente
-• Dimensões: Compacto, portátil
-
-💡 IDEAL PARA:
-• Contagem de pessoas em eventos
-• Controle de estoque e inventário
-• Contagem de repetições na academia
-• Musculação e treinos
-• Contagem de produção em fábricas
-• Escolas e pesquisas
-
-🎯 USOS POPULARES:
-Professores, seguranças, atletas, lojistas e qualquer pessoa que precisa contar com precisão.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"contador digital manual clicker portátil contagem pessoas inventário estoque academia"
-},
-{
-  n:9, nome:"Difusor Elétrico Bivolt", preco:"R$ 34,90", cat:"Casa e Decoração > Aromatizadores e Purificadores", estoque:"Sob encomenda",
-  titulo:"Difusor Ultrassônico Umidificador Aromatizador Bivolt LED 7 Cores Silencioso",
-  descricao:`🌸 DIFUSOR ULTRASSÔNICO — TRANSFORME SEU AMBIENTE!
-
-✅ Umidifica e aromatiza o ar simultaneamente
-✅ Bivolt (110V e 220V) — funciona em qualquer tomada
-✅ LED RGB 7 cores — cria ambiente relaxante
-✅ Ultra silencioso — não perturba o sono
-✅ Desligamento automático quando sem água
-
-📦 ESPECIFICAÇÕES:
-• Tensão: Bivolt (110V / 220V)
-• Capacidade do reservatório: 130-300ml
-• Cobertura: Até 20m²
-• Iluminação: LED 7 cores (fixo ou rotatório)
-• Nível de ruído: < 36dB (quase silencioso)
-• Material: ABS + PP
-
-💡 COMO USAR:
-1. Encha o reservatório com água
-2. Adicione 3-5 gotas do seu óleo essencial favorito
-3. Ligue e escolha a cor do LED
-4. Aproveite o ambiente perfumado e relaxante!
-
-🏠 IDEAL PARA:
-Quartos, escritórios, salas, spas, clínicas e qualquer ambiente que mereça um toque especial de bem-estar.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"difusor ultrassônico umidificador aromatizador bivolt led 7 cores silencioso óleo essencial"
-},
-{
-  n:10, nome:"Cabo P2 3m Graseph", preco:"R$ 9,90", cat:"Eletrônicos > Cabos e Adaptadores", estoque:"Sob encomenda",
-  titulo:"Cabo P2 3 Metros Auxiliar Estéreo P2xP2 Som Carro Fone Caixa de Som Graseph",
-  descricao:`🎵 CABO P2 3 METROS GRASEPH — QUALIDADE DE ÁUDIO GARANTIDA!
-
-✅ 3 metros de comprimento — liberdade de movimento
-✅ Conector P2 (3,5mm) macho x macho — estéreo
-✅ Blindagem dupla — sem chiado ou interferência
-✅ Conectores banhados a ouro — melhor contato
-✅ Compatível com qualquer dispositivo com P2
-
-📦 ESPECIFICAÇÕES:
-• Marca: Graseph
-• Comprimento: 3 metros
-• Conector: P2 3,5mm macho x macho
-• Tipo: Estéreo (2 canais)
-• Blindagem: Dupla camada anti-interferência
-• Plugs: Banhados a ouro
-
-💡 IDEAL PARA:
-• Conectar celular ao som do carro
-• Ligar notebook a caixas de som ativas
-• Usar com headsets e fones de ouvido
-• Conectar instrumentos musicais
-• Home theater e sistemas de som
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"cabo p2 3 metros auxiliar estéreo p2xp2 som carro fone caixa de som graseph áudio"
-},
-{
-  n:11, nome:"Capa Silicone Slim Samsung/iPhone", preco:"R$ 24,90", cat:"Celulares e Smartphones > Capas e Cases", estoque:"15 unidades",
-  titulo:"Capa Silicone Slim Anti-impacto Samsung Galaxy iPhone Proteção Total Ultra Fina",
-  descricao:`📱 CAPA SILICONE SLIM — PROTEJA SEM PERDER O ESTILO!
-
-✅ Silicone premium de alta qualidade — macia ao toque
-✅ Ultra fina — não aumenta o volume do celular
-✅ Anti-impacto — absorve quedas e choques
-✅ Antiderrapante — não escorrega da mão
-✅ Protege câmera e tela com bordas elevadas
-
-📦 ESPECIFICAÇÕES:
-• Material: TPU / Silicone premium
-• Espessura: Ultra fina (aprox. 1,5mm)
-• Proteção: Lateral, traseira e câmera
-• Acabamento: Fosco, anti-impressão digital
-• Instalação: Encaixe rápido, sem ferramentas
-
-✅ COMPATÍVEL COM:
-Samsung Galaxy S21, S22, S23, S24, A12, A13, A14, A21s, A31, A32, A51, A52, A53, A54, A71, A72, A73 e iPhone 11, 12, 13, 14, 15 (informe o modelo na hora do pedido)
-
-💡 ATENÇÃO: Informe o modelo exato do seu celular no campo "Observações" do pedido.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"capa silicone slim samsung galaxy iphone proteção ultra fina anti-impacto tpu case"
-},
-{
-  n:12, nome:"Fone TWS Bluetooth i12 Pro", preco:"R$ 54,90", cat:"Eletrônicos > Fones de Ouvido", estoque:"5 unidades",
-  titulo:"Fone Bluetooth TWS i12 Pro Sem Fio Estéreo Case Carregador Touch Screen",
-  descricao:`🎧 FONE TWS i12 PRO — LIBERDADE TOTAL SEM FIOS!
-
-✅ Conexão Bluetooth 5.0 — estável e de longo alcance
-✅ Som estéreo com graves encorpados
-✅ Case carregador incluso — carrega os fones automaticamente
-✅ Controle por toque (touch) — sem botões físicos
+✅ Bluetooth 5.3 — conexão ultra estável até 15m
+✅ Cancelamento de ruído ativo (ANC)
+✅ Som estéreo HiFi com graves potentes
+✅ LED indicador de bateria na case
+✅ Case com carregamento — até 30h de uso total
+✅ Toque único para controlar música e chamadas
+✅ Resistência ao suor IPX5 — ideal para exercícios
 ✅ Microfone embutido — chamadas cristalinas
+✅ Encaixe ergonômico — confortável por horas
 
-📦 ESPECIFICAÇÕES:
-• Versão Bluetooth: 5.0
-• Alcance: Até 10 metros
-• Bateria fone: ~3-4 horas por carga
-• Bateria case: Cargas adicionais para os fones
-• Tempo de carregamento: Aprox. 1 hora
-• Microfone: Embutido em cada fone
-• Resistência: IPX4 (respingos de água)
+📦 ACOMPANHA:
+• 2 Fones + Case de carregamento + Cabo USB-C + 3 pares de ponteiras
 
-💡 COMO USAR:
-1. Retire os fones do case — conectam automaticamente
-2. Emparelhe com seu celular (i12 / AirPods)
-3. Use o touch para pausar, avançar e atender chamadas
+🎵 Compatível com qualquer smartphone, tablet ou computador!
 
-🎵 IDEAL PARA:
-Academia, trabalho, transporte público, estudos e qualquer momento que você queira qualidade de áudio sem fios.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"fone bluetooth tws i12 pro sem fio estéreo case carregador touch airpods"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"fone bluetooth tws 5.3 sem fio esportivo led case carregador cancelamento ruido anc"
 },
 {
-  n:13, nome:"Organizador Gaveta 6 Nichos", preco:"R$ 29,90", cat:"Casa e Decoração > Organização e Armazenamento", estoque:"6 unidades",
-  titulo:"Organizador de Gaveta 6 Divisórias Multiuso Cozinha Escritório Quarto Modular",
-  descricao:`🗂️ ORGANIZADOR DE GAVETA 6 NICHOS — FIM DA BAGUNÇA!
+  n:3, nome:"Câmera WiFi 360° Full HD", emoji:"📷",
+  preco:"R$ 139,90", compra:"~R$ 55–75", margem:"~60%",
+  cat:"Eletrônicos > Câmeras de Segurança", estoque:"Dropi Nacional",
+  titulo:"Câmera de Segurança WiFi IP 360° Full HD 1080p Visão Noturna Interna Babá Monitor",
+  descricao:`📷 CÂMERA WIFI 360° — SEGURANÇA TOTAL NA PALMA DA MÃO!
 
-✅ 6 divisórias modulares — organize tudo no lugar certo
-✅ Encaixe perfeito em gavetas padrão
-✅ Material resistente e lavável
-✅ Design minimalista e clean
-✅ Versátil — use em qualquer cômodo
+✅ Resolução Full HD 1080p — imagem nítida dia e noite
+✅ Rotação 360° horizontal + 90° vertical — sem ponto cego
+✅ Visão noturna infravermelha até 10 metros
+✅ Detecção de movimento com alerta no celular
+✅ Áudio bidirecional — fale com quem está em casa
+✅ Gravação no cartão SD (até 128GB) ou nuvem
+✅ Conexão WiFi 2.4GHz — instalação simples
+✅ App gratuito iOS e Android (V380 Pro ou TuyaSmart)
+✅ Funciona como babá eletrônica
 
-📦 ESPECIFICAÇÕES:
-• Divisórias: 6 nichos
-• Material: Plástico ABS resistente
-• Acabamento: Fosco, antiestático
-• Limpeza: Pode lavar com água e sabão
-• Montagem: Encaixe (sem cola)
+📦 ACOMPANHA:
+• Câmera + Suporte + Cabo USB + Parafusos + Manual
 
-💡 ORGANIZE:
-🍴 Cozinha: talheres, utensílios, temperos, acessórios
-✏️ Escritório: canetas, borrachas, clipes, post-its, carregadores
-👔 Quarto: cuecas, meias, bijuterias, acessórios
-💄 Banheiro: escovas, maquiagem, cremes
+🏠 IDEAL PARA: quarto, sala, recepção, comércio, babá eletrônica
 
-🔧 MODULAR: Combine vários organizadores para criar o espaço perfeito!
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"organizador gaveta 6 divisórias multiuso cozinha escritório quarto modular talheres"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"câmera segurança wifi ip 360 full hd 1080p visão noturna babá monitor app celular"
 },
 {
-  n:14, nome:"Massageador Facial Elétrico", preco:"R$ 39,90", cat:"Beleza e Cuidados Pessoais > Cuidados com a Pele", estoque:"4 unidades",
-  titulo:"Massageador Facial Elétrico Ultrassônico Limpeza Profunda Anti-idade Recarregável USB",
-  descricao:`✨ MASSAGEADOR FACIAL ELÉTRICO — SKINCARE EM CASA!
+  n:4, nome:"Lâmpada Inteligente RGB WiFi", emoji:"💡",
+  preco:"R$ 44,90", compra:"~R$ 15–22", margem:"~68%",
+  cat:"Casa e Decoração > Iluminação Inteligente", estoque:"Dropi Nacional",
+  titulo:"Lâmpada Inteligente LED RGB WiFi 16 Milhões Cores Alexa Google Home E27 Bivolt",
+  descricao:`💡 LÂMPADA INTELIGENTE RGB — TRANSFORME SUA CASA COM CORES!
 
-✅ Limpeza facial profunda — remove impurezas, cravos e oleosidade
-✅ Vibração ultrassônica — estimula a circulação e rejuvenesce a pele
-✅ Recarregável via USB — prático e sustentável
-✅ Cabeça de silicone — higiênico e suave na pele
-✅ Resistente à água — use no banho ou com produtos
+✅ 16 milhões de cores — personalize cada ambiente
+✅ Compatível com Alexa e Google Home — controle por voz
+✅ App no celular — controle de qualquer lugar do mundo
+✅ Programação de horário — acende e apaga sozinha
+✅ Ajuste de brilho e temperatura de cor (quente/frio)
+✅ Sincroniza com música — pisca no ritmo das batidas
+✅ Bivolt 100–240V — funciona em qualquer tomada
+✅ Base E27 — encaixa em qualquer luminária
+✅ Vida útil de 25.000 horas
 
-📦 ESPECIFICAÇÕES:
-• Tecnologia: Vibração ultrassônica
-• Velocidades: 1-3 modos (suave, médio, intenso)
-• Material da cabeça: Silicone médico
-• Recarga: USB (cabo incluso)
-• Autonomia: Aprox. 2-3 horas de uso
-• Resistência: IPX6 (à prova d'água)
+📦 ACOMPANHA:
+• 1 Lâmpada Inteligente (disponível em kit 2, 3 e 4 unidades)
 
-💆 BENEFÍCIOS:
-• Limpa os poros em profundidade
-• Reduz cravos e espinhas
-• Estimula colágeno e elastina
-• Melhora a absorção de cremes e séruns
-• Reduz inchaço e bolsas nos olhos
-• Deixa a pele mais suave e luminosa
+🏠 IDEAL PARA: quarto, sala, home office, festa, decoração
 
-🌟 IDEAL PARA:
-Pele oleosa, mista, seca ou sensível. Homens e mulheres que querem cuidar da pele em casa com resultado profissional.
+⚡ Sem hub ou adaptador necessário — plug and play!
 
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"massageador facial elétrico ultrassônico limpeza profunda anti-idade recarregável usb silicone"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"lâmpada inteligente rgb wifi alexa google home 16 cores e27 bivolt app celular smart"
 },
 {
-  n:15, nome:"Suporte Magnético Veicular", preco:"R$ 22,90", cat:"Acessórios Automotivos > Suportes para Celular", estoque:"6 unidades",
-  titulo:"Suporte Celular Magnético Veicular Grade de Ar Dashboard Universal Todos Celulares",
-  descricao:`🧲 SUPORTE MAGNÉTICO VEICULAR — SEGURANÇA NO TRÂNSITO!
+  n:5, nome:"Suporte Ergonômico Notebook", emoji:"💻",
+  preco:"R$ 69,90", compra:"~R$ 25–38", margem:"~62%",
+  cat:"Informática > Suportes e Apoios", estoque:"Dropi Nacional",
+  titulo:"Suporte Ergonômico Notebook Ajustável Alumínio Dobrável Portátil até 17 Polegadas",
+  descricao:`💻 SUPORTE ERGONÔMICO — TRABALHE SEM DOR, TRABALHE MELHOR!
 
-✅ Fixação magnética super forte — não solta nem em curvas
-✅ Universal — compatível com qualquer celular
-✅ Encaixe na grade de ar — sem cola, sem furos
-✅ 360° de rotação — ajuste o ângulo perfeito
-✅ Instalação em segundos — fácil de colocar e remover
+✅ Alumínio aeronáutico — leve (430g) e resistente (até 10kg)
+✅ 6 alturas ajustáveis — encontre o ângulo perfeito
+✅ Dobrável — cabe na mochila, ideal para home office e viagens
+✅ Ventilação superior — notebook não superaquece
+✅ Antiderrapante — base e suportes emborrachados
+✅ Compatível com notebooks de 10" a 17"
+✅ Funciona com MacBook, Dell, Lenovo, Asus, HP, Samsung e mais
 
-📦 ESPECIFICAÇÕES:
-• Fixação: Magneto neodímio (super forte)
-• Encaixe: Grade de ar (universal)
-• Rotação: 360°
-• Placas metálicas inclusas: 2 unidades
-• Compatibilidade: Todos os celulares com case ou sem
+📦 ACOMPANHA:
+• Suporte + Bolsinha de transporte + Manual
 
-💡 COMO USAR:
-1. Cole a plaquinha metálica no celular ou na capinha
-2. Encaixe o suporte na grade de ar do carro
-3. Aproxime o celular — o ímã segura instantaneamente!
+🏥 BENEFÍCIOS ERGONÔMICOS:
+• Previne dores no pescoço e coluna
+• Alinha monitor na altura dos olhos
+• Libera espaço na mesa
 
-🚗 IDEAL PARA:
-GPS, Waze, Google Maps, chamadas via Bluetooth, música e qualquer uso do celular no carro com segurança e praticidade.
-
-⚠️ Não interfere no GPS ou sinal do celular.
-
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"suporte celular magnético veicular carro grade ar dashboard universal 360 gps waze"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"suporte notebook ergonômico alumínio ajustável dobrável portátil home office macbook"
 },
 {
-  n:16, nome:"Película Vidro 3D Full Cover", preco:"R$ 14,90", cat:"Celulares e Smartphones > Películas Protetoras", estoque:"16 unidades",
-  titulo:"Película Vidro Temperado 3D Full Cover 9H Anti-risco Tela Completa Proteção Total",
-  descricao:`🔲 PELÍCULA 3D FULL COVER — PROTEÇÃO TOTAL PARA SUA TELA!
+  n:6, nome:"Mouse Sem Fio Silencioso", emoji:"🖱️",
+  preco:"R$ 59,90", compra:"~R$ 22–32", margem:"~63%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Silencioso Recarregável USB Bluetooth 1600 DPI Ergonômico PC Notebook",
+  descricao:`🖱️ MOUSE SEM FIO SILENCIOSO — CLIQUE SEM INCOMODAR NINGUÉM!
 
-✅ Vidro temperado 9H — a proteção mais resistente do mercado
-✅ Full Cover 3D — cobre a tela inteira, incluindo as bordas
-✅ Anti-risco e anti-impacto — absorve quedas e batidas
-✅ Sensibilidade touch 100% preservada
-✅ Instalação fácil — kit de limpeza incluso
+✅ 100% silencioso — clique 90% mais suave que o convencional
+✅ Sem fio 2.4GHz — alcance até 10 metros sem lag
+✅ Recarregável via USB-C — sem pilha nunca mais
+✅ DPI ajustável: 800 / 1200 / 1600 — para cada atividade
+✅ Design ergonômico — confortável para horas de uso
+✅ 6 botões programáveis
+✅ Compatível com Windows, macOS, Linux, Android
+✅ Plug and play — sem precisar instalar driver
+✅ Bateria com até 45 dias de uso por carga
 
-📦 ESPECIFICAÇÕES:
-• Material: Vidro temperado premium
-• Dureza: 9H (máxima do mercado)
-• Cobertura: Full Cover (tela inteira + bordas)
-• Espessura: 0,33mm
-• Transmissão de luz: 99%
-• Oleofóbico: Sim (repele digitais e gordura)
+📦 ACOMPANHA:
+• Mouse + Receptor USB 2.4GHz + Cabo USB-C de recarga
 
-🛠️ KIT INCLUSO:
-• 1x película de vidro temperado
-• 1x pano de microfibra
-• 1x adesivo de limpeza
-• 1x guia de instalação
+💼 IDEAL PARA: home office, reuniões, bibliotecas, open spaces
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse sem fio silencioso recarregável usb bluetooth 1600 dpi ergonômico notebook pc"
+},
+{
+  n:7, nome:"Hub USB-C 7 em 1", emoji:"🔌",
+  preco:"R$ 89,90", compra:"~R$ 30–48", margem:"~65%",
+  cat:"Informática > Hubs e Adaptadores", estoque:"Dropi Nacional",
+  titulo:"Hub USB-C 7 em 1 HDMI 4K USB 3.0 Leitor SD TF Para MacBook Notebook Tablet",
+  descricao:`🔌 HUB USB-C 7 EM 1 — CONECTE TUDO COM UM SÓ CABO!
+
+✅ HDMI 4K@30Hz — espelhe sua tela em TV ou monitor
+✅ 2x USB 3.0 — transferência até 5Gbps
+✅ 1x USB 2.0 — para dispositivos legados
+✅ Leitor cartão SD e MicroSD simultâneos
+✅ USB-C Power Delivery 100W — carrega o notebook enquanto usa
+✅ Plug and play — sem driver, funciona na hora
+✅ Alumínio com dissipação de calor
+✅ Cabo de 15cm integrado — sem bagunça
+
+📦 ACOMPANHA:
+• Hub USB-C 7 em 1 + Bolsinha protetora
+
+💻 COMPATÍVEL COM:
+MacBook Pro/Air M1/M2/M3, iPad Pro, Samsung Galaxy, Dell XPS, Lenovo, Asus, HP e qualquer dispositivo USB-C
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"hub usb-c 7 em 1 hdmi 4k usb 3.0 leitor sd macbook notebook tablet adaptador"
+},
+{
+  n:8, nome:"Película Hidrogel + Aplicador", emoji:"📱",
+  preco:"R$ 24,90", compra:"~R$ 5–10", margem:"~75%",
+  cat:"Celulares > Películas e Proteção", estoque:"Dropi Nacional",
+  titulo:"Película Hidrogel Fosca Anti-Reflexo + Aplicador Bolha Zero Universal Todos Modelos",
+  descricao:`📱 PELÍCULA HIDROGEL — PROTEÇÃO MÁXIMA SEM BOLHAS!
+
+✅ Hidrogel flexível — cobre bordas curvas perfeitamente
+✅ Kit com aplicador — instalação sem bolhas garantida
+✅ Opção fosca (anti-reflexo) ou brilhante (transparente)
+✅ Auto-regenerativa — riscos leves somem sozinhos
+✅ Ultra sensível ao toque — sem perder precisão
+✅ Anti-impressão digital
+✅ Protege contra quedas e arranhões
+✅ Universal — funciona em qualquer tamanho de tela
+
+📦 ACOMPANHA:
+• 2 Películas Hidrogel + Aplicador + Pano de limpeza + Palheta guia
 
 📱 COMPATÍVEL COM:
-Samsung, Motorola, Xiaomi, iPhone e outros (informe o modelo exato no pedido).
+iPhone, Samsung Galaxy, Motorola, Xiaomi, Redmi, Poco, LG, Positivo e TODOS os modelos
 
-💡 ATENÇÃO: Informe o modelo exato do seu celular no campo "Observações" do pedido.
+💡 DICA: Compre o kit com 2 películas — instale uma e guarde outra de reserva!
 
-🚚 Enviamos para todo o Brasil com rastreamento!`,
-  tags:"película vidro temperado 3d full cover 9h anti-risco tela completa proteção samsung iphone"
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"película hidrogel fosca anti-reflexo aplicador bolha zero universal samsung iphone motorola"
 }
 ];
 
+var emojis = produtos.map(function(p){ return p.emoji; });
 
-var emojis=['🔥','🔋','👟','⌨️','⚡','📺','🖱️','🔢','🌸','🎵','📱','🎧','🗂️','✨','🧲','🔲'];
-
-function copiar(btn,texto){
+function copiar(texto, btn) {
   navigator.clipboard.writeText(texto).then(function(){
-    btn.textContent='✓ COPIADO';
+    btn.textContent = '✓ COPIADO';
     btn.classList.add('ok');
-    setTimeout(function(){btn.textContent='COPIAR';btn.classList.remove('ok');},2000);
+    setTimeout(function(){ btn.textContent = 'COPIAR'; btn.classList.remove('ok'); }, 2000);
   });
 }
 
-var grid=document.getElementById('grid');
-produtos.forEach(function(p){
-  var card=document.createElement('div');
-  card.className='card';
-  
-  // Foto do produto
-  var img=document.createElement('img');
-  img.className='prod-foto';
-  img.src='fotos_produtos/produto_'+String(p.n).padStart(2,'0')+'.jpg';
-  img.alt=p.nome;
-  img.loading='lazy';
-  img.onerror=function(){
-    var ph=document.createElement('div');
-    ph.className='prod-foto-err';
-    ph.textContent=emojis[p.n-1];
-    this.parentNode.replaceChild(ph,this);
-  };
-  card.appendChild(img);
+function renderCards() {
+  var grid = document.getElementById('grid');
+  produtos.forEach(function(p) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.setAttribute('data-n', p.n);
 
-  card.innerHTML+=
-    '<div class="card-head">'+
-      '<div class="prod-num">Produto #'+p.n+'</div>'+
-      '<div class="prod-name">'+p.nome+'</div>'+
-      '<div class="prod-meta">'+
-        '<span class="tag tag-price">'+p.preco+'</span>'+
-        '<span class="tag tag-stock">Estoque: '+p.estoque+'</span>'+
-        '<span class="tag tag-cat">'+p.cat.split('>')[0].trim()+'</span>'+
-      '</div>'+
-    '</div>'+
-    '<div class="card-body">'+
-      '<div class="field">'+
-        '<div class="field-label">Categoria Shopee <span class="tag tag-cat" style="font-size:9px">'+p.cat+'</span></div>'+
-      '</div>'+
-      '<div class="field">'+
-        '<div class="field-label">Título <button class="copy-btn" onclick="copiar(this,produtos['+( p.n-1)+'].titulo)">COPIAR</button></div>'+
-        '<div class="field-content">'+p.titulo+'</div>'+
-      '</div>'+
-      '<div class="divider"></div>'+
-      '<div class="field">'+
-        '<div class="field-label">Descrição Completa <button class="copy-btn" onclick="copiar(this,produtos['+(p.n-1)+'].descricao)">COPIAR</button></div>'+
-        '<div class="field-content" style="max-height:160px;overflow-y:auto">'+p.descricao+'</div>'+
-      '</div>'+
-      '<div class="divider"></div>'+
-      '<div class="field">'+
-        '<div class="field-label">Tags/Keywords <button class="copy-btn" onclick="copiar(this,produtos['+(p.n-1)+'].tags)">COPIAR</button></div>'+
-        '<div class="field-content">'+p.tags+'</div>'+
-      '</div>'+
+    // Foto
+    var img = document.createElement('img');
+    img.className = 'prod-foto';
+    img.src = 'fotos_produtos/produto_' + String(p.n).padStart(2,'0') + '.jpg';
+    img.alt = p.nome;
+    img.loading = 'lazy';
+    img.onerror = function(){
+      var ph = document.createElement('div');
+      ph.className = 'prod-foto-err';
+      ph.textContent = p.emoji;
+      this.parentNode.replaceChild(ph, this);
+    };
+    card.appendChild(img);
+
+    // Cabeçalho
+    var head = document.createElement('div');
+    head.className = 'card-head';
+    head.innerHTML = '<div class="prod-num">PRODUTO #' + String(p.n).padStart(2,'0') + ' · DROPI NACIONAL</div>' +
+      '<div class="prod-name">' + p.nome + '</div>' +
+      '<div class="prod-meta">' +
+        '<span class="tag tag-price">💰 Venda: ' + p.preco + '</span>' +
+        '<span class="tag tag-buy">📦 Custo: ' + p.compra + '</span>' +
+        '<span class="tag tag-margin">📈 ' + p.margem + '</span>' +
+        '<span class="tag tag-cat">' + p.cat.split('>')[0].trim() + '</span>' +
+        '<span class="tag tag-stock">✅ ' + p.estoque + '</span>' +
+      '</div>';
+    card.appendChild(head);
+
+    // Corpo
+    var body = document.createElement('div');
+    body.className = 'card-body';
+
+    // Info boxes
+    body.innerHTML += '<div class="info-row">' +
+      '<div class="info-box"><div class="ib-label">Categoria</div><div class="ib-value" style="font-size:10px;color:#00d4ff">' + p.cat + '</div></div>' +
     '</div>';
-  grid.appendChild(card);
-});
+
+    // Título
+    var f1 = document.createElement('div'); f1.className = 'field';
+    var l1 = document.createElement('div'); l1.className = 'field-label';
+    l1.innerHTML = '<span>TÍTULO</span>';
+    var b1 = document.createElement('button'); b1.className = 'copy-btn'; b1.textContent = 'COPIAR';
+    b1.onclick = function(){ copiar(p.titulo, b1); };
+    l1.appendChild(b1); f1.appendChild(l1);
+    var c1 = document.createElement('div'); c1.className = 'field-content'; c1.textContent = p.titulo;
+    f1.appendChild(c1); body.appendChild(f1);
+
+    // Descrição
+    var f2 = document.createElement('div'); f2.className = 'field';
+    var l2 = document.createElement('div'); l2.className = 'field-label';
+    l2.innerHTML = '<span>DESCRIÇÃO</span>';
+    var b2 = document.createElement('button'); b2.className = 'copy-btn'; b2.textContent = 'COPIAR';
+    b2.onclick = function(){ copiar(p.descricao, b2); };
+    l2.appendChild(b2); f2.appendChild(l2);
+    var c2 = document.createElement('div'); c2.className = 'field-content'; c2.textContent = p.descricao;
+    f2.appendChild(c2); body.appendChild(f2);
+
+    // Tags
+    var f3 = document.createElement('div'); f3.className = 'field';
+    var l3 = document.createElement('div'); l3.className = 'field-label';
+    l3.innerHTML = '<span>TAGS</span>';
+    var b3 = document.createElement('button'); b3.className = 'copy-btn'; b3.textContent = 'COPIAR';
+    b3.onclick = function(){ copiar(p.tags, b3); };
+    l3.appendChild(b3); f3.appendChild(l3);
+    var c3 = document.createElement('div'); c3.className = 'field-content'; c3.textContent = p.tags;
+    f3.appendChild(c3); body.appendChild(f3);
+
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
+
+renderCards();
 </script>
 </body>
 </html>
