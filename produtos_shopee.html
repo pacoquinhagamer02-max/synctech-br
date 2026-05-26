@@ -43,216 +43,431 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 </head>
 <body>
 <h1>🛍️ Novo Estoque — SyncTech BR</h1>
-<p class="sub">Fornecedor: Dropi Nacional · 8 produtos · Alta rotatividade · Entrega 3–7 dias</p>
-<div class="badge-wrap"><span class="badge-dropi">⚡ Dropi Nacional · Eletrônicos · Giro Rápido</span></div>
-<div class="counter">Produtos: <span>8</span> · Investimento estimado: <span>R$ 264</span> · Potencial de receita: <span>R$ 636/venda</span></div>
+<p class="sub">Fornecedor: Dropi Nacional · 18 produtos · Fantech + Tech · Entrega 3–7 dias</p>
+<div class="badge-wrap"><span class="badge-dropi">⚡ Dropi Nacional · Eletrônicos Fantech · Giro Rápido</span></div>
+<div class="counter">Produtos: <span>18</span> · Nicho: <span>Tech & Gaming</span> · Shopee: <span>SyncTech BR</span></div>
 <div class="grid" id="grid"></div>
 <script>
 var produtos = [
 {
-  n:1, nome:"Smartwatch Masculino/Feminino", emoji:"⌚",
-  preco:"R$ 89,90", compra:"~R$ 35–55", margem:"~65%",
-  cat:"Eletrônicos > Smartwatches e Acessórios", estoque:"Dropi Nacional",
-  titulo:"Smartwatch Masculino Redondo HW67 Pro Tela HD Chamada Bluetooth NFC Lançamento 2025",
-  descricao:`⌚ SMARTWATCH HW67 PRO — TECNOLOGIA NO SEU PULSO!
-
-✅ Tela AMOLED Full HD — cores vivas e nítidas
-✅ Realiza e recebe chamadas pelo relógio via Bluetooth
-✅ NFC — pagamentos por aproximação
-✅ Monitor cardíaco, oxigenação SpO2 e pressão arterial
-✅ GPS integrado — rastreie seus treinos
-✅ 100+ modos esportivos
-✅ Resistência à água IP67
-✅ Bateria com duração de até 7 dias
-✅ Compatível com Android e iOS
-
-📦 ACOMPANHA:
-• Smartwatch + Pulseira extra + Cabo de recarga + Manual
-
-🎁 PRESENTE PERFEITO para qualquer ocasião!
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"smartwatch masculino hw67 bluetooth chamada nfc tela hd monitor cardiaco esportivo"
-},
-{
-  n:2, nome:"Fone Bluetooth TWS 5.3", emoji:"🎧",
-  preco:"R$ 49,90", compra:"~R$ 18–28", margem:"~65%",
-  cat:"Eletrônicos > Fones de Ouvido", estoque:"Dropi Nacional",
-  titulo:"Fone de Ouvido Bluetooth 5.3 TWS Sem Fio Esportivo LED Case Carregador Alta Qualidade",
-  descricao:`🎧 FONE TWS BLUETOOTH 5.3 — SOM PERFEITO, SEM FIOS!
-
-✅ Bluetooth 5.3 — conexão ultra estável até 15m
-✅ Cancelamento de ruído ativo (ANC)
-✅ Som estéreo HiFi com graves potentes
-✅ LED indicador de bateria na case
-✅ Case com carregamento — até 30h de uso total
-✅ Toque único para controlar música e chamadas
-✅ Resistência ao suor IPX5 — ideal para exercícios
-✅ Microfone embutido — chamadas cristalinas
-✅ Encaixe ergonômico — confortável por horas
-
-📦 ACOMPANHA:
-• 2 Fones + Case de carregamento + Cabo USB-C + 3 pares de ponteiras
-
-🎵 Compatível com qualquer smartphone, tablet ou computador!
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"fone bluetooth tws 5.3 sem fio esportivo led case carregador cancelamento ruido anc"
-},
-{
-  n:3, nome:"Câmera WiFi 360° Full HD", emoji:"📷",
-  preco:"R$ 139,90", compra:"~R$ 55–75", margem:"~60%",
-  cat:"Eletrônicos > Câmeras de Segurança", estoque:"Dropi Nacional",
-  titulo:"Câmera de Segurança WiFi IP 360° Full HD 1080p Visão Noturna Interna Babá Monitor",
-  descricao:`📷 CÂMERA WIFI 360° — SEGURANÇA TOTAL NA PALMA DA MÃO!
-
-✅ Resolução Full HD 1080p — imagem nítida dia e noite
-✅ Rotação 360° horizontal + 90° vertical — sem ponto cego
-✅ Visão noturna infravermelha até 10 metros
-✅ Detecção de movimento com alerta no celular
-✅ Áudio bidirecional — fale com quem está em casa
-✅ Gravação no cartão SD (até 128GB) ou nuvem
-✅ Conexão WiFi 2.4GHz — instalação simples
-✅ App gratuito iOS e Android (V380 Pro ou TuyaSmart)
-✅ Funciona como babá eletrônica
-
-📦 ACOMPANHA:
-• Câmera + Suporte + Cabo USB + Parafusos + Manual
-
-🏠 IDEAL PARA: quarto, sala, recepção, comércio, babá eletrônica
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"câmera segurança wifi ip 360 full hd 1080p visão noturna babá monitor app celular"
-},
-{
-  n:4, nome:"Lâmpada Inteligente RGB WiFi", emoji:"💡",
-  preco:"R$ 44,90", compra:"~R$ 15–22", margem:"~68%",
-  cat:"Casa e Decoração > Iluminação Inteligente", estoque:"Dropi Nacional",
-  titulo:"Lâmpada Inteligente LED RGB WiFi 16 Milhões Cores Alexa Google Home E27 Bivolt",
-  descricao:`💡 LÂMPADA INTELIGENTE RGB — TRANSFORME SUA CASA COM CORES!
-
-✅ 16 milhões de cores — personalize cada ambiente
-✅ Compatível com Alexa e Google Home — controle por voz
-✅ App no celular — controle de qualquer lugar do mundo
-✅ Programação de horário — acende e apaga sozinha
-✅ Ajuste de brilho e temperatura de cor (quente/frio)
-✅ Sincroniza com música — pisca no ritmo das batidas
-✅ Bivolt 100–240V — funciona em qualquer tomada
-✅ Base E27 — encaixa em qualquer luminária
-✅ Vida útil de 25.000 horas
-
-📦 ACOMPANHA:
-• 1 Lâmpada Inteligente (disponível em kit 2, 3 e 4 unidades)
-
-🏠 IDEAL PARA: quarto, sala, home office, festa, decoração
-
-⚡ Sem hub ou adaptador necessário — plug and play!
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"lâmpada inteligente rgb wifi alexa google home 16 cores e27 bivolt app celular smart"
-},
-{
-  n:5, nome:"Suporte Ergonômico Notebook", emoji:"💻",
-  preco:"R$ 69,90", compra:"~R$ 25–38", margem:"~62%",
-  cat:"Informática > Suportes e Apoios", estoque:"Dropi Nacional",
-  titulo:"Suporte Ergonômico Notebook Ajustável Alumínio Dobrável Portátil até 17 Polegadas",
-  descricao:`💻 SUPORTE ERGONÔMICO — TRABALHE SEM DOR, TRABALHE MELHOR!
-
-✅ Alumínio aeronáutico — leve (430g) e resistente (até 10kg)
-✅ 6 alturas ajustáveis — encontre o ângulo perfeito
-✅ Dobrável — cabe na mochila, ideal para home office e viagens
-✅ Ventilação superior — notebook não superaquece
-✅ Antiderrapante — base e suportes emborrachados
-✅ Compatível com notebooks de 10" a 17"
-✅ Funciona com MacBook, Dell, Lenovo, Asus, HP, Samsung e mais
-
-📦 ACOMPANHA:
-• Suporte + Bolsinha de transporte + Manual
-
-🏥 BENEFÍCIOS ERGONÔMICOS:
-• Previne dores no pescoço e coluna
-• Alinha monitor na altura dos olhos
-• Libera espaço na mesa
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"suporte notebook ergonômico alumínio ajustável dobrável portátil home office macbook"
-},
-{
-  n:6, nome:"Mouse Sem Fio Silencioso", emoji:"🖱️",
-  preco:"R$ 59,90", compra:"~R$ 22–32", margem:"~63%",
+  n:1, nome:"Mouse Evolut Predator RGB 2400DPI", emoji:"🖱️",
+  preco:"R$ 54,90", compra:"~R$ 34", margem:"~37%",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
-  titulo:"Mouse Sem Fio Silencioso Recarregável USB Bluetooth 1600 DPI Ergonômico PC Notebook",
-  descricao:`🖱️ MOUSE SEM FIO SILENCIOSO — CLIQUE SEM INCOMODAR NINGUÉM!
+  titulo:"Mouse Gamer Evolut Predator RGB 2400 DPI 6 Botões LED Colorido PC Notebook",
+  descricao:`🖱️ MOUSE GAMER PREDATOR RGB — PRECISE E DOMINA!
 
-✅ 100% silencioso — clique 90% mais suave que o convencional
+✅ 2400 DPI ajustável — precisão máxima em cada movimento
+✅ Iluminação RGB multicolorida — visual gamer impressionante
+✅ 6 botões programáveis — atalhos na ponta dos dedos
+✅ Cabo trançado 1,5m — durável e sem travar
+✅ Design ergonômico — confortável para longas sessões
+✅ Plug and play — sem instalar driver
+✅ Compatível com Windows, macOS, Linux
+
+📦 ACOMPANHA:
+• Mouse + Cabo USB + Manual
+
+🎮 IDEAL PARA: FPS, MOBA, RTS, escritório e trabalho criativo
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer evolut predator rgb 2400dpi 6 botoes led colorido pc notebook usb"
+},
+{
+  n:2, nome:"Mouse Pad Fantech MP44 44×35cm", emoji:"🎯",
+  preco:"R$ 74,90", compra:"~R$ 53", margem:"~29%",
+  cat:"Informática > Mouse Pads", estoque:"Dropi Nacional",
+  titulo:"Mouse Pad Gamer Grande Fantech Sven MP44 44x35cm Base Antiderrapante Costura",
+  descricao:`🎯 MOUSE PAD FANTECH MP44 — CONTROLE TOTAL NA SUA MESA!
+
+✅ Tamanho grande 44×35cm — cobre mouse e teclado
+✅ Superfície de microfibra — deslize suave e preciso
+✅ Base de borracha antiderrapante — não sai do lugar
+✅ Costura nas bordas — não desfiam, dura muito mais
+✅ Espessura 3mm — confortável para o pulso
+✅ Lavável — fácil de limpar
+✅ Compatível com mouse óptico e laser
+
+📦 ACOMPANHA:
+• 1 Mouse Pad Fantech MP44
+
+🎮 IDEAL PARA: Setup gamer, home office, gaming de precisão
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse pad gamer fantech mp44 grande 44x35 antiderrapante costura superfície suave setup"
+},
+{
+  n:3, nome:"Mouse Fantech G13 Rhasta II 2400DPI", emoji:"🖱️",
+  preco:"R$ 84,90", compra:"~R$ 58", margem:"~32%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech G13 Rhasta II 2400DPI LED Azul 6 Botões USB PC Notebook",
+  descricao:`🖱️ MOUSE GAMER FANTECH G13 RHASTA II — VELOCIDADE E PRECISÃO!
+
+✅ Sensor óptico 2400 DPI — resposta ultra rápida
+✅ Iluminação LED azul — visual gamer clássico
+✅ 6 botões — inclui botões laterais para atalhos
+✅ Design ergonômico — perfeito para mão direita
+✅ Cabo USB 1.5m trançado — durável e flexível
+✅ Compatível com Windows e macOS
+✅ Plug and play — sem driver
+
+📦 ACOMPANHA:
+• Mouse Fantech G13 + Cabo USB
+
+🎮 IDEAL PARA: FPS competitivo, streaming, escritório
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer fantech g13 rhasta 2400dpi led azul 6 botoes usb pc notebook ergonomico"
+},
+{
+  n:4, nome:"Mouse Fantech W189 Branco Sem Fio", emoji:"🖱️",
+  preco:"R$ 89,90", compra:"~R$ 63", margem:"~30%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Fantech W189 Branco 1200DPI 2.4GHz Alcance 10m Silencioso",
+  descricao:`🖱️ MOUSE SEM FIO FANTECH W189 — LIBERDADE DE MOVIMENTO!
+
 ✅ Sem fio 2.4GHz — alcance até 10 metros sem lag
-✅ Recarregável via USB-C — sem pilha nunca mais
-✅ DPI ajustável: 800 / 1200 / 1600 — para cada atividade
-✅ Design ergonômico — confortável para horas de uso
-✅ 6 botões programáveis
-✅ Compatível com Windows, macOS, Linux, Android
-✅ Plug and play — sem precisar instalar driver
-✅ Bateria com até 45 dias de uso por carga
+✅ 1200 DPI — preciso para trabalho e games casuais
+✅ Receptor USB nano — discreto, fica no notebook
+✅ Design ergonômico branco — moderno e confortável
+✅ Compatível com Windows, macOS, Linux
+✅ Pilhas AA incluídas — pronto para usar
+✅ Plug and play — sem driver
 
 📦 ACOMPANHA:
-• Mouse + Receptor USB 2.4GHz + Cabo USB-C de recarga
+• Mouse + Receptor USB nano + Pilhas AA
 
-💼 IDEAL PARA: home office, reuniões, bibliotecas, open spaces
+💡 IDEAL PARA: home office, reuniões, trabalho remoto
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"mouse sem fio silencioso recarregável usb bluetooth 1600 dpi ergonômico notebook pc"
+  tags:"mouse sem fio fantech w189 branco 1200dpi 2.4ghz sem lag receptor usb nano ergonomico"
 },
 {
-  n:7, nome:"Hub USB-C 7 em 1", emoji:"🔌",
-  preco:"R$ 89,90", compra:"~R$ 30–48", margem:"~65%",
-  cat:"Informática > Hubs e Adaptadores", estoque:"Dropi Nacional",
-  titulo:"Hub USB-C 7 em 1 HDMI 4K USB 3.0 Leitor SD TF Para MacBook Notebook Tablet",
-  descricao:`🔌 HUB USB-C 7 EM 1 — CONECTE TUDO COM UM SÓ CABO!
+  n:5, nome:"Mouse Fantech W188 Preto Sem Fio", emoji:"🖱️",
+  preco:"R$ 89,90", compra:"~R$ 63", margem:"~30%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Fantech W188 Preto 1200DPI 2.4GHz Forma Confortável Ergonômico",
+  descricao:`🖱️ MOUSE SEM FIO FANTECH W188 — CONFORTO EM CADA CLIQUE!
 
-✅ HDMI 4K@30Hz — espelhe sua tela em TV ou monitor
-✅ 2x USB 3.0 — transferência até 5Gbps
-✅ 1x USB 2.0 — para dispositivos legados
-✅ Leitor cartão SD e MicroSD simultâneos
-✅ USB-C Power Delivery 100W — carrega o notebook enquanto usa
-✅ Plug and play — sem driver, funciona na hora
-✅ Alumínio com dissipação de calor
-✅ Cabo de 15cm integrado — sem bagunça
+✅ Sem fio 2.4GHz — sem enrolação de cabo
+✅ 1200 DPI — ideal para trabalho e navegação
+✅ Receptor USB nano — compacto, sempre conectado
+✅ Design ergonômico preto — formato confortável para a mão
+✅ Botões silenciosos — não incomoda em ambientes silenciosos
+✅ Compatível com Windows, macOS, Linux
+✅ Plug and play — sem driver
 
 📦 ACOMPANHA:
-• Hub USB-C 7 em 1 + Bolsinha protetora
+• Mouse + Receptor USB nano + Pilhas
 
-💻 COMPATÍVEL COM:
-MacBook Pro/Air M1/M2/M3, iPad Pro, Samsung Galaxy, Dell XPS, Lenovo, Asus, HP e qualquer dispositivo USB-C
+💡 IDEAL PARA: home office, escritório, uso diário
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"hub usb-c 7 em 1 hdmi 4k usb 3.0 leitor sd macbook notebook tablet adaptador"
+  tags:"mouse sem fio fantech w188 preto 1200dpi 2.4ghz ergonomico confortavel silencioso notebook"
 },
 {
-  n:8, nome:"Película Hidrogel + Aplicador", emoji:"📱",
-  preco:"R$ 24,90", compra:"~R$ 5–10", margem:"~75%",
-  cat:"Celulares > Películas e Proteção", estoque:"Dropi Nacional",
-  titulo:"Película Hidrogel Fosca Anti-Reflexo + Aplicador Bolha Zero Universal Todos Modelos",
-  descricao:`📱 PELÍCULA HIDROGEL — PROTEÇÃO MÁXIMA SEM BOLHAS!
+  n:6, nome:"Mouse Fantech Phantom X15 RGB Gamer", emoji:"🖱️",
+  preco:"R$ 139,00", compra:"~R$ 87", margem:"~37%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech Phantom X15 RGB Macro 7 Botões 4800DPI PC Notebook",
+  descricao:`🖱️ MOUSE GAMER FANTECH PHANTOM X15 — DOMINE CADA PARTIDA!
 
-✅ Hidrogel flexível — cobre bordas curvas perfeitamente
-✅ Kit com aplicador — instalação sem bolhas garantida
-✅ Opção fosca (anti-reflexo) ou brilhante (transparente)
-✅ Auto-regenerativa — riscos leves somem sozinhos
-✅ Ultra sensível ao toque — sem perder precisão
-✅ Anti-impressão digital
-✅ Protege contra quedas e arranhões
-✅ Universal — funciona em qualquer tamanho de tela
+✅ 4800 DPI ajustável — do casual ao competitivo
+✅ Iluminação RGB — personalize com 7 efeitos de luz
+✅ 7 botões programáveis — macro na palma da mão
+✅ Sensor óptico de alta precisão — zero lag
+✅ Cabo trançado anti-enrolamento 1.8m
+✅ Design ergonômico gamer — grip perfeito
+✅ Compatível com Windows e macOS
 
 📦 ACOMPANHA:
-• 2 Películas Hidrogel + Aplicador + Pano de limpeza + Palheta guia
+• Mouse Phantom X15 + Cabo USB
 
-📱 COMPATÍVEL COM:
-iPhone, Samsung Galaxy, Motorola, Xiaomi, Redmi, Poco, LG, Positivo e TODOS os modelos
-
-💡 DICA: Compre o kit com 2 películas — instale uma e guarde outra de reserva!
+🎮 IDEAL PARA: FPS, MOBA, Battle Royale, Streamer
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"película hidrogel fosca anti-reflexo aplicador bolha zero universal samsung iphone motorola"
+  tags:"mouse gamer fantech phantom x15 rgb 7 botoes 4800dpi macro pc notebook fps moba"
+},
+{
+  n:7, nome:"Mouse Fantech W189 Preto Sem Fio", emoji:"🖱️",
+  preco:"R$ 96,00", compra:"~R$ 53", margem:"~45%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Fantech W189 Preto 1200DPI 2.4GHz Alcance 10m Receptor Nano",
+  descricao:`🖱️ MOUSE SEM FIO FANTECH W189 PRETO — LIBERDADE TOTAL!
+
+✅ Sem fio 2.4GHz — alcance até 10 metros
+✅ 1200 DPI — preciso e responsivo
+✅ Receptor USB nano — compacto e discreto
+✅ Design preto elegante — moderno e profissional
+✅ Botão de liga/desliga — economiza bateria
+✅ Compatível com Windows, macOS, Linux
+✅ Plug and play — sem driver
+
+📦 ACOMPANHA:
+• Mouse + Receptor nano USB
+
+💡 IDEAL PARA: trabalho, home office, apresentações
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse sem fio fantech w189 preto 1200dpi 2.4ghz alcance 10m receptor nano plug and play"
+},
+{
+  n:8, nome:"Mouse Fantech W188 Branco Sem Fio", emoji:"🖱️",
+  preco:"R$ 96,00", compra:"~R$ 53", margem:"~45%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Fantech W188 Branco 1200DPI 2.4GHz Confortável Silencioso",
+  descricao:`🖱️ MOUSE SEM FIO FANTECH W188 BRANCO — ELEGÂNCIA SEM FIO!
+
+✅ Sem fio 2.4GHz — mobilidade total
+✅ 1200 DPI — ideal para trabalho e uso diário
+✅ Cor branca — combina com setup clean e moderno
+✅ Forma confortável — ergonomia pensada para longas horas
+✅ Receptor nano USB incluído
+✅ Compatível com Windows, macOS, Linux
+✅ Plug and play
+
+📦 ACOMPANHA:
+• Mouse + Receptor nano USB
+
+💡 IDEAL PARA: home office, trabalho criativo, viagens
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse sem fio fantech w188 branco 1200dpi 2.4ghz silencioso confortavel home office setup"
+},
+{
+  n:9, nome:"Mouse Fantech Thor X9 RGB 4800DPI", emoji:"🖱️",
+  preco:"R$ 137,00", compra:"~R$ 86", margem:"~37%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech Thor X9 RGB Macro 7 Botões 4800DPI LED Colorido PC",
+  descricao:`🖱️ MOUSE GAMER FANTECH THOR X9 — PODER DO TROVÃO NA SUA MÃO!
+
+✅ 4800 DPI — do casual ao ultra competitivo
+✅ Iluminação RGB multicolorida — 7 modos de luz
+✅ 7 botões com funções macro — controle total
+✅ Sensor óptico de alta resposta — registra cada movimento
+✅ Cabo trançado flexível — não enrola, não prende
+✅ Design inspirado no deus Thor — imponente no setup
+✅ Compatível com Windows e macOS
+
+📦 ACOMPANHA:
+• Mouse Thor X9 + Cabo USB
+
+🎮 IDEAL PARA: jogadores que buscam performance e estilo
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer fantech thor x9 rgb 4800dpi 7 botoes macro led colorido pc notebook gamer"
+},
+{
+  n:10, nome:"Mouse Fantech Crypto VX7 8000DPI", emoji:"🖱️",
+  preco:"R$ 133,00", compra:"~R$ 82", margem:"~38%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech Crypto VX7 8000DPI Macro 6 Botões RGB PC Notebook",
+  descricao:`🖱️ MOUSE GAMER FANTECH CRYPTO VX7 — 8000 DPI DE PURO PODER!
+
+✅ 8000 DPI — sensibilidade extrema para competição
+✅ 6 botões macro — configure para cada jogo
+✅ Iluminação RGB — visual gamer premium
+✅ Sensor óptico de última geração — zero aceleração
+✅ Cabo USB trançado 1.8m
+✅ Design ergonômico para destros
+✅ Compatível com Windows e macOS
+
+📦 ACOMPANHA:
+• Mouse Crypto VX7 + Cabo USB
+
+🎮 IDEAL PARA: e-sports, FPS competitivo, streamers profissionais
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer fantech crypto vx7 8000dpi rgb 6 botoes macro esports fps competitivo"
+},
+{
+  n:11, nome:"Mouse Fantech Crypto VX7 Space Edition", emoji:"🖱️",
+  preco:"R$ 133,00", compra:"~R$ 82", margem:"~38%",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech Crypto VX7 Space Edition 8000DPI RGB 6 Botões PC",
+  descricao:`🖱️ MOUSE GAMER VX7 SPACE EDITION — ACIMA DE QUALQUER LIMITE!
+
+✅ 8000 DPI — performance de nível profissional
+✅ Design Space Edition exclusivo — visual de outro mundo
+✅ 6 botões macro personalizáveis
+✅ RGB com efeito espacial — destaque no setup
+✅ Cabo trançado 1.8m anti-enrolamento
+✅ Sensor óptico preciso — do pixel ao headshot
+✅ Compatível com Windows e macOS
+
+📦 ACOMPANHA:
+• Mouse VX7 Space Edition + Cabo USB
+
+🎮 IDEAL PARA: gamers que buscam exclusividade e performance
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer fantech crypto vx7 space edition 8000dpi rgb 6 botoes macro fps esports"
+},
+{
+  n:12, nome:"Mouse Pad Fantech MP80 80×30cm", emoji:"🎯",
+  preco:"R$ 103,00", compra:"~R$ 59", margem:"~43%",
+  cat:"Informática > Mouse Pads", estoque:"Dropi Nacional",
+  titulo:"Mouse Pad Gamer XL Fantech Sven MP80 80x30cm Mesa Completa Antiderrapante Costura",
+  descricao:`🎯 MOUSE PAD FANTECH MP80 — DOMINE TODA A MESA!
+
+✅ Tamanho XL 80×30cm — cobre mouse, teclado e braços
+✅ Superfície de microfibra premium — controle e velocidade
+✅ Base de borracha grossa — zero deslizamento
+✅ Costura reforçada nas bordas — não desfia nunca
+✅ Espessura 4mm — proteção superior para o pulso
+✅ Lavável à mão — higiene garantida
+✅ Compatível com mouse óptico e laser de qualquer DPI
+
+📦 ACOMPANHA:
+• 1 Mouse Pad Fantech MP80
+
+🎮 IDEAL PARA: setup gamer completo, streamers, home office pro
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse pad gamer xl fantech mp80 80x30 mesa completa antiderrapante costura reforçada"
+},
+{
+  n:13, nome:"Headset Gamer Fantech HG11 7.1 USB", emoji:"🎧",
+  preco:"R$ 345,00", compra:"~R$ 247", margem:"~28%",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG11 Captain 7.1 USB Surround Som Controle Remoto RGB",
+  descricao:`🎧 HEADSET GAMER FANTECH HG11 CAPTAIN — MERGULHE NO JOGO!
+
+✅ Som Surround 7.1 canais — ouça o inimigo antes de ver
+✅ Conexão USB — plug and play, qualidade sem igual
+✅ Controle remoto no cabo — volume e mudo na ponta dos dedos
+✅ Microfone flexível com cancelamento de ruído — voz cristalina
+✅ Driver 40mm neodímio — graves poderosos, agudos nítidos
+✅ RGB com iluminação LED — visual gamer premium
+✅ Almofadas de couro sintético — confortável por horas
+✅ Headband ajustável — se adapta a qualquer cabeça
+✅ Compatível com PC e notebook via USB
+
+📦 ACOMPANHA:
+• Headset HG11 + Cabo USB com controle remoto
+
+🎮 IDEAL PARA: FPS, streaming, comunicação em equipe
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg11 captain 7.1 usb surround rgb controle remoto microfone pc"
+},
+{
+  n:14, nome:"Headset Fantech HG15 Captain RGB 7.1", emoji:"🎧",
+  preco:"R$ 273,00", compra:"~R$ 191", margem:"~30%",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG15 Captain 7.1 USB RGB Virtual Surround PC Notebook",
+  descricao:`🎧 HEADSET FANTECH HG15 — IMERSÃO TOTAL COM RGB!
+
+✅ Virtual Surround 7.1 — posicione o som com precisão
+✅ USB — sem adaptador, qualidade de áudio superior
+✅ Iluminação RGB colorida — visual gamer impressionante
+✅ Microfone com braço flexível — captação de voz precisa
+✅ Driver 40mm — som rico em detalhes
+✅ Almofadas macias e respiráveis — conforto prolongado
+✅ Peso leve — sem fadiga mesmo em maratonas de jogo
+✅ Compatível com PC, notebook, PS4
+
+📦 ACOMPANHA:
+• Headset HG15 + Cabo USB
+
+🎮 IDEAL PARA: jogos online, comunicação em equipe, streaming
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg15 captain 7.1 usb rgb surround microfone pc notebook ps4"
+},
+{
+  n:15, nome:"Headset Fantech HG16 Sniper RGB 7.1", emoji:"🎧",
+  preco:"R$ 267,00", compra:"~R$ 187", margem:"~29%",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG16 Sniper 7.1 USB RGB Iluminação LED PC Notebook",
+  descricao:`🎧 HEADSET FANTECH HG16 SNIPER — MIRE COM PRECISÃO SONORA!
+
+✅ 7.1 canais USB — localize inimigos pelo som
+✅ Iluminação RGB LED vibrante — destaque no setup
+✅ Microfone omnidirecional — voz clara sem chiado
+✅ Driver 40mm de alta fidelidade — cada detalhe do áudio
+✅ Almofada de espuma com couro — conforto real
+✅ Headband com ajuste de tamanho
+✅ Compatível com Windows, macOS
+
+📦 ACOMPANHA:
+• Headset HG16 Sniper + Cabo USB
+
+🎮 IDEAL PARA: FPS competitivo onde áudio faz diferença
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg16 sniper 7.1 usb rgb led microfone pc notebook fps competitivo"
+},
+{
+  n:16, nome:"Headset Fantech HG11 Space Edition 7.1", emoji:"🎧",
+  preco:"R$ 356,00", compra:"~R$ 256", margem:"~27%",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG11 Captain Space Edition 7.1 USB Surround RGB",
+  descricao:`🎧 HG11 SPACE EDITION — EDIÇÃO ESPECIAL PARA QUEM JOGA NO PRÓXIMO NÍVEL!
+
+✅ Som Surround 7.1 USB — imersão total no jogo
+✅ Design Space Edition exclusivo — edição limitada colecionável
+✅ Controle remoto no cabo — volume e mudo instantâneos
+✅ RGB com tema espacial — setup diferenciado
+✅ Microfone com cancelamento de ruído
+✅ Driver 40mm neodímio premium
+✅ Almofadas extra macias — horas sem cansaço
+✅ Compatível com PC e notebook
+
+📦 ACOMPANHA:
+• Headset HG11 Space Edition + Cabo USB com controle
+
+🎮 IDEAL PARA: gamers que buscam exclusividade + performance
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg11 space edition 7.1 usb surround rgb edição especial microfone"
+},
+{
+  n:17, nome:"Kit Teclado + Mouse Fantech KM-100", emoji:"⌨️",
+  preco:"R$ 113,00", compra:"~R$ 67", margem:"~41%",
+  cat:"Informática > Teclados e Mouses", estoque:"Dropi Nacional",
+  titulo:"Kit Teclado e Mouse Fantech KM-100 Teclas Silenciosas USB PC Notebook Office",
+  descricao:`⌨️ KIT FANTECH KM-100 — TECLADO + MOUSE, TUDO QUE VOCÊ PRECISA!
+
+✅ Teclas silenciosas — 40% mais suave, não incomoda ninguém
+✅ Mouse incluído — combo completo pronto para usar
+✅ Teclado ABNT2 — layout em português
+✅ Conexão USB — plug and play, sem driver
+✅ Design slim e moderno — ótimo para home office
+✅ Anti-ghosting — registra todas as teclas simultâneas
+✅ Compatível com Windows, macOS, Linux
+
+📦 ACOMPANHA:
+• Teclado Fantech + Mouse Fantech + Cabos USB
+
+💼 IDEAL PARA: home office, trabalho, estudos, digitação prolongada
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"kit teclado mouse fantech km-100 silencioso usb office home office abnt2 plug and play"
+},
+{
+  n:18, nome:"Processador Intel Xeon E5-2630 V4", emoji:"⚙️",
+  preco:"R$ 630,00", compra:"~R$ 469", margem:"~25%",
+  cat:"Informática > Processadores", estoque:"Dropi Nacional",
+  titulo:"Processador Intel Xeon E5-2630 V4 2.2GHz 10 Núcleos LGA2011-3 Servidor Workstation",
+  descricao:`⚙️ PROCESSADOR XEON E5-2630 V4 — PODER PROFISSIONAL!
+
+✅ 10 núcleos / 20 threads — multitarefa sem limites
+✅ Clock base 2.2GHz / Turbo até 3.1GHz
+✅ Cache 25MB — velocidade em processamento complexo
+✅ Socket LGA2011-3 — compatível com placas X99
+✅ Suporta até 256GB RAM DDR4 ECC
+✅ Ideal para virtualização, edição de vídeo, renderização
+✅ Consumo TDP 85W — ótimo custo-benefício energético
+
+📦 ACOMPANHA:
+• Processador Intel Xeon E5-2630 V4
+
+💻 IDEAL PARA: Servidores, workstations, máquinas de renderização
+
+⚠️ Necessita placa-mãe X99 com socket LGA2011-3
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"processador intel xeon e5-2630 v4 10 nucleos lga2011 servidor workstation renderizacao"
 }
 ];
 
