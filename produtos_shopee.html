@@ -9,14 +9,38 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#050810;color:#e2e8f0;min-height:100vh;padding:20px}
 h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background:linear-gradient(135deg,#00d4ff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{text-align:center;color:#64748b;font-size:12px;margin-bottom:8px}
-.counter{text-align:center;margin-bottom:20px;color:#94a3b8;font-size:13px}
+.counter{text-align:center;margin-bottom:16px;color:#94a3b8;font-size:13px}
 .counter span{color:#00d4ff;font-weight:700}
-.badge-dropi{display:inline-flex;align-items:center;gap:6px;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:#a855f7;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:20px}
-.badge-wrap{text-align:center;margin-bottom:16px}
+.badge-wrap{text-align:center;margin-bottom:10px}
+.badge-dropi{display:inline-flex;align-items:center;gap:6px;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:#a855f7;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px}
+/* METAS */
+.metas-box{max-width:1200px;margin:0 auto 24px auto;background:linear-gradient(135deg,#0a0f1e,#0f1628);border:1px solid rgba(0,212,255,.2);border-radius:16px;padding:18px 22px}
+.metas-title{font-size:15px;font-weight:800;color:#00d4ff;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.metas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.meta-card{background:#050810;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px;text-align:center}
+.meta-label{font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.meta-value{font-size:18px;font-weight:800;color:#22c55e}
+.meta-sub{font-size:10px;color:#94a3b8;margin-top:2px}
+.metas-meses{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.mes-card{background:#050810;border-radius:10px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.06)}
+.mes-card.mes1{border-color:rgba(34,197,94,.3)}
+.mes-card.mes2{border-color:rgba(251,146,60,.3)}
+.mes-card.mes3{border-color:rgba(168,85,247,.3)}
+.mes-num{font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.mes-card.mes1 .mes-num{color:#22c55e}
+.mes-card.mes2 .mes-num{color:#fb923c}
+.mes-card.mes3 .mes-num{color:#a855f7}
+.mes-meta{font-size:16px;font-weight:800;color:#e2e8f0}
+.mes-desc{font-size:10px;color:#64748b;margin-top:3px}
+.mes-prize{font-size:11px;font-weight:700;margin-top:4px}
+.mes-card.mes1 .mes-prize{color:#22c55e}
+.mes-card.mes2 .mes-prize{color:#fb923c}
+.mes-card.mes3 .mes-prize{color:#a855f7}
+/* GRID PRODUTOS */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;max-width:1200px;margin:0 auto}
 .card{background:#0a0f1e;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden}
-.prod-foto{width:100%;height:210px;object-fit:cover;display:block;border-radius:10px 10px 0 0;}
-.prod-foto-err{width:100%;height:210px;display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#0a0f1e,#0f1628);border-radius:10px 10px 0 0;}
+.prod-foto{width:100%;height:210px;object-fit:cover;display:block;border-radius:10px 10px 0 0}
+.prod-foto-err{width:100%;height:210px;display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#0a0f1e,#0f1628);border-radius:10px 10px 0 0}
 .card-head{background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(168,85,247,.08));padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
 .prod-num{font-size:10px;color:#00d4ff;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .prod-name{font-size:15px;font-weight:700;margin:3px 0}
@@ -34,7 +58,6 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 .copy-btn{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);color:#00d4ff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;cursor:pointer;transition:background .15s;white-space:nowrap}
 .copy-btn:hover{background:rgba(0,212,255,.2)}
 .copy-btn.ok{background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.3);color:#22c55e}
-.divider{height:1px;background:rgba(255,255,255,.05);margin:10px 0}
 .info-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
 .info-box{flex:1;min-width:80px;background:#0f1628;border-radius:8px;padding:8px 10px;text-align:center}
 .info-box .ib-label{font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:2px}
@@ -42,16 +65,78 @@ h1{text-align:center;font-size:22px;font-weight:800;margin-bottom:6px;background
 </style>
 </head>
 <body>
-<h1>🛍️ Novo Estoque — SyncTech BR</h1>
-<p class="sub">Fornecedor: Dropi Nacional · 27 produtos · Fantech + Tech + Pet · Entrega 3–7 dias</p>
-<div class="badge-wrap"><span class="badge-dropi">⚡ Dropi Nacional · Eletrônicos Fantech + Pet · Giro Rápido</span></div>
-<div class="counter">Produtos: <span>27</span> · Nicho: <span>Tech & Gaming & Pet</span> · Shopee: <span>SyncTech BR</span></div>
+<h1>🛍️ Estoque Atual — SyncTech BR</h1>
+<p class="sub">Fornecedor: Dropi Nacional · 24 produtos · Fantech + Tech + Pet · Entrega 3–7 dias</p>
+<div class="badge-wrap"><span class="badge-dropi">⚡ Dropi Nacional · Preços Competitivos · Atualizado 26/05/2026</span></div>
+<div class="counter">Produtos: <span>24</span> · Ticket médio: <span>R$113,07</span> · Shopee: <span>SyncTech BR</span></div>
+
+<!-- METAS RECALCULADAS -->
+<div class="metas-box">
+  <div class="metas-title">🎯 Metas Recalculadas — 24 Produtos · Preços Novos</div>
+  <div class="metas-grid">
+    <div class="meta-card">
+      <div class="meta-label">Produtos Ativos</div>
+      <div class="meta-value">24</div>
+      <div class="meta-sub">18 tech + 6 pet</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Ticket Médio</div>
+      <div class="meta-value">R$113</div>
+      <div class="meta-sub">preços com desconto</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Soma do Estoque</div>
+      <div class="meta-value">R$2.714</div>
+      <div class="meta-sub">valor total catálogo</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Margem Estimada</div>
+      <div class="meta-value">~R$5</div>
+      <div class="meta-sub">lucro líquido/venda</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Shopee Taxa</div>
+      <div class="meta-value">8%</div>
+      <div class="meta-sub">comissão por venda</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Dropi Fee</div>
+      <div class="meta-value">R$18</div>
+      <div class="meta-sub">por pedido enviado</div>
+    </div>
+  </div>
+  <div class="metas-meses">
+    <div class="mes-card mes1">
+      <div class="mes-num">🌱 Mês 1 — Lançamento</div>
+      <div class="mes-meta">10 vendas</div>
+      <div class="mes-desc">Primeiros clientes · Avaliações 5★</div>
+      <div class="mes-prize">🎯 Foco: reputação + aprendizado</div>
+    </div>
+    <div class="mes-card mes2">
+      <div class="mes-num">📈 Mês 2 — Crescimento</div>
+      <div class="mes-meta">30 vendas</div>
+      <div class="mes-desc">~R$3.400 faturado · ~R$150 lucro</div>
+      <div class="mes-prize">🎮 Comprar periférico gamer</div>
+    </div>
+    <div class="mes-card mes3">
+      <div class="mes-num">🚀 Mês 3 — Escala</div>
+      <div class="mes-meta">60 vendas</div>
+      <div class="mes-desc">~R$6.780 faturado · ~R$300 lucro</div>
+      <div class="mes-prize">🏆 Reajustar preços + lucro maior</div>
+    </div>
+  </div>
+  <div style="margin-top:12px;padding:10px 14px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:8px;font-size:11px;color:#fbbf24">
+    ⚠️ <strong>Nota:</strong> Preços reduzidos 6–17% para competir na Shopee. Margem líquida é fina (~R$3–7/venda).
+    Estratégia: acumular avaliações nos primeiros 30 dias → aumentar preços gradualmente → escalar no Mês 3.
+  </div>
+</div>
+
 <div class="grid" id="grid"></div>
 <script>
 var produtos = [
 {
   n:1, nome:"Mouse Evolut Predator RGB 2400DPI", emoji:"🖱️",
-  preco:"R$ 54,90", compra:"~R$ 34", margem:"~37%",
+  preco:"R$ 49,90", compra:"~R$ 21", margem:"~R$2/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Gamer Evolut Predator RGB 2400 DPI 6 Botões LED Colorido PC Notebook",
   descricao:`🖱️ MOUSE GAMER PREDATOR RGB — PRECISE E DOMINA!
@@ -74,7 +159,7 @@ var produtos = [
 },
 {
   n:2, nome:"Mouse Pad Fantech MP44 44×35cm", emoji:"🎯",
-  preco:"R$ 74,90", compra:"~R$ 53", margem:"~29%",
+  preco:"R$ 64,90", compra:"~R$ 37", margem:"~R$0,21/venda",
   cat:"Informática > Mouse Pads", estoque:"Dropi Nacional",
   titulo:"Mouse Pad Gamer Grande Fantech Sven MP44 44x35cm Base Antiderrapante Costura",
   descricao:`🎯 MOUSE PAD FANTECH MP44 — CONTROLE TOTAL NA SUA MESA!
@@ -93,11 +178,11 @@ var produtos = [
 🎮 IDEAL PARA: Setup gamer, home office, gaming de precisão
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"mouse pad gamer fantech mp44 grande 44x35 antiderrapante costura superfície suave setup"
+  tags:"mouse pad gamer fantech mp44 grande 44x35 antiderrapante costura superficie suave setup"
 },
 {
   n:3, nome:"Mouse Fantech G13 Rhasta II 2400DPI", emoji:"🖱️",
-  preco:"R$ 84,90", compra:"~R$ 58", margem:"~32%",
+  preco:"R$ 74,90", compra:"~R$ 44", margem:"~R$1,61/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Gamer Fantech G13 Rhasta II 2400DPI LED Azul 6 Botões USB PC Notebook",
   descricao:`🖱️ MOUSE GAMER FANTECH G13 RHASTA II — VELOCIDADE E PRECISÃO!
@@ -120,7 +205,7 @@ var produtos = [
 },
 {
   n:4, nome:"Mouse Fantech W189 Branco Sem Fio", emoji:"🖱️",
-  preco:"R$ 89,90", compra:"~R$ 63", margem:"~30%",
+  preco:"R$ 79,90", compra:"~R$ 48", margem:"~R$2,31/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Sem Fio Fantech W189 Branco 1200DPI 2.4GHz Alcance 10m Silencioso",
   descricao:`🖱️ MOUSE SEM FIO FANTECH W189 — LIBERDADE DE MOVIMENTO!
@@ -142,54 +227,8 @@ var produtos = [
   tags:"mouse sem fio fantech w189 branco 1200dpi 2.4ghz sem lag receptor usb nano ergonomico"
 },
 {
-  n:5, nome:"Mouse Fantech W188 Preto Sem Fio", emoji:"🖱️",
-  preco:"R$ 89,90", compra:"~R$ 63", margem:"~30%",
-  cat:"Informática > Mouses", estoque:"Dropi Nacional",
-  titulo:"Mouse Sem Fio Fantech W188 Preto 1200DPI 2.4GHz Forma Confortável Ergonômico",
-  descricao:`🖱️ MOUSE SEM FIO FANTECH W188 — CONFORTO EM CADA CLIQUE!
-
-✅ Sem fio 2.4GHz — sem enrolação de cabo
-✅ 1200 DPI — ideal para trabalho e navegação
-✅ Receptor USB nano — compacto, sempre conectado
-✅ Design ergonômico preto — formato confortável para a mão
-✅ Botões silenciosos — não incomoda em ambientes silenciosos
-✅ Compatível com Windows, macOS, Linux
-✅ Plug and play — sem driver
-
-📦 ACOMPANHA:
-• Mouse + Receptor USB nano + Pilhas
-
-💡 IDEAL PARA: home office, escritório, uso diário
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"mouse sem fio fantech w188 preto 1200dpi 2.4ghz ergonomico confortavel silencioso notebook"
-},
-{
-  n:6, nome:"Mouse Fantech Phantom X15 RGB Gamer", emoji:"🖱️",
-  preco:"R$ 139,00", compra:"~R$ 87", margem:"~37%",
-  cat:"Informática > Mouses", estoque:"Dropi Nacional",
-  titulo:"Mouse Gamer Fantech Phantom X15 RGB Macro 7 Botões 4800DPI PC Notebook",
-  descricao:`🖱️ MOUSE GAMER FANTECH PHANTOM X15 — DOMINE CADA PARTIDA!
-
-✅ 4800 DPI ajustável — do casual ao competitivo
-✅ Iluminação RGB — personalize com 7 efeitos de luz
-✅ 7 botões programáveis — macro na palma da mão
-✅ Sensor óptico de alta precisão — zero lag
-✅ Cabo trançado anti-enrolamento 1.8m
-✅ Design ergonômico gamer — grip perfeito
-✅ Compatível com Windows e macOS
-
-📦 ACOMPANHA:
-• Mouse Phantom X15 + Cabo USB
-
-🎮 IDEAL PARA: FPS, MOBA, Battle Royale, Streamer
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"mouse gamer fantech phantom x15 rgb 7 botoes 4800dpi macro pc notebook fps moba"
-},
-{
-  n:7, nome:"Mouse Fantech W189 Preto Sem Fio", emoji:"🖱️",
-  preco:"R$ 96,00", compra:"~R$ 53", margem:"~45%",
+  n:5, nome:"Mouse Fantech W189 Preto Sem Fio", emoji:"🖱️",
+  preco:"R$ 79,90", compra:"~R$ 48", margem:"~R$2,31/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Sem Fio Fantech W189 Preto 1200DPI 2.4GHz Alcance 10m Receptor Nano",
   descricao:`🖱️ MOUSE SEM FIO FANTECH W189 PRETO — LIBERDADE TOTAL!
@@ -211,8 +250,31 @@ var produtos = [
   tags:"mouse sem fio fantech w189 preto 1200dpi 2.4ghz alcance 10m receptor nano plug and play"
 },
 {
-  n:8, nome:"Mouse Fantech W188 Branco Sem Fio", emoji:"🖱️",
-  preco:"R$ 96,00", compra:"~R$ 53", margem:"~45%",
+  n:6, nome:"Mouse Fantech W189 Preto Sem Fio (v2)", emoji:"🖱️",
+  preco:"R$ 79,90", compra:"~R$ 53", margem:"~R$2,31/venda",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Sem Fio Fantech Alcance 10m 2.4GHz W189 Preto 1200DPI Ergonômico",
+  descricao:`🖱️ MOUSE SEM FIO FANTECH W189 PRETO — CONFORTO E PRECISÃO!
+
+✅ Sem fio 2.4GHz — liberdade total de movimento
+✅ 1200 DPI — adequado para trabalho e uso casual
+✅ Receptor USB nano — sempre conectado, nunca atrapalha
+✅ Design ergonômico — reduz fadiga nas longas jornadas
+✅ Liga/desliga — economia de bateria
+✅ Compatível com Windows, macOS, Linux
+✅ Plug and play — sem driver necessário
+
+📦 ACOMPANHA:
+• Mouse W189 + Receptor nano USB
+
+💡 IDEAL PARA: home office, viagens, uso diário
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse sem fio fantech w189 preto 1200dpi 2.4ghz ergonomico home office nano receptor"
+},
+{
+  n:7, nome:"Mouse Fantech W188 Branco Sem Fio", emoji:"🖱️",
+  preco:"R$ 84,90", compra:"~R$ 53", margem:"~R$2,16/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Sem Fio Fantech W188 Branco 1200DPI 2.4GHz Confortável Silencioso",
   descricao:`🖱️ MOUSE SEM FIO FANTECH W188 BRANCO — ELEGÂNCIA SEM FIO!
@@ -234,8 +296,77 @@ var produtos = [
   tags:"mouse sem fio fantech w188 branco 1200dpi 2.4ghz silencioso confortavel home office setup"
 },
 {
-  n:9, nome:"Mouse Fantech Thor X9 RGB 4800DPI", emoji:"🖱️",
-  preco:"R$ 137,00", compra:"~R$ 86", margem:"~37%",
+  n:8, nome:"Mouse Pad Fantech MP80 80×30cm XL", emoji:"🎯",
+  preco:"R$ 89,90", compra:"~R$ 58", margem:"~R$1,30/venda",
+  cat:"Informática > Mouse Pads", estoque:"Dropi Nacional",
+  titulo:"Mouse Pad Gamer XL Fantech Sven MP80 80x30cm Mesa Completa Antiderrapante Costura",
+  descricao:`🎯 MOUSE PAD FANTECH MP80 — DOMINE TODA A MESA!
+
+✅ Tamanho XL 80×30cm — cobre mouse, teclado e braços
+✅ Superfície de microfibra premium — controle e velocidade
+✅ Base de borracha grossa — zero deslizamento
+✅ Costura reforçada nas bordas — não desfia nunca
+✅ Espessura 4mm — proteção superior para o pulso
+✅ Lavável à mão — higiene garantida
+✅ Compatível com mouse óptico e laser de qualquer DPI
+
+📦 ACOMPANHA:
+• 1 Mouse Pad Fantech MP80
+
+🎮 IDEAL PARA: setup gamer completo, streamers, home office pro
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse pad gamer xl fantech mp80 80x30 mesa completa antiderrapante costura reforcada"
+},
+{
+  n:9, nome:"Kit Teclado + Mouse Fantech KM-100", emoji:"⌨️",
+  preco:"R$ 99,90", compra:"~R$ 66", margem:"~R$2,70/venda",
+  cat:"Informática > Teclados e Mouses", estoque:"Dropi Nacional",
+  titulo:"Kit Teclado e Mouse Fantech KM-100 Teclas Silenciosas USB PC Notebook Office",
+  descricao:`⌨️ KIT FANTECH KM-100 — TECLADO + MOUSE, TUDO QUE VOCÊ PRECISA!
+
+✅ Teclas silenciosas — 40% mais suave, não incomoda ninguém
+✅ Mouse incluído — combo completo pronto para usar
+✅ Teclado ABNT2 — layout em português
+✅ Conexão USB — plug and play, sem driver
+✅ Design slim e moderno — ótimo para home office
+✅ Anti-ghosting — registra todas as teclas simultâneas
+✅ Compatível com Windows, macOS, Linux
+
+📦 ACOMPANHA:
+• Teclado Fantech + Mouse Fantech + Cabos USB
+
+💼 IDEAL PARA: home office, trabalho, estudos, digitação prolongada
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"kit teclado mouse fantech km-100 silencioso usb office home office abnt2 plug and play"
+},
+{
+  n:10, nome:"Mouse Fantech Phantom X15 RGB Gamer", emoji:"🖱️",
+  preco:"R$ 119,90", compra:"~R$ 86", margem:"~R$0,83/venda",
+  cat:"Informática > Mouses", estoque:"Dropi Nacional",
+  titulo:"Mouse Gamer Fantech Phantom X15 RGB Macro 7 Botões 4800DPI PC Notebook",
+  descricao:`🖱️ MOUSE GAMER FANTECH PHANTOM X15 — DOMINE CADA PARTIDA!
+
+✅ 4800 DPI ajustável — do casual ao competitivo
+✅ Iluminação RGB — personalize com 7 efeitos de luz
+✅ 7 botões programáveis — macro na palma da mão
+✅ Sensor óptico de alta precisão — zero lag
+✅ Cabo trançado anti-enrolamento 1.8m
+✅ Design ergonômico gamer — grip perfeito
+✅ Compatível com Windows e macOS
+
+📦 ACOMPANHA:
+• Mouse Phantom X15 + Cabo USB
+
+🎮 IDEAL PARA: FPS, MOBA, Battle Royale, Streamer
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"mouse gamer fantech phantom x15 rgb 7 botoes 4800dpi macro pc notebook fps moba"
+},
+{
+  n:11, nome:"Mouse Fantech Thor X9 RGB 4800DPI", emoji:"🖱️",
+  preco:"R$ 119,90", compra:"~R$ 85", margem:"~R$2,39/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Gamer Fantech Thor X9 RGB Macro 7 Botões 4800DPI LED Colorido PC",
   descricao:`🖱️ MOUSE GAMER FANTECH THOR X9 — PODER DO TROVÃO NA SUA MÃO!
@@ -257,8 +388,8 @@ var produtos = [
   tags:"mouse gamer fantech thor x9 rgb 4800dpi 7 botoes macro led colorido pc notebook gamer"
 },
 {
-  n:10, nome:"Mouse Fantech Crypto VX7 8000DPI", emoji:"🖱️",
-  preco:"R$ 133,00", compra:"~R$ 82", margem:"~38%",
+  n:12, nome:"Mouse Fantech Crypto VX7 8000DPI", emoji:"🖱️",
+  preco:"R$ 119,90", compra:"~R$ 82", margem:"~R$5,51/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Gamer Fantech Crypto VX7 8000DPI Macro 6 Botões RGB PC Notebook",
   descricao:`🖱️ MOUSE GAMER FANTECH CRYPTO VX7 — 8000 DPI DE PURO PODER!
@@ -280,8 +411,8 @@ var produtos = [
   tags:"mouse gamer fantech crypto vx7 8000dpi rgb 6 botoes macro esports fps competitivo"
 },
 {
-  n:11, nome:"Mouse Fantech Crypto VX7 Space Edition", emoji:"🖱️",
-  preco:"R$ 133,00", compra:"~R$ 82", margem:"~38%",
+  n:13, nome:"Mouse Fantech Crypto VX7 Space Edition", emoji:"🖱️",
+  preco:"R$ 119,90", compra:"~R$ 82", margem:"~R$5,51/venda",
   cat:"Informática > Mouses", estoque:"Dropi Nacional",
   titulo:"Mouse Gamer Fantech Crypto VX7 Space Edition 8000DPI RGB 6 Botões PC",
   descricao:`🖱️ MOUSE GAMER VX7 SPACE EDITION — ACIMA DE QUALQUER LIMITE!
@@ -303,31 +434,78 @@ var produtos = [
   tags:"mouse gamer fantech crypto vx7 space edition 8000dpi rgb 6 botoes macro fps esports"
 },
 {
-  n:12, nome:"Mouse Pad Fantech MP80 80×30cm", emoji:"🎯",
-  preco:"R$ 103,00", compra:"~R$ 59", margem:"~43%",
-  cat:"Informática > Mouse Pads", estoque:"Dropi Nacional",
-  titulo:"Mouse Pad Gamer XL Fantech Sven MP80 80x30cm Mesa Completa Antiderrapante Costura",
-  descricao:`🎯 MOUSE PAD FANTECH MP80 — DOMINE TODA A MESA!
+  n:14, nome:"Suporte Fixo Universal p/ TV 10–85 Pol", emoji:"📺",
+  preco:"R$ 59,90", compra:"~R$ 30", margem:"~R$2,55/venda",
+  cat:"Eletrodomésticos > TVs > Suportes", estoque:"Dropi Nacional",
+  titulo:"Suporte Fixo Universal para TV LED LCD Plasma 10 a 85 Polegadas Parede Resistente",
+  descricao:`📺 SUPORTE FIXO UNIVERSAL PARA TV — INSTALE E APROVEITE!
 
-✅ Tamanho XL 80×30cm — cobre mouse, teclado e braços
-✅ Superfície de microfibra premium — controle e velocidade
-✅ Base de borracha grossa — zero deslizamento
-✅ Costura reforçada nas bordas — não desfia nunca
-✅ Espessura 4mm — proteção superior para o pulso
-✅ Lavável à mão — higiene garantida
-✅ Compatível com mouse óptico e laser de qualquer DPI
+✅ Universal — compatível com TVs LED, LCD e Plasma de 10 a 85 polegadas
+✅ Fixação na parede — libera espaço e valoriza seu ambiente
+✅ Suporta até 60kg — resistente e seguro
+✅ Material de aço — durável e anti-ferrugem
+✅ Fácil instalação — parafusos e manual inclusos
+✅ VESA universal — encaixe padrão da maioria das marcas
+✅ Design slim — TV fica rente à parede
 
 📦 ACOMPANHA:
-• 1 Mouse Pad Fantech MP80
+• Suporte + Parafusos + Manual de instalação
 
-🎮 IDEAL PARA: setup gamer completo, streamers, home office pro
+📺 COMPATÍVEL COM: Samsung, LG, Sony, Philips, TCL, AOC, Panasonic e outras
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"mouse pad gamer xl fantech mp80 80x30 mesa completa antiderrapante costura reforçada"
+  tags:"suporte tv parede fixo universal led lcd plasma 10 85 polegadas samsung lg sony vesa instalacao"
 },
 {
-  n:13, nome:"Headset Gamer Fantech HG11 7.1 USB", emoji:"🎧",
-  preco:"R$ 345,00", compra:"~R$ 247", margem:"~28%",
+  n:15, nome:"Headset Fantech HG15 Captain RGB 7.1", emoji:"🎧",
+  preco:"R$ 239,90", compra:"~R$ 191", margem:"~R$6,75/venda",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG15 Captain 7.1 USB RGB Virtual Surround PC Notebook",
+  descricao:`🎧 HEADSET FANTECH HG15 — IMERSÃO TOTAL COM RGB!
+
+✅ Virtual Surround 7.1 — posicione o som com precisão
+✅ USB — sem adaptador, qualidade de áudio superior
+✅ Iluminação RGB colorida — visual gamer impressionante
+✅ Microfone com braço flexível — captação de voz precisa
+✅ Driver 40mm — som rico em detalhes
+✅ Almofadas macias e respiráveis — conforto prolongado
+✅ Peso leve — sem fadiga mesmo em maratonas de jogo
+✅ Compatível com PC, notebook, PS4
+
+📦 ACOMPANHA:
+• Headset HG15 + Cabo USB
+
+🎮 IDEAL PARA: jogos online, comunicação em equipe, streaming
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg15 captain 7.1 usb rgb surround microfone pc notebook ps4"
+},
+{
+  n:16, nome:"Headset Fantech HG16 Sniper RGB 7.1", emoji:"🎧",
+  preco:"R$ 229,90", compra:"~R$ 186", margem:"~R$2,23/venda",
+  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
+  titulo:"Headset Gamer Fantech HG16 Sniper 7.1 USB RGB Iluminação LED PC Notebook",
+  descricao:`🎧 HEADSET FANTECH HG16 SNIPER — MIRE COM PRECISÃO SONORA!
+
+✅ 7.1 canais USB — localize inimigos pelo som
+✅ Iluminação RGB LED vibrante — destaque no setup
+✅ Microfone omnidirecional — voz clara sem chiado
+✅ Driver 40mm de alta fidelidade — cada detalhe do áudio
+✅ Almofada de espuma com couro — conforto real
+✅ Headband com ajuste de tamanho
+✅ Compatível com Windows, macOS
+
+📦 ACOMPANHA:
+• Headset HG16 Sniper + Cabo USB
+
+🎮 IDEAL PARA: FPS competitivo onde áudio faz diferença
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"headset gamer fantech hg16 sniper 7.1 usb rgb led microfone pc notebook fps competitivo"
+},
+{
+  n:17, nome:"Headset Gamer Fantech HG11 7.1 USB", emoji:"🎧",
+  preco:"R$ 299,90", compra:"~R$ 247", margem:"~R$5,81/venda",
   cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
   titulo:"Headset Gamer Fantech HG11 Captain 7.1 USB Surround Som Controle Remoto RGB",
   descricao:`🎧 HEADSET GAMER FANTECH HG11 CAPTAIN — MERGULHE NO JOGO!
@@ -351,61 +529,14 @@ var produtos = [
   tags:"headset gamer fantech hg11 captain 7.1 usb surround rgb controle remoto microfone pc"
 },
 {
-  n:14, nome:"Headset Fantech HG15 Captain RGB 7.1", emoji:"🎧",
-  preco:"R$ 273,00", compra:"~R$ 191", margem:"~30%",
-  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
-  titulo:"Headset Gamer Fantech HG15 Captain 7.1 USB RGB Virtual Surround PC Notebook",
-  descricao:`🎧 HEADSET FANTECH HG15 — IMERSÃO TOTAL COM RGB!
-
-✅ Virtual Surround 7.1 — posicione o som com precisão
-✅ USB — sem adaptador, qualidade de áudio superior
-✅ Iluminação RGB colorida — visual gamer impressionante
-✅ Microfone com braço flexível — captação de voz precisa
-✅ Driver 40mm — som rico em detalhes
-✅ Almofadas macias e respiráveis — conforto prolongado
-✅ Peso leve — sem fadiga mesmo em maratonas de jogo
-✅ Compatível com PC, notebook, PS4
-
-📦 ACOMPANHA:
-• Headset HG15 + Cabo USB
-
-🎮 IDEAL PARA: jogos online, comunicação em equipe, streaming
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"headset gamer fantech hg15 captain 7.1 usb rgb surround microfone pc notebook ps4"
-},
-{
-  n:15, nome:"Headset Fantech HG16 Sniper RGB 7.1", emoji:"🎧",
-  preco:"R$ 267,00", compra:"~R$ 187", margem:"~29%",
-  cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
-  titulo:"Headset Gamer Fantech HG16 Sniper 7.1 USB RGB Iluminação LED PC Notebook",
-  descricao:`🎧 HEADSET FANTECH HG16 SNIPER — MIRE COM PRECISÃO SONORA!
-
-✅ 7.1 canais USB — localize inimigos pelo som
-✅ Iluminação RGB LED vibrante — destaque no setup
-✅ Microfone omnidirecional — voz clara sem chiado
-✅ Driver 40mm de alta fidelidade — cada detalhe do áudio
-✅ Almofada de espuma com couro — conforto real
-✅ Headband com ajuste de tamanho
-✅ Compatível com Windows, macOS
-
-📦 ACOMPANHA:
-• Headset HG16 Sniper + Cabo USB
-
-🎮 IDEAL PARA: FPS competitivo onde áudio faz diferença
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"headset gamer fantech hg16 sniper 7.1 usb rgb led microfone pc notebook fps competitivo"
-},
-{
-  n:16, nome:"Headset Fantech HG11 Space Edition 7.1", emoji:"🎧",
-  preco:"R$ 356,00", compra:"~R$ 256", margem:"~27%",
+  n:18, nome:"Headset Fantech HG11 Space Edition 7.1", emoji:"🎧",
+  preco:"R$ 309,90", compra:"~R$ 256", margem:"~R$6,43/venda",
   cat:"Áudio > Fones e Headsets", estoque:"Dropi Nacional",
   titulo:"Headset Gamer Fantech HG11 Captain Space Edition 7.1 USB Surround RGB",
   descricao:`🎧 HG11 SPACE EDITION — EDIÇÃO ESPECIAL PARA QUEM JOGA NO PRÓXIMO NÍVEL!
 
 ✅ Som Surround 7.1 USB — imersão total no jogo
-✅ Design Space Edition exclusivo — edição limitada colecionável
+✅ Design Space Edition exclusivo — edição colecionável
 ✅ Controle remoto no cabo — volume e mudo instantâneos
 ✅ RGB com tema espacial — setup diferenciado
 ✅ Microfone com cancelamento de ruído
@@ -419,220 +550,34 @@ var produtos = [
 🎮 IDEAL PARA: gamers que buscam exclusividade + performance
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"headset gamer fantech hg11 space edition 7.1 usb surround rgb edição especial microfone"
+  tags:"headset gamer fantech hg11 space edition 7.1 usb surround rgb edicao especial microfone"
 },
 {
-  n:17, nome:"Kit Teclado + Mouse Fantech KM-100", emoji:"⌨️",
-  preco:"R$ 113,00", compra:"~R$ 67", margem:"~41%",
-  cat:"Informática > Teclados e Mouses", estoque:"Dropi Nacional",
-  titulo:"Kit Teclado e Mouse Fantech KM-100 Teclas Silenciosas USB PC Notebook Office",
-  descricao:`⌨️ KIT FANTECH KM-100 — TECLADO + MOUSE, TUDO QUE VOCÊ PRECISA!
-
-✅ Teclas silenciosas — 40% mais suave, não incomoda ninguém
-✅ Mouse incluído — combo completo pronto para usar
-✅ Teclado ABNT2 — layout em português
-✅ Conexão USB — plug and play, sem driver
-✅ Design slim e moderno — ótimo para home office
-✅ Anti-ghosting — registra todas as teclas simultâneas
-✅ Compatível com Windows, macOS, Linux
-
-📦 ACOMPANHA:
-• Teclado Fantech + Mouse Fantech + Cabos USB
-
-💼 IDEAL PARA: home office, trabalho, estudos, digitação prolongada
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"kit teclado mouse fantech km-100 silencioso usb office home office abnt2 plug and play"
-},
-{
-  n:18, nome:"Processador Intel Xeon E5-2630 V4", emoji:"⚙️",
-  preco:"R$ 630,00", compra:"~R$ 469", margem:"~25%",
-  cat:"Informática > Processadores", estoque:"Dropi Nacional",
-  titulo:"Processador Intel Xeon E5-2630 V4 2.2GHz 10 Núcleos LGA2011-3 Servidor Workstation",
-  descricao:`⚙️ PROCESSADOR XEON E5-2630 V4 — PODER PROFISSIONAL!
-
-✅ 10 núcleos / 20 threads — multitarefa sem limites
-✅ Clock base 2.2GHz / Turbo até 3.1GHz
-✅ Cache 25MB — velocidade em processamento complexo
-✅ Socket LGA2011-3 — compatível com placas X99
-✅ Suporta até 256GB RAM DDR4 ECC
-✅ Ideal para virtualização, edição de vídeo, renderização
-✅ Consumo TDP 85W — ótimo custo-benefício energético
-
-📦 ACOMPANHA:
-• Processador Intel Xeon E5-2630 V4
-
-💻 IDEAL PARA: Servidores, workstations, máquinas de renderização
-
-⚠️ Necessita placa-mãe X99 com socket LGA2011-3
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"processador intel xeon e5-2630 v4 10 nucleos lga2011 servidor workstation renderizacao"
-},
-{
-  n:19, nome:"Suporte Fixo Universal p/ TV 10–85 Pol", emoji:"📺",
-  preco:"R$ 66,00", compra:"~R$ 30", margem:"~18%",
-  cat:"Eletrodomésticos > TVs e Acessórios > Suportes de TV", estoque:"Dropi Nacional",
-  titulo:"Suporte Fixo Universal para TV LED LCD Plasma 10 a 85 Polegadas Parede Resistente",
-  descricao:`📺 SUPORTE FIXO UNIVERSAL PARA TV — INSTALE E APROVEITE!
-
-✅ Universal — compatível com TVs LED, LCD e Plasma de 10 a 85 polegadas
-✅ Fixação na parede — libera espaço e valoriza seu ambiente
-✅ Suporta até 60kg — resistente e seguro
-✅ Material de aço — durável e anti-ferrugem
-✅ Fácil instalação — parafusos e manual inclusos
-✅ VESA universal — encaixe padrão da maioria das marcas (Samsung, LG, Sony, Philips, etc.)
-✅ Design slim — TV fica rente à parede
-
-📦 ACOMPANHA:
-• Suporte + Parafusos + Manual de instalação
-
-📺 COMPATÍVEL COM: Samsung, LG, Sony, Philips, TCL, AOC, Panasonic e outras
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"suporte tv parede fixo universal led lcd plasma 10 85 polegadas samsung lg sony vesa instalacao"
-},
-{
-  n:20, nome:"Colchonete Pet Toddy Impermeável Grande", emoji:"🐾",
-  preco:"R$ 65,00", compra:"~R$ 29", margem:"~39%",
+  n:19, nome:"Cama Pet Atacadão Impermeável Extra Grande", emoji:"🛏️",
+  preco:"R$ 69,90", compra:"~R$ 37", margem:"~R$4,73/venda",
   cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Colchonete Pet Toddy Impermeável Grande Cama para Cachorro Gato Lavável Macio",
-  descricao:`🐾 COLCHONETE PET TODDY IMPERMEÁVEL GRANDE — CONFORTO MÁXIMO PARA SEU PET!
+  titulo:"Cama Pet Atacadão Impermeável Extra Grande Cachorro Gato Lavável Resistente XL",
+  descricao:`🛏️ CAMA PET ATACADÃO EXTRA GRANDE — O MÁXIMO EM CONFORTO PARA PETS GIGANTES!
 
-✅ Impermeável — protege o colchonete de líquidos e acidentes
-✅ Tamanho grande — espaço confortável para cães médios e grandes
-✅ Material macio e lavável — higiene fácil e prática
-✅ Capa removível — lavar é simples, sem complicação
-✅ Base antiderrapante — fica no lugar mesmo quando o pet se mexe
-✅ Enchimento espesso — suporte e conforto para as articulações
-✅ Ideal para cães e gatos
-
-📦 ACOMPANHA:
-• Colchonete Pet Toddy Grande
-
-🐶 IDEAL PARA: cães e gatos de porte médio a grande
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"colchonete cama pet cachorro gato impermeavel grande macio lavavel antiderrapante conforto"
-},
-{
-  n:21, nome:"Colchonete Arranhador para Gatos Zoe", emoji:"🐱",
-  preco:"R$ 65,00", compra:"~R$ 29", margem:"~39%",
-  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Colchonete Arranhador para Gatos Zoe Cama Macia com Textura para Unhas Gato",
-  descricao:`🐱 COLCHONETE ARRANHADOR ZOE — CAMA E ARRANHADOR EM UM SÓ!
-
-✅ 2 em 1: cama confortável + superfície para arranhar
-✅ Protege móveis e sofás — gatos arranha no lugar certo
-✅ Material resistente — suporta as garras sem rasgar
-✅ Superfície macia e aconchegante — gatos adoram
-✅ Leve e fácil de mover — coloque onde quiser
-✅ Fácil de limpar — remova pelos com facilidade
-✅ Design moderno — combina com sua decoração
+✅ Tamanho EXTRA GRANDE — acomoda as maiores raças com conforto
+✅ Impermeável reforçado — proteção máxima contra umidade
+✅ 100% lavável — mantém higiene perfeita
+✅ Base antiderrapante — estável em pisos lisos ou carpet
+✅ Espuma ortopédica densa — ideal para cães com problemas nas articulações
+✅ Borda almofadada — apoio para cabeça e descanso total
+✅ Material resistente — suporta o peso de raças grandes
 
 📦 ACOMPANHA:
-• Colchonete Arranhador Zoe
+• Cama Pet Atacadão Extra Grande (XL)
 
-🐱 IDEAL PARA: gatos de qualquer porte e idade
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"colchonete arranhador gato zoe cama macio unhas brinquedo felino conforto pet"
-},
-{
-  n:22, nome:"Cama Pet Atacadão Impermeável Média", emoji:"🛏️",
-  preco:"R$ 67,00", compra:"~R$ 31", margem:"~38%",
-  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Cama Pet Atacadão Impermeável Média para Cão e Gato Lavável Base Antiderrapante",
-  descricao:`🛏️ CAMA PET ATACADÃO IMPERMEÁVEL MÉDIA — SEU PET MERECE DESCANSAR COM ESTILO!
-
-✅ Impermeável — protege contra xixi, água e sujeira
-✅ Tamanho médio — ideal para cães e gatos de porte médio
-✅ Lavável — pode lavar na máquina sem problemas
-✅ Base antiderrapante — não desliza no piso
-✅ Enchimento de espuma densa — suporte para as articulações
-✅ Borda elevada — seu pet encosta a cabeça com conforto
-✅ Tecido macio premium — pelagem não fica presa
-
-📦 ACOMPANHA:
-• Cama Pet Atacadão Média
-
-🐾 IDEAL PARA: cães e gatos de porte pequeno a médio
+🐶 IDEAL PARA: Labrador, Golden Retriever, Pastor Alemão, Rottweiler, Dogue Alemão
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"cama pet cachorro gato impermeavel media lavavel antiderrapante espuma borda elevada conforto"
+  tags:"cama pet extra grande xl impermeavel cachorro labrador golden pastor rottweiler lavavel ortopedica"
 },
 {
-  n:23, nome:"Cama Pet Atacadão Impermeável Grande", emoji:"🛏️",
-  preco:"R$ 70,00", compra:"~R$ 33", margem:"~37%",
-  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Cama Pet Atacadão Impermeável Grande para Cachorro Gato Lavável Resistente",
-  descricao:`🛏️ CAMA PET ATACADÃO IMPERMEÁVEL GRANDE — ESPAÇO E CONFORTO PARA PETS MAIORES!
-
-✅ Impermeável — proteção total contra acidentes e umidade
-✅ Tamanho grande — ótima para raças médias e grandes
-✅ 100% lavável — higiene sem esforço
-✅ Base antiderrapante — estável em qualquer piso
-✅ Espuma de alta densidade — durável e ortopédica
-✅ Borda almofadada elevada — segurança e aconchego
-✅ Tecido premium — suave ao toque
-
-📦 ACOMPANHA:
-• Cama Pet Atacadão Grande
-
-🐾 IDEAL PARA: cães de porte médio a grande, labradores, pastores, golden retrievers
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"cama pet cachorro gato impermeavel grande lavavel resistente espuma alta densidade borda almofadada"
-},
-{
-  n:24, nome:"Colchonete Pet Toddy Impermeável Gigante", emoji:"🐾",
-  preco:"R$ 72,00", compra:"~R$ 35", margem:"~35%",
-  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Colchonete Pet Toddy Impermeável Gigante Cama Extra Grande Cachorro Gato Lavável",
-  descricao:`🐾 COLCHONETE PET TODDY GIGANTE — PARA OS PETS QUE AMAM ESPAÇO!
-
-✅ Tamanho GIGANTE — espaço de sobra para cães de grande porte
-✅ Impermeável — protege contra acidentes e derrames
-✅ Capa removível e lavável — fácil de manter limpo
-✅ Base antiderrapante — firmeza no chão
-✅ Enchimento espesso confortável — excelente para articulações
-✅ Resistente a mordidas e arranhões
-✅ Material hipoalergênico — seguro para animais sensíveis
-
-📦 ACOMPANHA:
-• Colchonete Pet Toddy Gigante
-
-🐶 IDEAL PARA: Labradores, Golden, Pastores, São Bernardo e raças gigantes
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"colchonete pet gigante cachorro grande impermeavel lavavel toddy cama extra grande raças grandes"
-},
-{
-  n:25, nome:"Colchonete Pet Quality Impermeável Pequeno", emoji:"🐾",
-  preco:"R$ 74,00", compra:"~R$ 36", margem:"~35%",
-  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Colchonete Pet Quality Impermeável Pequeno Cama para Cachorro Gato Macio Premium",
-  descricao:`🐾 COLCHONETE PET QUALITY IMPERMEÁVEL PEQUENO — QUALIDADE PREMIUM PARA SEU PET!
-
-✅ Impermeável — impermeabilização reforçada de alta qualidade
-✅ Tamanho ideal para pequenos — Poodle, Shih Tzu, Maltês, Yorkshire
-✅ Material premium — mais macio e durável que os comuns
-✅ Lavável na máquina — praticidade total
-✅ Base antiderrapante — segurança no dia a dia
-✅ Enchimento ortopédico — protege articulações e coluna
-✅ Design moderno — bonito e funcional
-
-📦 ACOMPANHA:
-• Colchonete Pet Quality Pequeno
-
-🐱🐶 IDEAL PARA: cães e gatos de pequeno porte
-
-🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"colchonete cama pet pequeno impermeavel quality premium macio poodle shih tzu yorkshire cachorro gato"
-},
-{
-  n:26, nome:"Cama Pet Gorgopet Impermeável Pequena", emoji:"🛏️",
-  preco:"R$ 75,00", compra:"~R$ 37", margem:"~35%",
+  n:20, nome:"Cama Pet Gorgopet Impermeável Pequena", emoji:"🛏️",
+  preco:"R$ 67,90", compra:"~R$ 37", margem:"~R$2,89/venda",
   cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
   titulo:"Cama Pet Gorgopet Impermeável Pequena para Cachorro Gato Borda Alta Antiderrapante",
   descricao:`🛏️ CAMA PET GORGOPET IMPERMEÁVEL — BORDA ALTA PARA MAIS SEGURANÇA!
@@ -654,31 +599,98 @@ var produtos = [
   tags:"cama pet gorgopet impermeavel pequena borda alta cachorro gato poodle chihuahua antiderrapante lavavel"
 },
 {
-  n:27, nome:"Cama Pet Atacadão Impermeável Extra Grande", emoji:"🛏️",
-  preco:"R$ 75,00", compra:"~R$ 37", margem:"~35%",
+  n:21, nome:"Colchonete Pet Quality Impermeável Pequeno", emoji:"🐾",
+  preco:"R$ 64,90", compra:"~R$ 36", margem:"~R$0,91/venda",
   cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
-  titulo:"Cama Pet Atacadão Impermeável Extra Grande Cachorro Gato Lavável Resistente XL",
-  descricao:`🛏️ CAMA PET ATACADÃO EXTRA GRANDE — O MÁXIMO EM CONFORTO PARA PETS GIGANTES!
+  titulo:"Colchonete Pet Quality Impermeável Pequeno Cama para Cachorro Gato Macio Premium",
+  descricao:`🐾 COLCHONETE PET QUALITY IMPERMEÁVEL PEQUENO — QUALIDADE PREMIUM PARA SEU PET!
 
-✅ Tamanho EXTRA GRANDE — acomoda as maiores raças com conforto
-✅ Impermeável reforçado — proteção máxima contra umidade
-✅ 100% lavável — mantém higiene perfeita
-✅ Base antiderrapante — estável em pisos lisos ou carpet
-✅ Espuma ortopédica densa — ideal para cães com problemas nas articulações
-✅ Borda almofadada — apoio para cabeça e descanso total
-✅ Material resistente — suporta o peso de raças grandes
+✅ Impermeável — impermeabilização reforçada de alta qualidade
+✅ Tamanho ideal para pequenos — Poodle, Shih Tzu, Maltês, Yorkshire
+✅ Material premium — mais macio e durável que os comuns
+✅ Lavável na máquina — praticidade total
+✅ Base antiderrapante — segurança no dia a dia
+✅ Enchimento ortopédico — protege articulações e coluna
+✅ Design moderno — bonito e funcional
 
 📦 ACOMPANHA:
-• Cama Pet Atacadão Extra Grande (XL)
+• Colchonete Pet Quality Pequeno
 
-🐶 IDEAL PARA: Labrador, Golden Retriever, Pastor Alemão, Rottweiler, Dogue Alemão
+🐱🐶 IDEAL PARA: cães e gatos de pequeno porte
 
 🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
-  tags:"cama pet extra grande xl impermeavel cachorro labrador golden pastor rottweiler lavavel ortopedica"
+  tags:"colchonete cama pet pequeno impermeavel quality premium macio poodle shih tzu yorkshire cachorro gato"
+},
+{
+  n:22, nome:"Cama Pet Atacadão Impermeável Grande", emoji:"🛏️",
+  preco:"R$ 64,90", compra:"~R$ 33", margem:"~R$4,03/venda",
+  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
+  titulo:"Cama Pet Atacadão Impermeável Grande para Cachorro Gato Lavável Resistente",
+  descricao:`🛏️ CAMA PET ATACADÃO IMPERMEÁVEL GRANDE — ESPAÇO E CONFORTO PARA PETS MAIORES!
+
+✅ Impermeável — proteção total contra acidentes e umidade
+✅ Tamanho grande — ótima para raças médias e grandes
+✅ 100% lavável — higiene sem esforço
+✅ Base antiderrapante — estável em qualquer piso
+✅ Espuma de alta densidade — durável e ortopédica
+✅ Borda almofadada elevada — segurança e aconchego
+✅ Tecido premium — suave ao toque
+
+📦 ACOMPANHA:
+• Cama Pet Atacadão Grande
+
+🐾 IDEAL PARA: cães de porte médio a grande, labradores, pastores, golden retrievers
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"cama pet cachorro gato impermeavel grande lavavel resistente espuma alta densidade borda almofadada"
+},
+{
+  n:23, nome:"Cama Pet Atacadão Impermeável Média", emoji:"🛏️",
+  preco:"R$ 62,90", compra:"~R$ 30", margem:"~R$4,53/venda",
+  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
+  titulo:"Cama Pet Atacadão Impermeável Média para Cão e Gato Lavável Base Antiderrapante",
+  descricao:`🛏️ CAMA PET ATACADÃO IMPERMEÁVEL MÉDIA — SEU PET MERECE DESCANSAR COM ESTILO!
+
+✅ Impermeável — protege contra xixi, água e sujeira
+✅ Tamanho médio — ideal para cães e gatos de porte médio
+✅ Lavável — pode lavar na máquina sem problemas
+✅ Base antiderrapante — não desliza no piso
+✅ Enchimento de espuma densa — suporte para as articulações
+✅ Borda elevada — seu pet encosta a cabeça com conforto
+✅ Tecido macio premium — pelagem não fica presa
+
+📦 ACOMPANHA:
+• Cama Pet Atacadão Média
+
+🐾 IDEAL PARA: cães e gatos de porte pequeno a médio
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"cama pet cachorro gato impermeavel media lavavel antiderrapante espuma borda elevada conforto"
+},
+{
+  n:24, nome:"Colchonete Pet Toddy Impermeável Grande", emoji:"🐾",
+  preco:"R$ 59,90", compra:"~R$ 29", margem:"~R$3,33/venda",
+  cat:"Pet > Camas e Tapetes", estoque:"Dropi Nacional",
+  titulo:"Colchonete Pet Toddy Impermeável Grande Cama para Cachorro Gato Lavável Macio",
+  descricao:`🐾 COLCHONETE PET TODDY IMPERMEÁVEL GRANDE — CONFORTO MÁXIMO PARA SEU PET!
+
+✅ Impermeável — protege o colchonete de líquidos e acidentes
+✅ Tamanho grande — espaço confortável para cães médios e grandes
+✅ Material macio e lavável — higiene fácil e prática
+✅ Capa removível — lavar é simples, sem complicação
+✅ Base antiderrapante — fica no lugar mesmo quando o pet se mexe
+✅ Enchimento espesso — suporte e conforto para as articulações
+✅ Ideal para cães e gatos
+
+📦 ACOMPANHA:
+• Colchonete Pet Toddy Grande
+
+🐶 IDEAL PARA: cães e gatos de porte médio a grande
+
+🚚 Enviamos para todo o Brasil com rastreamento garantido!`,
+  tags:"colchonete cama pet cachorro gato impermeavel grande macio lavavel antiderrapante conforto"
 }
 ];
-
-var emojis = produtos.map(function(p){ return p.emoji; });
 
 function copiar(texto, btn) {
   navigator.clipboard.writeText(texto).then(function(){
@@ -695,7 +707,6 @@ function renderCards() {
     card.className = 'card';
     card.setAttribute('data-n', p.n);
 
-    // Foto
     var img = document.createElement('img');
     img.className = 'prod-foto';
     img.src = 'fotos_produtos/produto_' + String(p.n).padStart(2,'0') + '.jpg';
@@ -709,30 +720,26 @@ function renderCards() {
     };
     card.appendChild(img);
 
-    // Cabeçalho
     var head = document.createElement('div');
     head.className = 'card-head';
     head.innerHTML = '<div class="prod-num">PRODUTO #' + String(p.n).padStart(2,'0') + ' · DROPI NACIONAL</div>' +
       '<div class="prod-name">' + p.nome + '</div>' +
       '<div class="prod-meta">' +
         '<span class="tag tag-price">💰 Venda: ' + p.preco + '</span>' +
-        '<span class="tag tag-buy">📦 Custo: ' + p.compra + '</span>' +
+        '<span class="tag tag-buy">📦 Custo aprox.: ' + p.compra + '</span>' +
         '<span class="tag tag-margin">📈 ' + p.margem + '</span>' +
         '<span class="tag tag-cat">' + p.cat.split('>')[0].trim() + '</span>' +
         '<span class="tag tag-stock">✅ ' + p.estoque + '</span>' +
       '</div>';
     card.appendChild(head);
 
-    // Corpo
     var body = document.createElement('div');
     body.className = 'card-body';
 
-    // Info boxes
     body.innerHTML += '<div class="info-row">' +
       '<div class="info-box"><div class="ib-label">Categoria</div><div class="ib-value" style="font-size:10px;color:#00d4ff">' + p.cat + '</div></div>' +
     '</div>';
 
-    // Título
     var f1 = document.createElement('div'); f1.className = 'field';
     var l1 = document.createElement('div'); l1.className = 'field-label';
     l1.innerHTML = '<span>TÍTULO</span>';
@@ -742,7 +749,6 @@ function renderCards() {
     var c1 = document.createElement('div'); c1.className = 'field-content'; c1.textContent = p.titulo;
     f1.appendChild(c1); body.appendChild(f1);
 
-    // Descrição
     var f2 = document.createElement('div'); f2.className = 'field';
     var l2 = document.createElement('div'); l2.className = 'field-label';
     l2.innerHTML = '<span>DESCRIÇÃO</span>';
@@ -752,7 +758,6 @@ function renderCards() {
     var c2 = document.createElement('div'); c2.className = 'field-content'; c2.textContent = p.descricao;
     f2.appendChild(c2); body.appendChild(f2);
 
-    // Tags
     var f3 = document.createElement('div'); f3.className = 'field';
     var l3 = document.createElement('div'); l3.className = 'field-label';
     l3.innerHTML = '<span>TAGS</span>';
